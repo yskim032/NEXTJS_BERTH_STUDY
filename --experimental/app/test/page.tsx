@@ -19,9 +19,8 @@ async function extractData() {
   try {
     const response = await axios.get("https://svc.pncport.com/info/CMS/Ship/Info.pnc?mCode=MN014");
     const $ = cheerio.load(response.data);
-    const tableData = $('table').html();  // 테이블 데이터만 추출
-    const specificElement = $('#specific-id').text();  // 특정 ID를 가진 요소의 텍스트만 추출
-    return $.html(); // 전체 HTML을 문자열로 반환
+    const tableData = $('table').html();
+    return tableData || '테이블 데이터를 찾을 수 없습니다.';
   } catch (error) {
     console.error('데이터 추출 중 오류 발생:', error);
     return '데이터를 가져오는 중 오류가 발생했습니다.';
