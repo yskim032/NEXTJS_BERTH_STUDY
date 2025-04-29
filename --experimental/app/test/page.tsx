@@ -1,10 +1,12 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import Link from 'next/link';
 
 export default async function TestPage() {
   const data = await extractData();
   return (
     <div className="container mx-auto p-4">
+      <Link href="/">Home</Link>
       <h1 className="text-2xl font-bold mb-4">스크래핑된 데이터</h1>
       <div className="border p-4 rounded-lg bg-white shadow">
         {/* __html은 React에서 HTML 문자열을 직접 렌더링하기 위한 특별한 prop입니다.
