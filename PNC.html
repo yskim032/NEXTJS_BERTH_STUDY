@@ -1,0 +1,2500 @@
+
+<!doctype html>
+<html lang="ko">
+
+<head>
+
+<!-- don touch!!  -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta http-equiv="Cache-Control" content="No-Cache">
+<meta http-equiv="Pragma" content="No-Cache" />
+<meta http-equiv="expries" content="0" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- all base : CSS -->
+<link rel="stylesheet" type="text/css" href="/_Admin/_CSS/core/jquery-ui-1.9.2.custom.min.css" />
+<link rel="stylesheet" type="text/css" href="/_Css/popup.css" /> <!-- 레이어팝업 & 윈도우 팝업 공통 스타일 -->
+<!-- <link rel="stylesheet" type="text/css" href="/_Admin/_CSS/core/jquery-ui.datepicker.css" /> -->
+
+<!-- all base : JS -->
+<script charset="utf-8" src="/_Admin/_JS/core/jquery-3.5.1.min.js" ></script>
+<!-- <script charset="utf-8" src="/_Admin/_JS/core/jquery-ui-1.14.1.js"></script> -->
+ <script charset="utf-8" src="/_Admin/_JS/core/jquery-ui-1.9.2.custom.min.js"></script> 
+
+
+<!--<script charset="utf-8" src="/_Admin/_JS/jquery-ui.datepicker.js"></script>-->
+<script charset="utf-8" src="/_Admin/_JS/jquery-ui-timepicker-addon.js"></script>
+<script charset="utf-8" src='/_Admin/_JS/core/common_base_util.js'></script>
+<script charset="utf-8" src="/_Admin/_JS/browser.detect.js"></script><!-- 방문자통계에서 필요한 스크립트파일 -->
+<script charset="utf-8" src="/_Plugin/jquery.TabMenu/jquery.TabMenu.js"></script><!-- 텝메뉴 플러그인 -->
+<script charset="utf-8" src="/_Admin/_JS/comm.LayerPopup.js"></script><!-- 레이어 팝업 플러그인 -->
+<script charset="utf-8" src="/_Admin/_JS/jquery.blockUI.js"></script>
+<script charset="utf-8" src="/_Admin/_JS/jquery.fileDownload.js"></script>
+<script charset="utf-8" src="/_Admin/_JS/moment.min.js"></script>
+	<!-- Favicon 설정 -->
+	<!-- Title 설정 -->
+	<title>선석배정현황(T)  >  본선현황 >  정보조회서비스</title>
+
+<!-- configuration -->
+
+<!--
+사이트별 css 분기 : 
+-->
+<link rel="stylesheet" type="text/css" href="/_Css/common.css">
+<!-- <link rel="stylesheet" type="text/css" href="/_Css/webfont.css"> -->
+<link rel="stylesheet" type="text/css" href="/_Css/style.default.css">
+<link rel="stylesheet" type="text/css" href="/_Css/member.css">
+<link rel="stylesheet" type="text/css" href="/_Css/board.css">
+<link rel="stylesheet" type="text/css" href="/_Css/board.rspnsv.css">
+<link rel="stylesheet" type="text/css" href="/_Css/prg.style.css">
+<link rel="stylesheet" type="text/css" href="/homepage/info/_Css/common.css" />
+
+<script charset="utf-8" src="/_Js/common.js" ></script>
+
+<!-- 이미지슬라이드 플러그인 -->
+<script type="text/javascript" src="/_Js/jquery/owl.carousel_2.3.4_.js"></script>
+<link rel="stylesheet" type="text/css" href="/_Css/plugin/owl.carousel_2.3.4_.css" />
+<!-- 
+<link rel="stylesheet" type="text/css" href="/_Css/plugin/owl.theme.css" />
+<link rel="stylesheet" type="text/css" href="/_Css/plugin/owl.transitions.css" />
+ -->
+<!--[if lt IE 9]>
+    <script src="/_js/respond.min.js"></script>
+    <script src="/_js/html5shiv.min.js"></script>
+<![endif]-->
+<!-- 방문자통계 스크립트 -->
+<script type="text/javascript">
+onVisit('info');
+
+</script><!-- //don touch!!  -->
+
+
+	<style>
+		div.loading_blind {position:absolute;left:0;top:0;ext-align:center;z-index:1;width:100%;height:100%;display:none;}
+		div.loading_blind img{position:absolute;top:450px;left:50%;margin-left:-122px;z-index: 100;}
+	</style>
+</head>
+<body class="isSub pg-MN014">
+<div id="loading_blind_ing" class="loading_blind">
+	<img src="/_Img/Common/loading_img3.gif" alt="검색중입니다." />
+</div>
+<!-- skipNavi -->
+<div id="skipNavi">
+	<h1 class="blind">스킵네비게이션</h1>
+	<ul>
+		<li><a href="#contents" class="skipLink">본문바로가기</a></li>
+		<li><a href="#mainNavi" class="skipLink">주메뉴바로가기</a></li>
+	</ul>
+</div>
+<!-- skipNavi //-->
+
+<!-- doc-wrap -->
+<div id="doc-wrap">
+	<!-- header-wrap -->
+	<header id="header-wrap">
+		<!-- global-wrap -->
+<div id="global">
+	<div class="global-wrap div-cont">
+		<a href="/info/Main.do" class="home">홈으로</a>
+		<!-- svcbtn-box -->
+		<div class="svcbtn-box">
+			<ul class="member-lnk">
+					<li class="login"><a href="/info/CMS/MemberMgr/login.do?mCode=MN1000">로그인</a></li>
+			</ul>
+			<div class="gsel-lang">
+				<a href="/eng/" target="_blank"><span>English</span></a>
+				<ul style="display: none;">
+					<li><a href="#" target="_blank" title="새창열기"><span class="flag-name">English</span></a></li>
+					<li><a href="#" target="_blank" title="새창열기"><span class="flag-name">日本</span></a></li>
+				</ul>
+			</div>
+			<button type="button" onclick="location.href='/info/CMS/Board/Board.do?mCode=MN071'" class="btn-wctrl">자료실</button>
+			<div class="gsel-lang">
+				<button type="button" onclick="toggleTopWidePopups();" class="btn-wctrl"><span class="closed">POPUP</span></button>				
+			</div>
+		</div>
+		<!-- svcbtn-box //-->
+
+		<!-- login-ctrl -->
+		<!-- <div class="login-ctrl">
+			<input type="text" class="text" id="" name="" placeholder="아이디">
+			<input type="text" class="password" id="" name="" placeholder="비밀번호">
+			<button type="submit" class="btn-login">LOGIN</button>
+		</div> -->
+		<!-- toppop-ctrl //-->
+	</div>
+</div>		<!-- global-wrap //-->
+		<div id="header">
+			<h1 class="logo"><a href="/info/Main.do"><img src="/homepage/info/_Img/logo.gif" alt="정보조회서비스" /></a></h1>
+		</div>
+		<div id="mainNavi-wrap">
+			<!-- menu -->
+			<div id="menu-wrap" class="menu-cont">
+				<h2 class="blind">정보조회서비스 홈페이지 주메뉴</h2>
+<nav id="mainNavi">
+				
+	
+			
+				<div class="depth1-wrap" >
+					<ul class="depth1-ul">
+
+							
+
+								<li class='mn_li1 first'>
+										
+										<a class='mn_a1 '  href="/info/CMS/Container/Info.pnc?mCode=MN002"  >
+											<span>컨테이너</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Container/Info.pnc?mCode=MN002"  >
+											<span>컨테이너 정보</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2 nw'>
+										
+										<a class='mn_a2 '  href="https://www.plism.com/uat/uia/plism3Sub.do?menu_no=7" target="_blank" title="새창열림"  >
+											<span>비용정산</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Coi/Dis/All.pnc?mCode=MN023"  >
+											<span>컨테이너정보변경</span>
+										</a>
+											
+			
+	
+			
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Container/LocationInfo.pnc?mCode=MN122"  >
+											<span>컨테이너 위치 정보</span>
+										</a>
+											
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+
+							
+
+								<li class='mn_li1 over'>
+										
+										<a class='mn_a1  over'  href="/info/CMS/Ship/Info.pnc?mCode=MN014"  >
+											<span>본선현황</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first over'>
+										
+										<a class='mn_a2  over'  href="/info/CMS/Ship/Info.pnc?mCode=MN014"  >
+											<span>선석배정현황(T)</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipBerthCNew.pnc?mCode=MN105"  >
+											<span>선석배정현황(G)</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipVslStatus.pnc?mCode=MN020"  >
+											<span>본선작업현황</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipLoadList.pnc?mCode=MN021"  >
+											<span>양적하목록</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipCllList.pnc?mCode=MN035"  >
+											<span>CLL 야드비교</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipCoiStat.pnc?mCode=MN087"  >
+											<span>COV COD</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipCowStat.pnc?mCode=MN088"  >
+											<span>COW</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipNotGateIn.pnc?mCode=MN050"  >
+											<span>미반입목록</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipOverGateIn.pnc?mCode=MN075"  >
+											<span>과반입목록</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipNotGateOut.pnc?mCode=MN076"  >
+											<span>미반출목록</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipLoadCancel.pnc?mCode=MN077"  >
+											<span>선적취소목록</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipLoadAccept.pnc?mCode=MN078"  >
+											<span>검수목록</span>
+										</a>
+											
+			
+	
+			
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipScheduleTime.pnc?mCode=MN085"  >
+											<span>양하예정시간</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ship/ShipMentTime.pnc?mCode=MN148"  >
+											<span>선적예정시간</span>
+										</a>
+											
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+
+							
+
+								<li class='mn_li1'>
+										
+										<a class='mn_a1 '  href="/info/CMS/Yard/GateIO.pnc?mCode=MN018"  >
+											<span>야드현황</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/GateIO.pnc?mCode=MN018"  >
+											<span>반출입 목록</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/Rehandle.pnc?mCode=MN036"  >
+											<span>재조작목록</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/Container.pnc?mCode=MN045"  >
+											<span>야드컨테이너현황</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/Storage.pnc?mCode=MN046"  >
+											<span>장치기간경과화물</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/Empty.pnc?mCode=MN047"  >
+											<span>Empty현황</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/EmptySum.pnc?mCode=MN048"  >
+											<span>모선별Empty현황</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/Damage.pnc?mCode=MN049"  >
+											<span>Damage컨테이너현황</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Yard/Reefer.pnc?mCode=MN037"  >
+											<span>냉동컨테이너현황</span>
+										</a>
+											
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+
+							
+
+								<li class='mn_li1'>
+										
+										<a class='mn_a1 '  href="/info/CMS/Edi/DoList.pnc?mCode=MN052"  >
+											<span>전자문서</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Edi/DoList.pnc?mCode=MN052"  >
+											<span>Delivery order</span>
+										</a>
+											
+			
+	
+			
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Edi/BookingList.pnc?mCode=MN073"  >
+											<span>Booking</span>
+										</a>
+											
+			
+	
+			
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Edi/CopinoList.pnc?mCode=MN056"  >
+											<span>사전반출입조회</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Edi/DangerStatus.pnc?mCode=MN061"  >
+											<span>위험물 접수 현황</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Edi/CopinoProcList.pnc?mCode=MN089"  >
+											<span>반출입 진행 조회</span>
+										</a>
+											
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+
+							
+
+								<li class='mn_li1'>
+										
+										<a class='mn_a1 '  href="/info/CMS/Ondock/GateInNight.pnc?mCode=MN106"  >
+											<span>On-Dock</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/GateInNight.pnc?mCode=MN106"  >
+											<span>공컨 야간 반입</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/OndockContainerRepair.pnc?mCode=MN066"  >
+											<span>컨테이너 수리 현황</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/OndockSealList.pnc?mCode=MN067"  >
+											<span>Seal 조회</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/OndockHoldingList.pnc?mCode=MN068"  >
+											<span>홀딩 컨테이너</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/OndockEmptySum.pnc?mCode=MN069"  >
+											<span>Empty Summary</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/OndockFreePool.pnc?mCode=MN070"  >
+											<span>Free Pool</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/OndockFreePoolList.pnc?mCode=MN124"  >
+											<span>Freepool Summary</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Ondock/OndockShortage.pnc?mCode=MN072"  >
+											<span>Shortage 관리</span>
+										</a>
+											
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+
+							
+
+								<li class='mn_li1'>
+										
+										<a class='mn_a1 '  href="/info/CMS/EarlyGate/EarlyGateIn.pnc?mCode=MN130"  >
+											<span>비용결제서비스</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first'>
+										
+										<a class='mn_a2 '  href="/info/CMS/EarlyGate/EarlyGateIn.pnc?mCode=MN130"  >
+											<span>Early Gate-In</span>
+										</a>
+											
+			
+	
+			
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/LateCome/LateComeCargo.pnc?mCode=MN152"  >
+											<span>Late Gate-In</span>
+										</a>
+											
+			
+	
+			
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/NightEmpty/NightEmptyApply.pnc?mCode=MN158"  >
+											<span>공컨 야간 반입 검사</span>
+										</a>
+											
+			
+	
+			
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+
+							
+
+								<li class='mn_li1'>
+										
+										<a class='mn_a1 '  href="/info/CMS/Custom/List.pnc?mCode=MN082"  >
+											<span>동.식물검역</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Custom/List.pnc?mCode=MN082"  >
+											<span>동.식물검역 조회</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Custom/Reg.pnc?mCode=MN083"  >
+											<span>동.식물검역 신청</span>
+										</a>
+											
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+
+							
+
+								<li class='mn_li1'>
+										
+										<a class='mn_a1 '  href="/info/CMS/Code/CodeVessel.pnc?mCode=MN039"  >
+											<span>코드조회</span>
+										</a>
+											
+			
+	
+			
+				<div class="depth2-wrap" >
+					<ul class="depth2-ul">
+
+							
+
+								<li class='mn_li2 first'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Code/CodeVessel.pnc?mCode=MN039"  >
+											<span>모선조회</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Code/CodePort.pnc?mCode=MN040"  >
+											<span>포트코드</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Code/CodeOper.pnc?mCode=MN041"  >
+											<span>선사코드</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Code/CodeRoute.pnc?mCode=MN042"  >
+											<span>항로코드</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Code/CodeISO.pnc?mCode=MN043"  >
+											<span>ISO코드</span>
+										</a>
+											
+								</li>
+
+
+							
+
+								<li class='mn_li2'>
+										
+										<a class='mn_a2 '  href="/info/CMS/Code/CodeHazardous.pnc?mCode=MN044"  >
+											<span>위험물코드</span>
+										</a>
+											
+								</li>
+
+					</ul>
+				</div>
+								</li>
+
+					</ul>
+				</div>
+</nav>
+
+
+			</div>
+			<!-- menu //-->
+			<div class="all-menu">
+<script type="text/javascript">
+	function openLayerPopup_allMenu( returnObj ){
+		var option = {
+			url : "/info/CMS/SiteMap/SiteMapLayer.do"
+			, title : "정보조회서비스 All menu"
+			, width : "960"
+			, height : "600"
+			, returnObj : returnObj
+			, parameter : {}
+			, close_button_yn					: true
+			, reload_button_yn					: false
+			, minmaxsize_button_yn				: false
+		};
+		$( "body" ).layerPopup( option );
+	}
+</script>
+
+<!-- 여기서 onclick 이벤트만 걸어주시면 됩니다. -->
+<button type="button" class="allmn" onclick="openLayerPopup_allMenu( this );"><span class="blind">전체메뉴</span></button>			</div>
+        </div>
+    </header>
+	<!-- header-wrap //-->
+
+	<!-- container-wrap -->
+	<article id="container-wrap">
+
+		<!-- side-wrap -->
+		<div id="side-wrap">
+ <div class="submenu" id="leftmenu">
+			<!-- 메크로 :: 여기가 함수 호출 부분 -->
+
+			
+			
+						
+			
+					<ul class="depth1">
+						<li class="lm_l1">
+								<a class='lm_a1'  href="/info/CMS/Ship/Info.pnc?mCode=MN014"  >
+									<span>본선현황</span>
+								</a>
+			
+	
+			
+				<ul class="depth2">
+				<div class="depth2-wr">
+
+							
+							
+							
+							<li class="lm_l2 over">
+									<a class='lm_a2'  href="/info/CMS/Ship/Info.pnc?mCode=MN014"  >
+										<span>선석배정현황(T)</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipBerthCNew.pnc?mCode=MN105"  >
+										<span>선석배정현황(G)</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipVslStatus.pnc?mCode=MN020"  >
+										<span>본선작업현황</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipLoadList.pnc?mCode=MN021"  >
+										<span>양적하목록</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipCllList.pnc?mCode=MN035"  >
+										<span>CLL 야드비교</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipCoiStat.pnc?mCode=MN087"  >
+										<span>COV COD</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipCowStat.pnc?mCode=MN088"  >
+										<span>COW</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipNotGateIn.pnc?mCode=MN050"  >
+										<span>미반입목록</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipOverGateIn.pnc?mCode=MN075"  >
+										<span>과반입목록</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipNotGateOut.pnc?mCode=MN076"  >
+										<span>미반출목록</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipLoadCancel.pnc?mCode=MN077"  >
+										<span>선적취소목록</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2 plus">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipLoadAccept.pnc?mCode=MN078"  >
+										<span>검수목록</span>
+									</a>
+			
+	
+			
+				<ul class="depth3">
+				<div class="depth3-wr">
+
+							
+							
+							
+							<li class="lm_l3">
+									<a class='lm_a3'  href="/info/CMS/Ship/ShipLoadAccept.pnc?mCode=MN079"  >
+										<span>검수목록</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l3">
+									<a class='lm_a3'  href="/info/CMS/Ship/ShipLoadAcceptDamageReport.pnc?mCode=MN080"  >
+										<span>Damage Report</span>
+									</a>
+							</li>
+
+				</div>
+				</ul>
+				
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipScheduleTime.pnc?mCode=MN085"  >
+										<span>양하예정시간</span>
+									</a>
+							</li>
+
+
+							
+							
+							
+							<li class="lm_l2">
+									<a class='lm_a2'  href="/info/CMS/Ship/ShipMentTime.pnc?mCode=MN148"  >
+										<span>선적예정시간</span>
+									</a>
+							</li>
+
+				</div>
+				</ul>
+				
+						</li>
+					</ul>
+								
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+			
+			
+						
+	
+		
+</div>
+
+
+			<script type="text/javascript" src="/_Js/submenu.js"></script>
+			<script>
+				$(function(){	initSubNavigation();	});
+			</script>
+		</div>
+		<!-- side-wrap //-->
+
+		<div id="container">
+			<!-- contents -->
+			<div id="contents">
+				<!-- cont-top -->
+				<div class="cont-top">
+	
+		
+	
+		
+			
+			
+			
+			
+								
+					
+					
+	
+		
+	
+		
+			
+			
+								
+					
+						
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		
+						
+						
+						
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		
+		<h2 class="cont-tit">선석배정현황(T)</h2>
+
+				</div>
+				<!-- cont-top //-->
+
+				<div id="cont" class="pg-MN014">
+					<form id="excelForm" name="excelForm" method="post">
+						<input TYPE="hidden" name="content" >
+						<input TYPE="hidden" name="content_style1" >
+						<input TYPE="hidden" name="content_style2" >
+						<input TYPE="hidden" name="content_style3" >
+						<input TYPE="hidden" name="content_style4" >
+						<input TYPE="hidden" name="content_style5" >
+					</form>
+					<!-- S : TABMENU //-->
+
+			
+
+
+
+
+				
+
+
+
+
+				
+			
+			
+
+					<!-- E : TABMENU //-->
+
+<script>
+	$(document).ready(function() {
+		$("#OPERATOR").bind("keyup",function(){
+			$(this).val($(this).val().toUpperCase());
+		});
+		
+		$("#STARTDATE").datepicker(DATEPICKER_DEFAULT );
+		
+		$("#ENDDATE").datepicker(DATEPICKER_DEFAULT );
+
+	});
+
+
+	function onSubmit() {
+		var f = document.form;
+		if (f.STARTDATE.value != ''){
+			defaultBlockUI();
+			f.action="/info/CMS/Ship/Info.pnc?mCode=MN014";
+			f.submit();
+		}
+	}
+
+	//PopupView
+	function PopupView(vslcode,site_code, mcode) {
+		 var WinMode   = "scrollbars=no,toolbar=no,location=no,status=no,menubar=no,width=800,height=400,scrollbars=yes" ;
+		 var TargetDir = "/"+site_code+"/CMS/PopupView.pnc?mCode="+mcode+"&ORDER=LANE&VSLCODE=" + (vslcode == undefined ? '' : vslcode);
+		 D_Window = window.open( TargetDir, "Popup", WinMode );
+	}
+	
+	function PopupUpdate(vslcode,site_code, mcode, etb, etd) {
+		 var WinMode   = "scrollbars=no,toolbar=no,location=no,status=no,menubar=no,width=800,height=300,scrollbars=yes" ;
+		 var TargetDir = "/"+site_code+"/CMS/PopupUpdate.pnc?mCode="+mcode+"&etb="+etb+"&etd="+etd+"&ORDER=LANE&VSLCODE=" + (vslcode == undefined ? '' : vslcode);
+		 D_Window = window.open( TargetDir, "Popup", WinMode );
+	}
+	
+	//PopupPod
+	function PopupPod(KEY,site_code, mcode) {
+		 var WinMode   = "scrollbars=no,toolbar=no,location=no,status=no,menubar=no,width=800,height=400,scrollbars=yes" ;
+		 var TargetDir = "/"+site_code+"/CMS/PopupPod.pnc?mCode="+mcode+"&ORDER=LANE&LANE=" + (KEY == undefined ? '' : KEY);
+		 D_Window = window.open( TargetDir, "Popup", WinMode );
+	}
+	
+	
+	function btnClick(id){
+		$('#'+id).click();
+	}
+	
+</script>
+<form name="form" id="form" action="" method="post" onsubmit="return onSubmit();">
+<div  style="width: 1400px; margin-left: -100px">
+	<div class="srch-sec hasSchUtil">
+		<div class="input-wr fl">
+			<label for="name" class="tit">일자</label>
+			<input type="text" id="STARTDATE" name="STARTDATE" class="text cal w120" value="20250504" readonly> ~
+			<input type="text" id="ENDDATE" name="ENDDATE" class="text cal w120" value="20250511" readonly>
+			&nbsp;&nbsp;
+			<label for="name" class="tit">ROUTE</label>
+			<input type="text" id="ROUTE" name="ROUTE" class="text w120" value="" >
+			&nbsp;&nbsp;
+			<label for="name" class="tit">OPER</label>
+			<input type="text" id="OPERATOR" name="OPERATOR" class="text w80" value="" >
+			
+			<span class="extra">
+				<span class="squareLbl">출항</span><span class="squareBox" style="background:#F2E3ED"><!-- <img src="/images/trans.gif" height="10" width="10" align="absmiddle" /> --></span>
+				<span class="squareLbl">접안</span><span class="squareBox" style="background:#DEF2FC"><!-- <img src="/images/trans.gif" height="10" width="10" align="absmiddle" /> --></span>
+				<span class="squareLbl">예정</span><span class="squareBox" style="background:#FFFFFF"><!-- <img src="/images/trans.gif" height="10" width="10" align="absmiddle" /> --></span>
+			</span>
+		</div>
+		<div class="func-btn mg0t">
+			<button type="button" onclick="onSubmit();" id="" name="" class="srch-btn">검색</button>
+			<button type="button" onclick="pagePrint('info','cont_middle');" class="btn"><span class="print">인쇄</span></button>
+			<button type="button" onclick="runExcel('info')" class="btn"><span class="down">다운</span></button>
+		</div>
+	</div>
+	<select class="select mg10f" id="ROWCOUNT" name="ROWCOUNT" onChange="onSubmit();">		
+		<option value="100" >100건</option>
+		<option value="500" selected>500건</option>
+		<option value="1000" >1000건</option>
+	</select>	
+</div>	
+</form>
+
+<form id="uploadFrm" name="uploadFrm" method="post" action="" enctype="multipart/form-data">
+<input type="hidden" name="mcode" value="" />
+<input type="hidden" name="filname" id="filname" value="" />
+
+<div id="cont_middle">
+<div  style="width: 1400px; margin-left: -100px">
+	<table class="tbl-type02">
+		<caption><span class="blind"></span></caption>
+		<colgroup>
+			<col style="width:30px">
+			<col style="width:140px">
+			<col style="width:auto">
+			<col style="width:110px">
+			<col style="width:50px">
+			<col style="width:70px">
+			<col style="width:50px">
+			<col style="width:120px">
+			<col style="width:120px">
+			<col style="width:50px">
+			<col style="width:120px">
+			<col style="width:50px">
+			<col style="width:50px">
+			
+			<col style="width:110px">
+			
+			<col style="width:50px">
+			<col style="width:40px">
+			<col style="width:115px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">No.</th>
+				<th scope="col">모선명</th>
+				<th scope="col">모선코드</th>
+				<th scope="col">선사항차</th>
+				<th scope="col">운항선사</th>
+				<th scope="col">항로</th>
+				<th scope="col">접안방향</th>
+				<th scope="col">접안(예정)일시</th>
+				<th scope="col">출항(예정)일시</th>
+				<th scope="col">선석</th>
+				<th scope="col">반입마감일시</th>
+				<th scope="col">양하수량</th>
+				<th scope="col">선적수량</th>
+				<th scope="col">줄잡이업체</th>
+				<th scope="col">Shift</th>
+						<th scope="col" >작업서류</th>
+				<th scope="col">업데이트일시</th>
+			</tr>
+		</thead>
+		<tbody>
+					<tr class="bgCol1"><!-- bgColor="#F2E3ED" -->
+						<td>1</td>
+						<td>MSC BEATRICE</td>
+						<td>MBEA-001/2025</td>
+						<td>UK513R/UK513R</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ADD','info','MN014');">ADD</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-02 11:10
+						</td>
+						<td>2025-05-04 03:08</td>
+						<td>B7</td>
+						<td>2025-05-01 22:00</td>
+						<td>3888</td>
+						<td>127</td>
+						<td>ENS MARINE</td>
+						<td>332</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="MBEA-001.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-02 09:42</td>
+					</tr>
+					<tr class="bgCol1"><!-- bgColor="#F2E3ED" -->
+						<td>2</td>
+						<td>MSC JASPER VIII</td>
+						<td>MJAS-001/2025</td>
+						<td>GE516E/GE516E</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('EMPIRE E','info','MN014');">EMPIRE E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-03 01:00
+						</td>
+						<td>2025-05-04 07:55</td>
+						<td>B6</td>
+						<td>2025-05-02 11:00</td>
+						<td>611</td>
+						<td>1677</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="MJAS-001.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-02 21:53</td>
+					</tr>
+					<tr class="bgCol1"><!-- bgColor="#F2E3ED" -->
+						<td>3</td>
+						<td>NICOLAI MAERSK</td>
+						<td>NLAI-002/2025</td>
+						<td>516N/518S</td>
+						<td>MCC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('HP2','info','MN014');">HP2</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-03 07:03
+						</td>
+						<td>2025-05-04 01:55</td>
+						<td>B5</td>
+						<td>2025-05-02 19:00</td>
+						<td>713</td>
+						<td>388</td>
+						<td>Yongshin</td>
+						<td>4</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="NLAI-002.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-03 01:32</td>
+					</tr>
+					<tr class="bgCol2"><!-- bgColor="#DEF2FC" -->
+						<td>4</td>
+						<td>MSC LENI</td>
+						<td>MLEN-002/2025</td>
+						<td>GJ517W/GJ517W</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('JADE','info','MN014');">JADE</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-03 08:05
+						</td>
+						<td>2025-05-05 02:00</td>
+						<td>B8</td>
+						<td>2025-05-02 20:00</td>
+						<td>2975</td>
+						<td>881</td>
+						<td>ENS MARINE</td>
+						<td>116</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="MLEN-002.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-03 02:49</td>
+					</tr>
+					<tr class="bgCol1"><!-- bgColor="#F2E3ED" -->
+						<td>5</td>
+						<td>ASIAN ACE</td>
+						<td>MAAC-003/2025</td>
+						<td>515N/515N</td>
+						<td>MCC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('IA5N','info','MN014');">IA5N</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-03 11:30
+						</td>
+						<td>2025-05-04 04:05</td>
+						<td>B4</td>
+						<td>2025-05-02 23:00</td>
+						<td>609</td>
+						<td>224</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="MAAC-003.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-03 01:28</td>
+					</tr>
+					<tr class="bgCol2"><!-- bgColor="#DEF2FC" -->
+						<td>6</td>
+						<td>KMTC DELHI</td>
+						<td>KKDE-002/2025</td>
+						<td>2502E/2503W</td>
+						<td>KMD   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GLX','info','MN014');">GLX</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-04 03:50
+						</td>
+						<td>2025-05-05 05:00</td>
+						<td>B5</td>
+						<td>2025-05-03 16:00</td>
+						<td>1256</td>
+						<td>949</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="KKDE-002.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-04 00:18</td>
+					</tr>
+					<tr class="bgCol2"><!-- bgColor="#DEF2FC" -->
+						<td>7</td>
+						<td>GOOD PROSPECT</td>
+						<td>MGPR-002/2025</td>
+						<td>517N/518S</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('A05','info','MN014');">A05</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-04 04:40
+						</td>
+						<td>2025-05-05 15:00</td>
+						<td>B7</td>
+						<td>2025-05-03 16:00</td>
+						<td>2101</td>
+						<td>2252</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="MGPR-002.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-03 23:36</td>
+					</tr>
+					<tr class="bgCol2"><!-- bgColor="#DEF2FC" -->
+						<td>8</td>
+						<td>X-PRESS ODYSSEY</td>
+						<td>XPOD-003/2025</td>
+						<td>25014E/25017W</td>
+						<td>XPR   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('FI3W','info','MN014');">FI3W</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-04 06:02
+						</td>
+						<td>2025-05-05 05:00</td>
+						<td>B4</td>
+						<td>2025-05-03 17:00</td>
+						<td>764</td>
+						<td>484</td>
+						<td>ENS MARINE</td>
+						<td>6</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="XPOD-003.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-03 23:28</td>
+					</tr>
+					<tr class="bgCol2"><!-- bgColor="#DEF2FC" -->
+						<td>9</td>
+						<td>MSC BASEL V</td>
+						<td>MBAS-003/2025</td>
+						<td>HI518A/HI518A</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ORIGAMI A','info','MN014');">ORIGAMI A</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-04 10:00
+						</td>
+						<td>2025-05-04 23:00</td>
+						<td>B6</td>
+						<td>2025-05-03 20:01</td>
+						<td>298</td>
+						<td>72</td>
+						<td>ENS MARINE</td>
+						<td>30</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="MBAS-003.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-04 16:04</td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>10</td>
+						<td>COSCO FELIXSTOWE</td>
+						<td>CFEL-003/2025</td>
+						<td>197S/197S</td>
+						<td>COS   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ANZL','info','MN014');">ANZL</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-05 01:00
+						</td>
+						<td>2025-05-05 14:00</td>
+						<td>B6</td>
+						<td>2025-05-04 12:01</td>
+						<td>0</td>
+						<td>738</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="CFEL-003.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-04 19:11</td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>11</td>
+						<td>MAGNA</td>
+						<td>MGNA-030/2025</td>
+						<td>4548W/</td>
+						<td>KFC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('KF02','info','MN014');">KF02</a></td>
+						<td>Star</td>
+						<td>
+							2025-05-05 01:00
+						</td>
+						<td>2025-05-05 08:00</td>
+						<td>B6</td>
+						<td>2025-05-04 13:00</td>
+						<td>134</td>
+						<td>0</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						<input type="hidden" name="Certi blind" id="Certi" class="prePic" value="MGNA-030.pdf">
+							<a href="#" class="clickDownload"  title="내려받기">
+								<img src="/_Img/Board/default/ico_pdf.gif" alt="PDF첨부파일">
+							</a>
+						</td>
+						<td>2025-05-04 19:11</td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>12</td>
+						<td>GSL KALLIOPI</td>
+						<td>KALP-002/2025</td>
+						<td>513W/517E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSWC3E','info','MN014');">GUSWC3E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-05 04:00
+						</td>
+						<td>2025-05-06 00:01</td>
+						<td>B8</td>
+						<td>2025-05-04 16:00</td>
+						<td>703</td>
+						<td>1121</td>
+						<td>Yongshin</td>
+						<td>314</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>13</td>
+						<td>MSC MANHATTAN V</td>
+						<td>MMHT-003/2025</td>
+						<td>HI517R/HI517R</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ORIGAMI R','info','MN014');">ORIGAMI R</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-05 07:00
+						</td>
+						<td>2025-05-06 10:00</td>
+						<td>B4</td>
+						<td>2025-05-04 19:00</td>
+						<td>466</td>
+						<td>1365</td>
+						<td>ENS MARINE</td>
+						<td>4</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>14</td>
+						<td>ZIM TOPAZ</td>
+						<td>ZZT3-001/2025</td>
+						<td>4W/4W</td>
+						<td>ZIM   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ZMPW','info','MN014');">ZMPW</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-05 07:00
+						</td>
+						<td>2025-05-06 04:00</td>
+						<td>B5</td>
+						<td>2025-05-04 19:00</td>
+						<td>402</td>
+						<td>832</td>
+						<td>ENS MARINE</td>
+						<td>42</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>15</td>
+						<td>CHASTINE MAERSK</td>
+						<td>MCHA-002/2025</td>
+						<td>, P512W/517E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('AC3E','info','MN014');">AC3E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-05 16:00
+						</td>
+						<td>2025-05-06 20:00</td>
+						<td>B6</td>
+						<td>2025-05-05 04:00</td>
+						<td>994</td>
+						<td>1326</td>
+						<td>New Port Marine</td>
+						<td>364</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>16</td>
+						<td>GSL SOFIA</td>
+						<td>MFIA-001/2025</td>
+						<td>517E/517E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSEC3','info','MN014');">GUSEC3</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-05 17:00
+						</td>
+						<td>2025-05-07 10:00</td>
+						<td>B7</td>
+						<td>2025-05-05 05:00</td>
+						<td>949</td>
+						<td>2110</td>
+						<td>Yongshin</td>
+						<td>28</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>17</td>
+						<td>MAERSK SAIGON</td>
+						<td>MSGN-001/2025</td>
+						<td>517E/517E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSWC4E','info','MN014');">GUSWC4E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-06 02:00
+						</td>
+						<td>2025-05-07 12:00</td>
+						<td>B8</td>
+						<td>2025-05-05 14:00</td>
+						<td>1129</td>
+						<td>1986</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>18</td>
+						<td>ESL NHAVA SHEVA</td>
+						<td>MENH-005/2025</td>
+						<td>518S/519N</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('A04','info','MN014');">A04</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-06 06:00
+						</td>
+						<td>2025-05-08 02:00</td>
+						<td>B5</td>
+						<td>2025-05-05 18:00</td>
+						<td>2735</td>
+						<td>1363</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>19</td>
+						<td>REN JIAN 26</td>
+						<td>RJ26-001/2025</td>
+						<td>517N/517N</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('A14','info','MN014');">A14</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-06 12:00
+						</td>
+						<td>2025-05-07 21:00</td>
+						<td>B4</td>
+						<td>2025-05-06 00:00</td>
+						<td>1334</td>
+						<td>1433</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>20</td>
+						<td>AMBITION</td>
+						<td>AMBT-002/2025</td>
+						<td>513W/518E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('AC2S','info','MN014');">AC2S</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-06 22:00
+						</td>
+						<td>2025-05-08 10:00</td>
+						<td>B6</td>
+						<td>2025-05-06 10:00</td>
+						<td>916</td>
+						<td>2324</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>21</td>
+						<td>UTE</td>
+						<td>MUTE-004/2025</td>
+						<td>518E/518E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSWC2E','info','MN014');">GUSWC2E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-07 12:00
+						</td>
+						<td>2025-05-08 21:00</td>
+						<td>B7</td>
+						<td>2025-05-06 22:00</td>
+						<td>1635</td>
+						<td>1300</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>22</td>
+						<td>MAERSK KINLOSS</td>
+						<td>MKIL-002/2025</td>
+						<td>516W/519E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSWC5E','info','MN014');">GUSWC5E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-07 14:00
+						</td>
+						<td>2025-05-08 17:00</td>
+						<td>B8</td>
+						<td>2025-05-07 02:00</td>
+						<td>1066</td>
+						<td>1172</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>23</td>
+						<td>NAKSKOV MAERSK</td>
+						<td>NSKM-006/2025</td>
+						<td>517N/519S</td>
+						<td>MCC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('HP2','info','MN014');">HP2</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-07 23:00
+						</td>
+						<td>2025-05-08 16:00</td>
+						<td>B4</td>
+						<td>2025-05-07 11:00</td>
+						<td>654</td>
+						<td>241</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>24</td>
+						<td>SEASPAN GANGES</td>
+						<td>GANX-001/2025</td>
+						<td>518E/518E</td>
+						<td>HLC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSEC2E','info','MN014');">GUSEC2E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-08 04:00
+						</td>
+						<td>2025-05-09 08:00</td>
+						<td>B5</td>
+						<td>2025-05-07 16:00</td>
+						<td>0</td>
+						<td>1962</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>25</td>
+						<td>MAERSK NESNA</td>
+						<td>MNES-004/2025</td>
+						<td>516N/518S</td>
+						<td>MCC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('IA88S','info','MN014');">IA88S</a></td>
+						<td>Star</td>
+						<td>
+							2025-05-08 12:00
+						</td>
+						<td>2025-05-09 05:00</td>
+						<td>B6</td>
+						<td>2025-05-08 00:00</td>
+						<td>120</td>
+						<td>420</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>26</td>
+						<td>MAGNA</td>
+						<td>MGNA-031/2025</td>
+						<td>/4550E</td>
+						<td>KFC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('KF02','info','MN014');">KF02</a></td>
+						<td>Star</td>
+						<td>
+							2025-05-08 13:00
+						</td>
+						<td>2025-05-08 22:00</td>
+						<td>B6</td>
+						<td>2025-05-08 01:00</td>
+						<td>0</td>
+						<td>241</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>27</td>
+						<td>DREDGING</td>
+						<td>DREG-001/2025</td>
+						<td>/</td>
+						<td>*     </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('REP','info','MN014');">REP</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-08 17:00
+						</td>
+						<td>2025-05-12 06:00</td>
+						<td>B4</td>
+						<td>2025-05-08 05:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td></td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>28</td>
+						<td>EA JERSEY</td>
+						<td>ZUEB-001/2025</td>
+						<td>1A/1A</td>
+						<td>ZIM   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ADD','info','MN014');">ADD</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-08 17:00
+						</td>
+						<td>2025-05-09 13:00</td>
+						<td>B4</td>
+						<td>2025-05-08 05:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>29</td>
+						<td>MSC CLARA</td>
+						<td>MSCA-002/2025</td>
+						<td>GT517W/GT517W</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('TIGER','info','MN014');">TIGER</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-08 19:00
+						</td>
+						<td>2025-05-10 20:00</td>
+						<td>B8</td>
+						<td>2025-05-09 00:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>30</td>
+						<td>MSC IRINA</td>
+						<td>MSIR-002/2025</td>
+						<td>GJ518W/GJ518W</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('JADE','info','MN014');">JADE</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-08 23:00
+						</td>
+						<td>2025-05-10 15:00</td>
+						<td>B7</td>
+						<td>2025-05-08 11:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>31</td>
+						<td>PRAGUE EXPRESS</td>
+						<td>PGXX-002/2025</td>
+						<td>515E/519W</td>
+						<td>HLC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('FM1','info','MN014');">FM1</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-09 09:00
+						</td>
+						<td>2025-05-10 04:00</td>
+						<td>B6</td>
+						<td>2025-05-08 21:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>32</td>
+						<td>AS SOPHIA</td>
+						<td>ASPA-003/2025</td>
+						<td>516N/516N</td>
+						<td>MCC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('IA5N','info','MN014');">IA5N</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-09 10:00
+						</td>
+						<td>2025-05-10 05:00</td>
+						<td>B5</td>
+						<td>2025-05-08 22:00</td>
+						<td>562</td>
+						<td>376</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>33</td>
+						<td>MAERSK SARNIA</td>
+						<td>SARN-001/2025</td>
+						<td>518E/518E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSWC3E','info','MN014');">GUSWC3E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-10 06:00
+						</td>
+						<td>2025-05-11 03:00</td>
+						<td>B6</td>
+						<td>2025-05-09 18:00</td>
+						<td>957</td>
+						<td>1261</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>34</td>
+						<td>CAPTAIN THANASIS I</td>
+						<td>MTHI-009/2025</td>
+						<td>HG518A/HG518R</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('KAGUYA','info','MN014');">KAGUYA</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-10 07:00
+						</td>
+						<td>2025-05-11 06:00</td>
+						<td>B5</td>
+						<td>2025-05-09 19:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>35</td>
+						<td>X-PRESS CARINA</td>
+						<td>XPCA-003/2025</td>
+						<td>25015E/25018W</td>
+						<td>XPR   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('FI3W','info','MN014');">FI3W</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-10 17:00
+						</td>
+						<td>2025-05-11 16:00</td>
+						<td>B7</td>
+						<td>2025-05-10 05:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>36</td>
+						<td>MSC SHAULA</td>
+						<td>MHAU-005/2025</td>
+						<td>HI519A/HI519A</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ORIGAMI A','info','MN014');">ORIGAMI A</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-10 22:00
+						</td>
+						<td>2025-05-11 14:00</td>
+						<td>B8</td>
+						<td>2025-05-10 10:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>37</td>
+						<td>MAERSK NARVIK</td>
+						<td>NARV-005/2025</td>
+						<td>518N/520S</td>
+						<td>MCC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('HP2','info','MN014');">HP2</a></td>
+						<td>Star</td>
+						<td>
+							2025-05-10 22:00
+						</td>
+						<td>2025-05-11 18:00</td>
+						<td>B8</td>
+						<td>2025-05-10 10:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>38</td>
+						<td>HERTA</td>
+						<td>MHER-004/2025</td>
+						<td>518N/519S</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('A05','info','MN014');">A05</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-11 05:00
+						</td>
+						<td>2025-05-12 20:00</td>
+						<td>B6</td>
+						<td>2025-05-10 17:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>39</td>
+						<td>TYNDALL</td>
+						<td>TYND-003/2025</td>
+						<td>515W/518E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSWC4E','info','MN014');">GUSWC4E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-11 08:00
+						</td>
+						<td>2025-05-12 12:00</td>
+						<td>B5</td>
+						<td>2025-05-10 20:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>40</td>
+						<td>X-PRESS PISCES</td>
+						<td>MPPS-001/2025</td>
+						<td>518E/518E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('GUSWC4E','info','MN014');">GUSWC4E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-11 09:00
+						</td>
+						<td>2025-05-12 17:00</td>
+						<td>B5</td>
+						<td>2025-05-10 21:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>Yongshin</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>41</td>
+						<td>MSC GENERAL IV</td>
+						<td>MGEE-002/2025</td>
+						<td>HI518R/HI518R</td>
+						<td>MSC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('ORIGAMI R','info','MN014');">ORIGAMI R</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-11 16:00
+						</td>
+						<td>2025-05-12 11:00</td>
+						<td>B8</td>
+						<td>2025-05-11 04:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>ENS MARINE</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>42</td>
+						<td>SALLY MAERSK</td>
+						<td>MESA-002/2025</td>
+						<td>513W/518E</td>
+						<td>MAE   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('AC3E','info','MN014');">AC3E</a></td>
+						<td>Port</td>
+						<td>
+							2025-05-11 18:00
+						</td>
+						<td>2025-05-13 04:00</td>
+						<td>B7</td>
+						<td>2025-05-11 06:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+					<tr class="bgCol3"><!-- bgColor="#FFFFFF" -->
+						<td>43</td>
+						<td>MAGNA</td>
+						<td>MGNA-032/2025</td>
+						<td>4550W/4551E</td>
+						<td>KFC   </td>
+						<td><a style="color:blue;" href="javascript:PopupPod('KF02','info','MN014');">KF02</a></td>
+						<td>Star</td>
+						<td>
+							2025-05-11 20:00
+						</td>
+						<td>2025-05-12 09:00</td>
+						<td>B8</td>
+						<td>2025-05-11 08:00</td>
+						<td>0</td>
+						<td>0</td>
+						<td>New Port Marine</td>
+						<td>0</td>
+						<td>						
+						</td>
+						<td></td>
+					</tr>
+		</tbody>
+	</table>
+	</div>
+</div>
+</form>
+<br><div class='publicPaging'><div class='inwr'><strong><span>1</span></strong></div></div>
+<script LANGUAGE="JavaScript">
+$(document).ready(function() {
+	$(document).on("click", ".clickDownload", function() {
+		var prePic = $(this).siblings(".prePic").val();								
+		var url = "/info/CMS/Ship/downloadFile.pnc?fileName="+prePic;	
+			location.href = url;
+	});
+});
+	function uploadFile(obj){
+	
+		$('#filname').val($(obj).attr('name'));
+		
+		  var form = $('#uploadFrm')[0];		
+		  var formData = new FormData(form);
+		  var option = {
+				method : "POST",
+				enctype : 'multipart/form-data',
+				processData: false,
+	            contentType: false,
+	            cache: false,
+	            timeout: 600000,
+				data : formData,				
+			};
+			
+			var url = "/info/ajx_json/Ship/InfoUpload.pnc";			
+			var jqxhr = $.ajax(url, option);			
+			jqxhr.done(function(result){
+				alert(result.message);
+				if(result.code == "success"){
+					location.reload();
+				}
+			});
+
+	 		jqxhr.fail(function() {	 		
+				alert("저장 중 오류가 발생했습니다.");
+			});
+
+	 		jqxhr.always(function() {
+	 			// 항상 실행
+			});  
+	}
+	
+	function uploadFileDel(obj){
+		
+		  var option = {
+				  method : "POST",
+	 				dataType : "json",
+					data : {aa:obj}
+			};
+			
+			var url = "/info/ajx_json/Ship/InfoUploadDel.pnc";			
+			var jqxhr = $.ajax(url, option);			
+			jqxhr.done(function(result){
+				//alert(result.message);
+				if(result.code == "success"){
+					location.reload();
+				}
+			});
+
+	 		jqxhr.fail(function() {	 		
+				alert("저장 중 오류가 발생했습니다.");
+			});
+
+	 		jqxhr.always(function() {
+	 			// 항상 실행
+			});  
+	}
+</script>
+
+
+
+
+				</div>
+			</div>
+			<!-- contents //-->
+		</div>
+	</article>
+	<!-- container-wrap //-->
+
+	<!-- footer-wrap -->
+<footer id="footer-wrap">
+	<a href="#doc-wrap" class="topBt"><span>TOP</span></a>
+
+	<div class="footer div-cont">
+		<p class="flogo"><img src="/homepage/info/_Img/flogo.png" alt="정보조회서비스" /></p>
+			<address>(46767) 부산광역시 강서구 신항남로 372 </address>
+
+	<ul class="cs-info">
+		<li><span>상호명 : 부산신항만주식회사</span> </li>
+		<li><span>TEL :</span> 051-601-8114</li>
+		
+		<li class="e-mail"><span>EMAIL :</span> @</li>
+	</ul>
+	<div class="copyright">Copyright @ 2018 PNC. All Right Reserved.</div>
+<br>
+<ul class="cs-info" style="padding-left: 195px">		
+		<li><span>사업자등록번호 : 120-81-75973</span> </li>
+		<li><span>대표자명 : 권기현</span> </li>		
+		<li><span>통신판매신고업번호 : 제 2023-부산강서구-0228 호 </span> </li>
+</ul>
+	</div>
+</footer>	<!-- footer-wrap //-->
+</div>
+
+<!-- doc-wrap //-->
+<script src="/_Js/common.base.js"></script>
+<script src="/_Js/jquery/jquery.cs_wauto.js"></script>
+<script src="/homepage/info/_Js/common.js"></script>
+<script src="/homepage/info/_Js/topmenu.js"></script>
+<script src="/homepage/info/_Js/layout_sub.js"></script>
+
+<!--[if lte IE 9]>
+	<script src="/_Js/jquery/jquery.cs_placeholder.js"></script>
+	<script>placeholderInit();</script>
+<![endif]-->
+</body>
+
+</html>
