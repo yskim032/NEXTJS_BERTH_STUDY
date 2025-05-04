@@ -1,0 +1,1387 @@
+
+
+<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "" "">
+<HTML lang="ko">
+<HEAD>
+
+<META content="IE=11.0000" http-equiv="X-UA-Compatible">
+ 
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<META http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> -->
+
+<META name="format-detection" content="telephone=no, address=no, email=no">
+<META name="keywords" content="">
+<META name="description" content="">
+
+<META content="http://www.gwct.co.kr/GWCT_files/k_logo.jpg" property="og:image">
+
+<TITLE>광양항서부컨테이너터미널(주)</TITLE>
+
+<!--달력 입력-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+$(function() {
+    $( "#datepicker_from_YMD" ).datepicker({
+        //changeMonth:true,
+        //changeYear:true,
+        //showOn: 'button',
+        //buttonImage:'./image/calendar_20x20.png',
+        //buttonImageOnly: true,
+        dateFormat:    'yy-mm-dd',
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        dayNames: ['일','월','화','수','목','금','토'],
+        dayNamesShort: ['일','월','화','수','목','금','토'],
+        dayNamesMin: ['일','월','화','수','목','금','토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+
+    });
+});
+
+$(function() {
+    $( "#datepicker_to_YMD" ).datepicker({
+        //changeMonth:true,
+        //changeYear:true,
+        //showOn: 'button',
+        //buttonImage:'./image/calendar_20x20.png',
+        //buttonImageOnly: true,
+        dateFormat:    'yy-mm-dd',
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        dayNames: ['일','월','화','수','목','금','토'],
+        dayNamesShort: ['일','월','화','수','목','금','토'],
+        dayNamesMin: ['일','월','화','수','목','금','토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+
+    });
+});
+
+$(function() {
+    $( "#datepicker" ).datepicker({
+        //changeMonth:true,
+        //changeYear:true,
+        //showOn: 'button',
+        //buttonImage:'./image/calendar_20x20.png',
+        //buttonImageOnly: true,
+        dateFormat:    'yy-mm-dd',
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        dayNames: ['일','월','화','수','목','금','토'],
+        dayNamesShort: ['일','월','화','수','목','금','토'],
+        dayNamesMin: ['일','월','화','수','목','금','토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+
+    });
+});
+
+</script>
+
+<script>
+function openEservice(url){
+	var d = new Date();
+	var exdays = 60*10; //5분이내
+    d.setTime(d.getTime() + (exdays*1000));
+    var expires = "expires="+ d.toUTCString();
+   
+    document.cookie = "TOKEN" + "=" + "GUEST" + ";" + expires + ";path=/;";
+    var myWindow = window.open('','title');
+    myWindow.location.href = url;
+}
+function openEservice1(screenPath) {
+
+	var form = document.forms[0];
+	 
+	form.setAttribute("charset", "UTF-8");
+	form.setAttribute("method", "Post"); // Get 또는 Post 입력
+	form.setAttribute("action", "http://e-service.gwct.co.kr:9080/webip1/rest/policy/ssologin");
+	form.screenPath.value = screenPath;
+	if(screenPath != ""){		
+		form.callType.value = 'biz';	
+		form.target = "gwctApp";
+	}
+	else{
+		form.callType.value = 'main';	
+		form.target = "gwctNewWin";
+	}
+	//form.target = "_blank";
+	//alert(form.screenPath.value);
+	form.submit();
+}
+
+</script>
+
+<style>    /* css는 datepicker   크기 조절입니다.  */
+.ui-datepicker{ font-size: 12px; width: 160px; }
+.ui-datepicker select.ui-datepicker-month{ width:30%; font-size: 11px; }
+.ui-datepicker select.ui-datepicker-year{ width:40%; font-size: 11px; }
+
+.ui-datepicker-calendar > tbody td:first-child a { color: red; }
+.ui-datepicker-calendar > tbody td:last-child a { color: blue; }
+
+.ui-datepicker {
+    background: #2f76b6;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.ui-datepicker-header {
+    color: #ffffff;
+    border: 0px red solid;
+    background: #1a4c76;
+}
+
+
+</style>
+<!--달력 입력-->
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2.2.0/xeicon.min.css">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+
+
+ 
+<META name="GENERATOR" content="MSHTML 11.00.10570.1001">
+
+
+<style>
+html,body{
+    @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+    font-family: "Noto Sans KR", sans-serif;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+a:link {color:#666; text-decoration:none;}
+a:visited {color:#666; text-decoration:none;}
+a:hover {color:#666; text-decoration:none;}
+a:active {color:#666; text-decoration:none;}
+a:focus {color:#666; text-decoration:none;}
+
+.container{
+    background-color: rgba(34,144,205,.4);
+    width: 100%;
+    height: 50px;
+    padding: 6px 0 0 0;
+}
+.menu{
+    height: 24px;
+    float: left;
+    border-radius: 3px;
+    color: #ffffff;
+}
+.tt{
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+
+    background-color: rgba(34,144,205,.0);
+    margin: 5px 5px;
+    padding: 6px 14px;
+}
+.tt:hover{
+    font-weight: bold;
+    text-align: center;
+
+    background-color: rgba(34,144,205,.5);
+    margin: 5px 5px;
+}
+.ss{
+    background-color: rgba(34,144,205,.5);
+}
+.xx{
+    float: right;
+    color: #000000;
+    background-color: #ffffff;
+}
+.logo{
+    padding: 0px 50px;
+}
+.content{
+    width: 100%;
+    padding: 60px 10px;
+    box-sizing: border-box;
+    min-width: 1500px;
+}
+</style>
+
+
+</HEAD>
+<BODY>
+<form><input type=hidden name="screenPath" value=""><input type=hidden name="callType" value=""></form>
+<style>
+  #topMenu {
+    height: 60px;
+    /* width: 770px;[변경] 하위 메뉴와 동일하게 맞춤 */
+    position: relative;
+    background-color: #003366;
+    width: 100%;
+    min-width: 1500px;
+    position: fixed;
+  }
+  #logo {
+    margin: 0;
+    padding: 12px 50px;
+    float: left;
+  }
+  .mainMenu {
+    text-align: center;
+    float: left;
+    margin: auto;
+    /* padding: 3px 10px; */
+    /* border: solid 1px #003366; */
+    /* border-radius: 3px; */
+    /* background-color: red; */
+    height: 100%;
+  }
+  .mainMenu:hover {
+    cursor: pointer;
+  }
+  .mainMenu > a {
+    display: block;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0);
+    border: solid 1px rgba(255, 255, 255, 0);
+    border-radius: 3px;
+    padding: 3px 10px;
+    margin: 15px 10px 0;
+  }
+  .mainMenu > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: solid 1px rgba(255, 255, 255, 0.4);
+  }
+  .mainMenu > .selectedMainMenu {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* border: solid 1px rgba(255,255,255,.4); */
+  }
+  .subMenu a {
+    color: #666;
+  }
+  .subMenu .subMenuLink {
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+    margin: 17px 10px 0;
+  }
+  .subMenu {
+    position: absolute;
+    height: 0px;
+    /* line-height: 60px; */
+    overflow: hidden;
+    transition: height 0.3s;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    -o-transition: height 0.3s;
+    width: 100%;
+    top: 60px;
+    left: 0;
+    z-index: 2;
+    text-align: left;
+
+    background-color: #eee;
+  }
+  .subMenu div {
+    display: inline-block;
+    float: left;
+  }
+
+  .mainMenu:hover .subMenu {
+    height: 60px;
+  }
+  .subMenuLink:hover {
+    color: #003366;
+  }
+  .subMenu .selectedClickMenu {
+    color: #003366;
+    border-bottom: 2px #003366 solid;
+  }
+  .selectedSubMenu {
+    height: 60px;
+    z-index: 1;
+  }
+  .sep1 {
+    color: rgba(255, 255, 255, 0.2);
+    float: left;
+    padding: 3px 0px;
+    margin: 15px 0;
+  }
+  .sep2 {
+    color: #aaa;
+    float: left;
+    padding: 3px 0px;
+    margin: 15px 0;
+  }
+</style>
+
+<nav id="topMenu">
+  <div id="logo">
+    <a href="./"
+      ><img
+        alt="광양항서부컨테이너터미널(주)"
+        src="./image/logo.png"
+        height="38"
+    /></a>
+  </div>
+    
+  <div class="mainMenu">
+    <a href="./?m=A&s=1" class=""
+      >컨테이너 정보</a
+    >
+    <div class="subMenu ">
+      <div style="float: left; width: 268px; height: 40px"></div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=A&s=1"
+          >컨테이너 정보 조회</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=A&s=2"
+          >컨테이너 찾기</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=A&s=3"
+          >B/L단위 현수</a
+        >
+      </div>
+          </div>
+  </div>
+      <div class="sep1">|</div>
+  
+  <div class="mainMenu">
+    <a href="./?m=B&s=1" class="selectedMainMenu"
+      >본선작업</a
+    >
+    <div class="subMenu selectedSubMenu">
+      <div style="float: left; width: 150px; height: 40px"></div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=B&s=1"
+          >본선작업 현황</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink selectedClickMenu"
+          href="./?m=B&s=2"
+          >선석배정 목록</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=B&s=3"
+          >선석배정 차트</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=B&s=4"
+          >미반입목록</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=B&s=5"
+          >선적목록 조회(선적취소/리턴)</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=B&s=6"
+          >양하목록 조회(작업현황/Shift컨테이너)</a
+        >
+      </div>
+          </div>
+  </div>
+      <div class="sep1">|</div>
+  
+  <div class="mainMenu">
+    <a href="./?m=C&s=1" class=""
+      >전자문서</a
+    >
+    <div class="subMenu ">
+      <div style="float: left; width: 480px; height: 40px"></div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=C&s=1"
+          >COPINO 목록 조회</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=C&s=2"
+          >선사 Booking</a
+        >
+      </div>
+          </div>
+  </div>
+      <div class="sep1">|</div>
+  
+  <div class="mainMenu">
+    <a href="./?m=D&s=1" class=""
+      >반출입작업</a
+    >
+    <div class="subMenu ">
+      <div style="float: left; width: 238px; height: 40px"></div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=D&s=1"
+          >상하차 정보조회</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=D&s=2"
+          >야드 맵</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=D&s=3"
+          >미반입목록</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=D&s=4"
+          >게이트 반출입 목록</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=D&s=5"
+          >터미널 반출입 목록</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=D&s=6"
+          >시간대별 작업예상</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=D&s=7"
+          >야드작업 현황</a
+        >
+      </div>
+          </div>
+  </div>
+      <div class="sep1">|</div>
+  
+  <div class="mainMenu">
+    <a href="./?m=E&s=1" class=""
+      >특수화물</a
+    >
+    <div class="subMenu ">
+      <div style="float: left; width: 728px; height: 40px"></div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=E&s=1"
+          >세관 승인여부 목록</a
+        >
+      </div>
+            <div class="sep2">|</div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=E&s=2"
+          >터미널 승인여부 목록</a
+        >
+      </div>
+          </div>
+  </div>
+      <div class="sep1">|</div>
+  
+  <div class="mainMenu">
+    <a href="./?m=F&s=1" class=""
+      >On-Dock</a
+    >
+    <div class="subMenu ">
+      <div style="float: left; width: 848px; height: 40px"></div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=F&s=1"
+          >선사별 컨테이너 집계 현황</a
+        >
+      </div>
+          </div>
+  </div>
+      <div class="sep1">|</div>
+  
+  <div class="mainMenu">
+    <a href="./?m=G&s=1" class=""
+      >터미널 운영정보</a
+    >
+    <div class="subMenu ">
+      <div style="float: left; width: 980px; height: 40px"></div>
+            <div>
+        <a
+          class="subMenuLink "
+          href="./?m=G&s=1"
+          >터미널 운영정보</a
+        >
+      </div>
+          </div>
+  </div>
+  </nav>
+
+    <div class="content">
+    <h3><i class="xi-ship xi-x"></i> 선석 배정 현황</h3>
+
+<p>광양항서부컨테이너터미널(주) <font color="2f76b6">선석 배정 현황</font>입니다.
+<br>광양항서부컨테이너터미널(주)는 통합물류 시스템을 구축하여 신속하고 정확한 정보 전달과 하역 서비스 제공에 주력하고 있습니다.</p>
+
+
+
+
+
+
+<style>
+.AA_list, .AA_search{
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+.AA_list th{
+    color: #ffffff;
+    background-color: #2f76b6;
+    border-top: solid 3px #1a4c76;
+    padding-bottom: 5px;
+    border-left: solid 1px #CCCCCC;
+	border-bottom: solid 1px #CCCCCC;
+}
+.AA_list td{
+    text-align: center;
+    border-left: solid 1px #CCCCCC;
+	border-bottom: solid 1px #CCCCCC;
+	border-bottom: solid 1px #ffffff;
+}
+.AA_list_sub_tr{
+	background: rgba(34,144,205, .3);
+}
+
+.odd{
+    background-color: #EEEEEE;
+}
+.even{
+    background-color: #FAFAFA;
+}
+
+
+
+.bg_closed{
+	background-color: #6dd66d;
+}
+
+.bg_on{
+	background-color: #fedc8f;
+}
+
+.bg_yet{
+	background-color: #a7eeff;
+}
+
+
+.AA_search td{
+    border-top: solid 2px #1a4c76;
+    background-color: #FAFAFA;
+    padding : 10px 10px;
+}
+
+.AA_list th:first-child, .AA_list td:first-child {
+    border-left: 0;
+}
+.AA_list th:last-child, .AA_list td:last-child {
+    border-right: 0;
+}
+
+.myButton {
+    background-color:#2f76b6;
+    /* -moz-border-radius:28px;
+    -webkit-border-radius:28px; */
+    /* border-radius:28px; */
+    border:1px solid #1a4c76;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:2px 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+    background-color:#1a4c76;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+.search_date{
+    color: green;
+    margin-top: 50px; 
+}
+</style>
+
+
+<script >
+	function select_disabled_false(){
+		document.search_Form.fromY.disabled = false;
+		document.search_Form.fromM.disabled = false;
+		document.search_Form.fromD.disabled = false;
+		
+		document.search_Form.toY.disabled = false;
+		document.search_Form.toM.disabled = false;
+		document.search_Form.toD.disabled = false;
+	}
+
+	function select_disabled_true(){
+		document.search_Form.fromY.disabled = true;
+		document.search_Form.fromM.disabled = true;
+		document.search_Form.fromD.disabled = true;
+		
+		document.search_Form.toY.disabled = true;
+		document.search_Form.toM.disabled = true;
+		document.search_Form.toD.disabled = true;
+	}
+</script>
+
+
+
+<form name = "search_Form" action="./" method="POST">
+<input type="hidden" name="m" value="B">
+<input type="hidden" name="s" value="2">
+
+<table class="AA_search" cellspacing="0" border="0">
+	<tr>
+		<td width="100px" align="center" valign="top">조회기간</td>
+		<td width="440px" valign="top">
+			<label class="h_30"><input type='radio' name='v_time' value='3days' checked onClick='javascript:select_disabled_true(this);'>3일</label>
+			<label class="h_30"><input type='radio' name='v_time' value='week'  onClick='javascript:select_disabled_true(this);'>일주일</label>
+			<label class="h_30"><input type='radio' name='v_time' value='month'  onClick='javascript:select_disabled_true(this);'>한달</label>
+			<label class="h_30"><input type='radio' name='v_time' value='term'  onClick='javascript:select_disabled_false(this);'>직접 입력</label>
+			<br>&nbsp;<select name='fromY' size='1' disabled>
+									<option value="2010" >2010</option>
+									<option value="2011" >2011</option>
+									<option value="2012" >2012</option>
+									<option value="2013" >2013</option>
+									<option value="2014" >2014</option>
+									<option value="2015" >2015</option>
+									<option value="2016" >2016</option>
+									<option value="2017" >2017</option>
+									<option value="2018" >2018</option>
+									<option value="2019" >2019</option>
+									<option value="2020" >2020</option>
+									<option value="2021" >2021</option>
+									<option value="2022" >2022</option>
+									<option value="2023" >2023</option>
+									<option value="2024" >2024</option>
+									<option value="2025" selected>2025</option>
+									<option value="2026" >2026</option>
+							</select>년
+
+			<select name='fromM' size='1' disabled>
+									<option value="1" >1</option>
+									<option value="2" >2</option>
+									<option value="3" >3</option>
+									<option value="4" >4</option>
+									<option value="5" selected>5</option>
+									<option value="6" >6</option>
+									<option value="7" >7</option>
+									<option value="8" >8</option>
+									<option value="9" >9</option>
+									<option value="10" >10</option>
+									<option value="11" >11</option>
+									<option value="12" >12</option>
+							</select>월
+
+			<select name='fromD' size='1' disabled>
+									<option value="1" >1</option>
+									<option value="2" >2</option>
+									<option value="3" >3</option>
+									<option value="4" selected>4</option>
+									<option value="5" >5</option>
+									<option value="6" >6</option>
+									<option value="7" >7</option>
+									<option value="8" >8</option>
+									<option value="9" >9</option>
+									<option value="10" >10</option>
+									<option value="11" >11</option>
+									<option value="12" >12</option>
+									<option value="13" >13</option>
+									<option value="14" >14</option>
+									<option value="15" >15</option>
+									<option value="16" >16</option>
+									<option value="17" >17</option>
+									<option value="18" >18</option>
+									<option value="19" >19</option>
+									<option value="20" >20</option>
+									<option value="21" >21</option>
+									<option value="22" >22</option>
+									<option value="23" >23</option>
+									<option value="24" >24</option>
+									<option value="25" >25</option>
+									<option value="26" >26</option>
+									<option value="27" >27</option>
+									<option value="28" >28</option>
+									<option value="29" >29</option>
+									<option value="30" >30</option>
+									<option value="31" >31</option>
+							</select>일
+			~
+			<select name='toY' size='1' disabled>
+									<option value="2010" >2010</option>
+									<option value="2011" >2011</option>
+									<option value="2012" >2012</option>
+									<option value="2013" >2013</option>
+									<option value="2014" >2014</option>
+									<option value="2015" >2015</option>
+									<option value="2016" >2016</option>
+									<option value="2017" >2017</option>
+									<option value="2018" >2018</option>
+									<option value="2019" >2019</option>
+									<option value="2020" >2020</option>
+									<option value="2021" >2021</option>
+									<option value="2022" >2022</option>
+									<option value="2023" >2023</option>
+									<option value="2024" >2024</option>
+									<option value="2025" selected>2025</option>
+									<option value="2026" >2026</option>
+							</select>년
+	
+			<select name='toM' size='1' disabled>
+									<option value="1" >1</option>
+									<option value="2" >2</option>
+									<option value="3" >3</option>
+									<option value="4" >4</option>
+									<option value="5" selected>5</option>
+									<option value="6" >6</option>
+									<option value="7" >7</option>
+									<option value="8" >8</option>
+									<option value="9" >9</option>
+									<option value="10" >10</option>
+									<option value="11" >11</option>
+									<option value="12" >12</option>
+							</select>월
+	
+			<select name='toD' size='1' disabled>
+									<option value="1" >1</option>
+									<option value="2" >2</option>
+									<option value="3" >3</option>
+									<option value="4" selected>4</option>
+									<option value="5" >5</option>
+									<option value="6" >6</option>
+									<option value="7" >7</option>
+									<option value="8" >8</option>
+									<option value="9" >9</option>
+									<option value="10" >10</option>
+									<option value="11" >11</option>
+									<option value="12" >12</option>
+									<option value="13" >13</option>
+									<option value="14" >14</option>
+									<option value="15" >15</option>
+									<option value="16" >16</option>
+									<option value="17" >17</option>
+									<option value="18" >18</option>
+									<option value="19" >19</option>
+									<option value="20" >20</option>
+									<option value="21" >21</option>
+									<option value="22" >22</option>
+									<option value="23" >23</option>
+									<option value="24" >24</option>
+									<option value="25" >25</option>
+									<option value="26" >26</option>
+									<option value="27" >27</option>
+									<option value="28" >28</option>
+									<option value="29" >29</option>
+									<option value="30" >30</option>
+									<option value="31" >31</option>
+							</select>일
+		</td>
+		<td width="300px" valign="top">
+				정렬기준 : 
+				<label class="h_30"><input type='radio' name='range' value='ETB' checked >입항예정일시</label>
+				<label class="h_30"><input type='radio' name='range' value='BERTH_NO'  >선석</label>
+		</td>
+		<td width="100px" align="center" valign="top"><a href="#" style="color: #ffffff" onClick="search_Form.submit();" class="myButton">조 회</a></td>
+		<td>			
+		</td>
+	</tr>
+</table>
+</form>
+
+
+<div class="search_date">
+	<div style="float: left;">
+		<i class="xi-view-list xi-x"></i> 조회기간 : 2025-05-04 ~ 2025-05-07<zz id='tmp'></zz>
+	</div>
+	
+	<div style="float: right;">
+		<font color="a7eeff"><i class="xi-layout-full"></i></font> 예정&nbsp;
+		<font color="fedc8f"><i class="xi-layout-full"></i></font> 작업중&nbsp;
+		<font color="6dd66d"><i class="xi-layout-full"></i></font> 완료
+	</div>
+</div>
+<table class="AA_list">
+	<tr>
+		<th>선석</th>
+		<th>모선항차</th>
+		<th>선박명</th>
+		<th>접안</th>
+		<th>선사</th>
+		<th>입항 일시</th>
+		<th>출항 일시</th>
+		<th>작업 시작일시</th>
+		<th>작업 완료일시</th>
+		<th>반입 마감일시</th>
+		<th>양하</th>
+		<th>선적</th>
+		<th>S/H</th>
+		<th>전배</th>
+		<th>항로</th>
+	</tr>
+
+	<tr class="bg_closed">
+		<td>15</td>
+		<td>SPLM-0006</td>
+		<td>POS LAEMCHABANG</td>
+		<td>S</td>
+		<td>POL</td>
+					<td>2025/05/03 14:00</td>
+			<td>2025/05/04 00:30</td>
+				
+		<td>2025/05/03 14:21</td>
+		<td>2025/05/03 20:19</td>
+		<td>2025/05/03 03:30</td>
+		<td>484</td>
+		<td>158</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('VTX');">VTX</a></td>
+	</tr>
+	<tr class="bg_closed">
+		<td>14</td>
+		<td>CMON-0004</td>
+		<td>MONICA</td>
+		<td>S</td>
+		<td>CNC</td>
+					<td>2025/05/03 21:30</td>
+			<td>2025/05/04 02:30</td>
+				
+		<td>2025/05/03 21:46</td>
+		<td>2025/05/04 01:45</td>
+		<td>2025/05/03 11:30</td>
+		<td>144</td>
+		<td>85</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('JTVS');">JTVS</a></td>
+	</tr>
+	<tr class="bg_closed">
+		<td>16</td>
+		<td>NSSK-0003</td>
+		<td>STAR SKIPPER</td>
+		<td>S</td>
+		<td>NSL</td>
+					<td>2025/05/03 21:30</td>
+			<td>2025/05/04 00:30</td>
+				
+		<td>2025/05/03 21:45</td>
+		<td>2025/05/03 23:36</td>
+		<td>2025/05/03 11:30</td>
+		<td>96</td>
+		<td>37</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('BXQ');">BXQ</a></td>
+	</tr>
+	<tr class="bg_closed">
+		<td>15</td>
+		<td>DPGC-0012</td>
+		<td>PEGASUS GRACE</td>
+		<td>S</td>
+		<td>NSL</td>
+					<td>2025/05/04 01:30</td>
+			<td>2025/05/04 07:00</td>
+				
+		<td>2025/05/04 02:02</td>
+		<td>2025/05/04 03:27</td>
+		<td>2025/05/03 16:00</td>
+		<td>27</td>
+		<td>80</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('BSN');">BSN</a></td>
+	</tr>
+	<tr class="bg_on">
+		<td>13</td>
+		<td>MCHA-0002</td>
+		<td>CHASTINE MAERSK</td>
+		<td>S</td>
+		<td>MAE</td>
+					<td>2025/05/04 04:30</td>
+			<td>2025/05/05 00:30</td>
+				
+		<td>2025/05/04 04:30</td>
+		<td></td>
+		<td>2025/05/03 18:30</td>
+		<td>175</td>
+		<td>1099</td>
+		<td>226</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('AC3');">AC3</a></td>
+	</tr>
+	<tr class="bg_closed">
+		<td>14</td>
+		<td>CNHL-0015</td>
+		<td>HE LE</td>
+		<td>S</td>
+		<td>CNC</td>
+					<td>2025/05/04 06:30</td>
+			<td>2025/05/04 10:00</td>
+				
+		<td>2025/05/04 07:20</td>
+		<td>2025/05/04 09:16</td>
+		<td>2025/05/03 20:30</td>
+		<td>30</td>
+		<td>72</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('NPF');">NPF</a></td>
+	</tr>
+	<tr class="bg_closed">
+		<td>16</td>
+		<td>SWMM-0013</td>
+		<td>SAWASDEE MIMOSA</td>
+		<td>S</td>
+		<td>SKR</td>
+					<td>2025/05/04 08:42</td>
+			<td>2025/05/04 12:00</td>
+				
+		<td>2025/05/04 09:14</td>
+		<td>2025/05/04 11:48</td>
+		<td>2025/05/03 22:30</td>
+		<td>100</td>
+		<td>47</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('KQS');">KQS</a></td>
+	</tr>
+	<tr class="bg_on">
+		<td>14</td>
+		<td>SWVG-0016</td>
+		<td>SAWASDEE VEGA</td>
+		<td>S</td>
+		<td>SKR</td>
+					<td>2025/05/04 12:30</td>
+			<td>2025/05/04 20:30</td>
+				
+		<td>2025/05/04 13:00</td>
+		<td></td>
+		<td>2025/05/04 02:30</td>
+		<td>132</td>
+		<td>45</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('KXS1');">KXS1</a></td>
+	</tr>
+	<tr class="bg_on">
+		<td>15</td>
+		<td>MANI-0002</td>
+		<td>NICOLAI MAERSK</td>
+		<td>S</td>
+		<td>MAE</td>
+					<td>2025/05/04 12:30</td>
+			<td>2025/05/04 23:00</td>
+				
+		<td>2025/05/04 13:00</td>
+		<td></td>
+		<td>2025/05/04 02:30</td>
+		<td>246</td>
+		<td>113</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('HP2');">HP2</a></td>
+	</tr>
+	<tr class="bg_on">
+		<td>16</td>
+		<td>SPYO-0014</td>
+		<td>POS YOKOHAMA</td>
+		<td>S</td>
+		<td>POL</td>
+					<td>2025/05/04 16:00</td>
+			<td>2025/05/04 23:30</td>
+				
+		<td>2025/05/04 16:00</td>
+		<td></td>
+		<td>2025/05/04 06:00</td>
+		<td>119</td>
+		<td>49</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('NBQ');">NBQ</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>15</td>
+		<td>CMNJ-0001</td>
+		<td>CMA CGM NEW JERSEY</td>
+		<td>S</td>
+		<td>CMA</td>
+					<td>2025/05/05 01:00</td>
+			<td>2025/05/05 07:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/04 15:00</td>
+		<td>256</td>
+		<td>33</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('EXX');">EXX</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>RUIG-0004</td>
+		<td>RUI NENG 6</td>
+		<td>S</td>
+		<td>SFK</td>
+					<td>2025/05/05 01:00</td>
+			<td>2025/05/05 05:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/04 15:00</td>
+		<td>51</td>
+		<td>42</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('TWK');">TWK</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>14</td>
+		<td>KSDY-0014</td>
+		<td>SUNNY DAISY</td>
+		<td>S</td>
+		<td>KMD</td>
+					<td>2025/05/05 01:30</td>
+			<td>2025/05/05 06:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/04 15:30</td>
+		<td>58</td>
+		<td>75</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('CNS2');">CNS2</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>DPDR-0009</td>
+		<td>PEGASUS DREAM</td>
+		<td>S</td>
+		<td>DYS</td>
+					<td>2025/05/05 02:30</td>
+			<td>2025/05/05 11:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/04 16:30</td>
+		<td>78</td>
+		<td>157</td>
+		<td>12</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('KHX');">KHX</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>13</td>
+		<td>MSCI-0001</td>
+		<td>MSC CHINA</td>
+		<td>S</td>
+		<td>MSC</td>
+					<td>2025/05/05 07:30</td>
+			<td>2025/05/06 06:30</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/04 21:30</td>
+		<td>985</td>
+		<td>534</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('AFRICA');">AFRICA</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>YKTD-0009</td>
+		<td>YOKOHAMA TRADER</td>
+		<td>S</td>
+		<td>SKR</td>
+					<td>2025/05/05 12:00</td>
+			<td>2025/05/05 20:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 02:00</td>
+		<td>82</td>
+		<td>88</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('NSC');">NSC</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>HAJN-0004</td>
+		<td>HEUNG-A JANICE</td>
+		<td>S</td>
+		<td>HAS</td>
+					<td>2025/05/05 12:30</td>
+			<td>2025/05/05 18:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 02:30</td>
+		<td>60</td>
+		<td>61</td>
+		<td>10</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('KBX');">KBX</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>15</td>
+		<td>SMYT-0003</td>
+		<td>SM YANTIAN</td>
+		<td>S</td>
+		<td>SML</td>
+					<td>2025/05/05 13:30</td>
+			<td>2025/05/06 07:30</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 03:30</td>
+		<td>650</td>
+		<td>215</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('CPX');">CPX</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>TJOH-0003</td>
+		<td>TS JOHOR</td>
+		<td>S</td>
+		<td>TSL</td>
+					<td>2025/05/05 19:30</td>
+			<td>2025/05/06 00:06</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 09:30</td>
+		<td>3</td>
+		<td>71</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('JHTN');">JHTN</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>KYVY-0005</td>
+		<td>KWANGYANG VOYAGER</td>
+		<td>S</td>
+		<td>SKR</td>
+					<td>2025/05/06 01:30</td>
+			<td>2025/05/06 18:30</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 15:30</td>
+		<td>583</td>
+		<td>132</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('PCI');">PCI</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>13</td>
+		<td>CNHX-0001</td>
+		<td>HUA XIANG 936</td>
+		<td>S</td>
+		<td>CNC</td>
+					<td>2025/05/06 04:30</td>
+			<td>2025/05/06 19:06</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 18:30</td>
+		<td>0</td>
+		<td>660</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('EXTRA');">EXTRA</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>NSEP-0004</td>
+		<td>STAR EXPRESS</td>
+		<td>S</td>
+		<td>NSL</td>
+					<td>2025/05/06 05:00</td>
+			<td>2025/05/06 10:36</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 19:00</td>
+		<td>7</td>
+		<td>67</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('NCQ');">NCQ</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>15</td>
+		<td>TSHM-0005</td>
+		<td>TS HOCHIMINH</td>
+		<td>S</td>
+		<td>TSL</td>
+					<td>2025/05/06 09:00</td>
+			<td>2025/05/06 22:36</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/05 23:00</td>
+		<td>323</td>
+		<td>411</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('PAS');">PAS</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>14</td>
+		<td>CNHL-0016</td>
+		<td>HE LE</td>
+		<td>S</td>
+		<td>CNC</td>
+					<td>2025/05/06 10:30</td>
+			<td>2025/05/07 03:06</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/06 00:30</td>
+		<td>355</td>
+		<td>448</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('EXTRA');">EXTRA</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>14</td>
+		<td>GISL-0003</td>
+		<td>GFS GISELLE</td>
+		<td>S</td>
+		<td>GFS</td>
+					<td>2025/05/07 17:30</td>
+			<td>2025/05/08 05:06</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/07 07:30</td>
+		<td>533</td>
+		<td>192</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('SIS2');">SIS2</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>15</td>
+		<td>SWVG-0017</td>
+		<td>SAWASDEE VEGA</td>
+		<td>S</td>
+		<td>SKR</td>
+					<td>2025/05/07 19:00</td>
+			<td>2025/05/08 04:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/07 09:00</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('KXS1');">KXS1</a></td>
+	</tr>
+	<tr class="bg_yet">
+		<td>16</td>
+		<td>JHYA-0015</td>
+		<td>HE YANG</td>
+		<td>S</td>
+		<td>DYS</td>
+					<td>2025/05/07 23:30</td>
+			<td>2025/05/08 04:00</td>
+				
+		<td></td>
+		<td></td>
+		<td>2025/05/07 13:30</td>
+		<td>17</td>
+		<td>13</td>
+		<td>0</td>
+		<td></td>
+		<td><a href="#" onClick="view_servicelane('BNJ');">BNJ</a></td>
+	</tr>
+</table>
+
+<script>
+function view_servicelane(code){
+	var www = './sub_B2_pop.php?code='+code;
+    window.open(www,'view_servicelane','width=500,height=700,top=0,left=0,toolbar=no,menubar=no,status=no,scrollbars=1,resizable=1');
+}
+</script>    </div>
+
+

@@ -1,0 +1,2243 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="../common/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+
+
+<script language="JavaScript" type="text/javascript" nonce="pgmmotwkgm">
+	$(document).ready(function() {
+		$('form').each(function() {
+			$(this).append($('<input/>', {type: 'hidden', name: 'CSRF_TOKEN', value:'c953ebb0-a29a-4355-bc97-191e0a4f51f0' }));
+		})
+	})
+</script>
+ 
+
+
+
+
+
+
+
+<script language="JavaScript" type="Text/JavaScript" nonce="pgmmotwkgm">
+	var CONTEXT_PATH = "/infoservice";
+	chatbotSystemMsgs = JSON.parse(`{"0":[{"id":"0","subId":"1","rule":"SYSTEM","type":"TEXT","msg":"<ul class='enableClickQuestion'>안녕하세요!<br>저는 여러분을 돕기 위해 여기 있습니다.<br>아래의 리스트 중에서 도움이 필요한 내용의 ‘숫자’만 입력해 주세요.<li value='0'>0. 처음으로</li><li value='1'>1. FREE DAY</li><li value='2'>2. 요율 안내</li><li value='3'>3. 환불 신청</li><li value='4'>4. 비용 정산</li><li value='5'>5. 입금 후 홀드가 풀리지 않아요.</li><li value='6'>6. 기타 문의 사항</li></ul>"}],"1":[{"id":"1","subId":"1","rule":"SYSTEM","type":"TEXT","msg":"선사별 FREE DAY 안내는 아래 내용을 참조 바랍니다.<br><br>처음으로 돌아가시려면 0을 눌러주세요."},{"id":"1","subId":"2","rule":"SYSTEM","type":"IMAGE","msg":"<a target='_blank' href='../common/image/pnitpopup4.png'><img src='../common/image/pnitpopup4.png' style='width:100%;'></a>"}],"2":[{"id":"2","subId":"1","rule":"SYSTEM","type":"TEXT","msg":"화주 현수 요율 안내는 아래 내용을 참고 바랍니다.<br><br>처음으로 돌아가시려면 0을 눌러주세요."},{"id":"2","subId":"2","rule":"SYSTEM","type":"IMAGE","msg":"<a target='_blank' href='../common/image/pnit_cash_trf.png'><img src='../common/image/pnit_cash_trf.png' style='width:100%;'></a>"}],"3":[{"id":"3","subId":"1","rule":"SYSTEM","type":"LINK","msg":"환불은 당월 접수분에 한해 ‘익월 10일’에 일괄 처리 됩니다.<br><br>환불요청서 작성 URL : <a href='https://www.pnitl.com/infoservice/invoice/invoiceAfterAmountTable.jsp'>https://www.pnitl.com/infoservice/invoice/invoiceAfterAmountTable.jsp</a> <br><br>처음으로 돌아가시려면 0을 눌러주세요."}],"4":[{"id":"4","subId":"1","rule":"SYSTEM","type":"LINK","msg":"일반 비용 정산<br> <a href='https://www.pnitl.com/infoservice/invoice/invoiceContAmountTable.jsp'>https://www.pnitl.com/infoservice/invoice/invoiceContAmountTable.jsp</a>"},{"id":"4","subId":"2","rule":"SYSTEM","type":"LINK","msg":"선반입 비용 정산 (로그인 필요)<br> <a href='/infoservice/invoice/invoiceEarlyGateinTable.jsp'>https://www.pnitl.com/infoservice/invoice/invoiceEarlyGateinTable.jsp</a> <br><br><a target='_blank' href='https://www.pnitl.com/infoservice/invoice/files/PNIT%20Early%20Gate%20In%20Manual%20(1).pdf'>선반입 정산 메뉴얼보기 (클릭)</a><br><br><a target='_blank' href='https://www.pnitl.com/infoservice/invoice/files/PNIT%20Early%20Gate%20In%20Manual%20(2).pdf'>선반입 정보변경 안내 메뉴얼보기 (클릭)</a><br><br> 처음으로 돌아가시려면 0을 눌러주세요."}],"5":[{"id":"5","subId":"1","rule":"SYSTEM","type":"TEXT","msg":"이메일 접수 : <br> pnit-cash@globalpsa.com <br><br>첨부 자료 : 이체증, 컨테이너 번호<br><br>처음으로 돌아가시려면 0을 눌러주세요."}],"6":[{"id":"6","subId":"1","rule":"SYSTEM","type":"TEXT","msg":"문의 내용을 아래 메일 주소로 보내 주시면 최대한 빠르게 회신 드리겠습니다.<br> pnit-cash@globalpsa.com <br><br><br>처음으로 돌아가시려면 0을 눌러주세요."}]}`);
+</script>
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="description" content="" />
+	<meta name="validText" content="67aA7IKw7Iug7ZWt66eM6rWt7KCc7YSw66+464SQ7KCV67O07ISc67mE7Iqk6rKA7Kad66y47J6Q7Je0" />
+	<meta name="viewport" content="width=1280, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+	
+	<title>부산신항국제터미널 정보서비스</title>
+	<link type="text/css" rel="stylesheet" href="../common/css/style.css">
+	<link type="text/css" rel="stylesheet" href="../common/css/calendar.css">
+	<link rel="shortcut icon" href="../common/image/favicon_pnit.png" />
+	<script type="text/javascript" src="../common/js/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="../common/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../common/js/common.js"></script>
+	<script type="text/javascript" src="../common/js/calendar.js"></script>
+	<script type="text/javascript" src="../common/js/func.js"></script>
+</head>
+<body>
+
+<script nonce="pgmmotwkgm">
+	var TMN_COD = "P";
+	var tmncod = "P";
+	var CONTEXT_PATH = "/infoservice";
+
+	window.onpageshow = function(event) {
+		if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+			window.location.reload();
+		}
+	}
+	   
+</script>
+			
+<!-- wrap -->
+<div id="wrap">
+
+	<!-- wrapArea -->
+	<div class="wrapArea">
+	
+		<!-- header -->
+		<div id="header">
+		
+			<div class="headWrap">
+			
+				<!-- hdTop -->
+				<div class="hdTopArea">
+				
+					<div class="hdTop">
+						<ul>
+							 
+							
+							
+							<li>Turn Around Time : <a class="in">반입[6분]</a> / <a class="out">반출[14분]</a></li>
+							<li>
+							터미널 야드 현황 : <a class="in">반입차량[4대]</a> / <a class="out">반출차량[3대]
+							
+							</li>
+						</ul>
+					</div>
+				
+				</div>
+				<!-- hdTop -->
+				
+				<div class="logoArea_pnit">
+					<div class="logo"><a href="../main/mainPage.jsp"><img alt="logo" src="../common/image/logo_pnit.png"></a></div>
+				</div>
+				
+				<!-- navi -->
+				<div class="naviArea">
+				
+					<div class="navi">
+						<ul>
+							<a href="../vessel/vslScheduleList.jsp"><li>본선현황</li></a>
+							<a href="../cntr/cntrSearchList.jsp"><li>컨테이너조회</li></a>
+							<a href="../yard/yardWorkStatus.jsp"><li>YARD현황</li></a>
+							<a href="../edi/ediGateCopinoReceiptList.jsp"><li>전자문서</li></a>
+							<a href="../ondock/ondockOrderBookingList.jsp"><li>ONDOCK</li></a>
+							<a href="../invoice/invoiceContAmountTable.jsp"><li>비용정산</li></a>
+							<a href="../cfs/cfsGetCargoWorkList.jsp"><li>CFS</li></a>
+							<a href="../code/codeVesselList.jsp"><li>코드조회</li></a>
+						</ul>
+					</div>
+				
+				</div>
+				<!-- navi -->
+				
+			</div>
+			
+		</div>
+		<!-- header -->
+		
+		<!-- container -->
+		<div id="container">
+		
+			<!-- contents -->
+			<div id="contents">
+
+<script language="JavaScript" type="Text/JavaScript" nonce="pgmmotwkgm">
+	var URI = "/infoservice/vessel/vslScheduleList.jsp";
+	var subURI = "/infoservice/vessel/vslScheduleListVoyage.jsp";
+
+	function chkData() {
+		var f=document.submitForm;
+		var returnValue = true;
+		return returnValue;
+	}
+	
+	function subListView(strVvdYear, strVvd, e) {
+		var f=document.submitForm;
+	
+		if(chkData()) {
+			
+			if(!e) e = window.Event;
+		    pospop = abspos(e);
+			
+		    _subDiv = document.getElementById("subDiv").style;
+			_subDiv.visibility = "visible";
+			
+			_subDiv.top = parseInt(pospop.y-160)+"px";
+			_subDiv.left = parseInt(pospop.x-500)+"px";
+			f.isSearch.value = "";
+			f.target="subList";
+			f.action=subURI + "?vvdYear=" + strVvdYear + "&vvd=" + strVvd + "&userOwnOpr=";
+			f.submit();
+		}
+	}
+	
+	function subListClose() {
+		_subDiv = document.getElementById("subDiv").style;
+		_subDiv.visibility = "hidden";
+		
+	    var iframe_clear = document.getElementById('subList').contentWindow.document;
+	    iframe_clear.open();
+	    iframe_clear.close();
+	}
+</script>
+
+<!-- conLeftArea -->
+<div class="conLeftArea">
+
+	<!-- conLeft -->
+	
+ 
+
+
+
+
+
+
+
+
+<div class="conLeft">
+	<ul>
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslScheduleList.jsp">
+				<a class="arrow pass"></a>선석 배정현황(목록)</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslScheduleChart.jsp">
+				<a class="arrow pass"></a>선석 배정현황(차트)</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslWorkStatus.jsp">
+				<a class="arrow pass"></a>본선 작업 현황</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslStevedoreDtm.jsp">
+				<a class="arrow pass"></a>양적하 예상시간 조회</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslLessGateInByVvd.jsp">
+				<a class="arrow pass"></a>선박별 미반입 목록</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslOverGateInByVvd.jsp">
+				<a class="arrow pass"></a>선박별 과반입 목록</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslLessGateOutByVvd.jsp">
+				<a class="arrow pass"></a>선박별 미반출 목록</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslScheduleListEng.jsp">
+				<a class="arrow pass"></a>Berth Schedule (Text)</li>
+		
+	
+	
+		
+			<li class="cmCursorPointer commMovepage" 
+				data-move-url="/vessel/vslScheduleChartEng.jsp">
+				<a class="arrow pass"></a>Berth Schedule (Chart)</li>
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	</ul>
+</div>
+	<!-- conLeft -->
+	
+	
+<!-- conLeftBn01 -->
+<!-- conLeftBn01 -->
+
+<!-- conLeftBn02 -->
+<div class="conLeftBn02 cmCursorPointer commMovepage" data-move-url="/vessel/vslStevedoreDtm.jsp">
+	<img alt="icon_ship" src="../common/image/icon_ship.jpg"><a>양하 예정시간 조회</a>
+</div>
+<!-- conLeftBn02 -->
+	
+	<!-- conLeftLogin -->
+	<div class="conLeftLogin">
+	
+		
+
+
+
+
+
+
+
+<script language="JavaScript" type="Text/JavaScript" nonce="pgmmotwkgm">
+$(document).ready(function(){
+	
+	var resetURI = "/infoservice/main/passwordReset.jsp";
+  	$('.btnReset').on('click', function(e){
+  		
+  		var f=document.loginOutForm;
+  		var id = f.val1.value;
+  		
+  		if (confirm(id + '계정의 비밀번호를 재설정하시겠습니까?')) {
+  		
+  			var new_frame = $('<iframe name="ifrm" hidden></iframe>');
+			new_frame.appendTo('body');
+			
+			$('iframe[name=ifrm]').ready(function() {
+				$("input[name=userId]").val(id.toUpperCase());
+	  			$("input[name=mod]").val('S');
+	  			$("input[name=reqIP]").val('122.44.2.67');
+	  			$("input[name=iFrmName]").val('ifrm');
+	  			$("form[name=pwResetForm]").attr("action" , resetURI);
+	  			$("form[name=pwResetForm]").attr("target" , "ifrm");
+	  			$("form[name=pwResetForm]").submit();	
+			})
+  		}
+		
+  	});
+});
+
+</script>
+
+<form name="loginOutForm" method="post" action="../main/memberLogin.jsp" autocomplete="off">
+<input type="hidden" name="reqData" />
+<div class="conLeftLoginBox">
+
+	<table>
+	<caption>Login</caption>
+	<colgroup>
+		<col style="width:35%;">
+		<col style="width:65%;">
+	</colgroup>
+	<tbody>
+	<tr>
+		<th style="font-size:12px;">아이디</th>
+		<td><input type="text" name="val1" maxlength="20" class="loginTxt"></td>
+	</tr>
+	<tr>
+		<th style="font-size:12px;">비밀번호</th>
+		<td><input type="password" name="val2" class="loginTxt"></td>
+	</tr>
+	</tbody>
+	</table>
+
+</div>
+
+<ul>
+	<li><input type="button" class="btnLogin cmCursorPointer" value="로그인"></li>
+	<li><input type="button" data-move-url="../main/memberJoin.jsp" class="btnRegis cmCursorPointer commOpenPopup" value="서비스 가입신청"></li>
+	<li><input type="button" class="btnReset" value="비밀번호 재설정"></li>
+</ul>
+</form>
+
+<form name="pwResetForm" method="post" autocomplete="off">
+<input type="hidden" name="userId" />
+<input type="hidden" name="mod" />
+<input type="hidden" name="reqIP" />
+<input type="hidden" name="iFrmName">
+</form>
+
+
+
+
+
+	
+	</div>
+	<!-- conLeftLogin -->
+	
+</div>
+<!-- conLeftArea -->
+
+<!-- conRightArea -->
+<div class="conRightArea">
+
+	<!-- conRight -->
+	<div class="conRightSub">
+	
+		<div class="conSubject"><div class="bul"></div>선석 배정현황(목록)</div>
+		
+		<div class="conLoc"><img alt="arrow_home" src="../common/image/arrow_home.png"> 본선현황 > <a>선석 배정현황(목록)</a></div>
+		
+		<div class="conSearchBarArea">
+		
+			<form name="submitForm" method="post">
+			<input name="isSearch" type="hidden" value="Y">
+			<input name="page" type="hidden" value="1">
+			<input name="URI" type="hidden">
+			<input name="userID" type="hidden" value="">
+			<input name="groupID" type="hidden" value="U999">
+			<input name="tmnCod" type="hidden" value="P">
+
+			<ul>
+				<li>
+					<dl>
+						<dt>기준일</dt>
+						<dd><input type="date" id="strdStDate" name="strdStDate" class="inputTxt_95" value="2025-05-03" tabindex="1"></dd>
+						<dd>~</dd>
+						<dd><input type="date" id="strdEdDate" name="strdEdDate" class="inputTxt_95" value="2025-05-09" tabindex="2"></dd>
+						
+						<dt class="l_blank">선명(ROUTE)</dt>
+						<dd class="cmPaddR00">
+							
+							
+							
+								
+							<script language="JavaScript" type="Text/JavaScript" nonce="pgmmotwkgm">
+							$(function() {
+								var availableTags = 
+									[
+									 
+									 "A1X",
+									 
+									 "AAA",
+									 
+									 "AAB",
+									 
+									 "AAC",
+									 
+									 "AAD",
+									 
+									 "AAE",
+									 
+									 "AC1",
+									 
+									 "AC2",
+									 
+									 "AC3",
+									 
+									 "AC3E",
+									 
+									 "AC5",
+									 
+									 "ACS",
+									 
+									 "ACSA1",
+									 
+									 "ACSA1E",
+									 
+									 "ACSA1W",
+									 
+									 "ADD",
+									 
+									 "AE11",
+									 
+									 "AE2",
+									 
+									 "AEX",
+									 
+									 "AFRICA",
+									 
+									 "AG1",
+									 
+									 "AG3",
+									 
+									 "AG3W",
+									 
+									 "AHX",
+									 
+									 "AHX-E",
+									 
+									 "AK3",
+									 
+									 "AK4",
+									 
+									 "AK5",
+									 
+									 "ALS",
+									 
+									 "ALW",
+									 
+									 "ALX",
+									 
+									 "AM1",
+									 
+									 "AM2",
+									 
+									 "AM4",
+									 
+									 "AME1W",
+									 
+									 "AN1",
+									 
+									 "AN2W",
+									 
+									 "AN3E",
+									 
+									 "AN3W",
+									 
+									 "APX",
+									 
+									 "AR1",
+									 
+									 "ARE",
+									 
+									 "ARW",
+									 
+									 "AS2",
+									 
+									 "ASA",
+									 
+									 "ASAS1",
+									 
+									 "ASPA2E",
+									 
+									 "ASPA2W",
+									 
+									 "ASX",
+									 
+									 "AU1",
+									 
+									 "AW3",
+									 
+									 "AWH-E",
+									 
+									 "AWH-W",
+									 
+									 "AWH/E",
+									 
+									 "AWS",
+									 
+									 "AWT",
+									 
+									 "BDW",
+									 
+									 "BENGAL",
+									 
+									 "BH2",
+									 
+									 "BH3",
+									 
+									 "BHF/A",
+									 
+									 "BHF/B",
+									 
+									 "BHF1",
+									 
+									 "BHF2",
+									 
+									 "BHT",
+									 
+									 "BHX",
+									 
+									 "BKS1",
+									 
+									 "BMX",
+									 
+									 "BNCTF",
+									 
+									 "BNCTO",
+									 
+									 "BNX",
+									 
+									 "BSS",
+									 
+									 "CAX/W",
+									 
+									 "CBE",
+									 
+									 "CBW",
+									 
+									 "CC1/W",
+									 
+									 "CC1E",
+									 
+									 "CC1W",
+									 
+									 "CC2",
+									 
+									 "CC2/E",
+									 
+									 "CC2W",
+									 
+									 "CC3/E",
+									 
+									 "CC3/W",
+									 
+									 "CC4",
+									 
+									 "CCX/E",
+									 
+									 "CCX/W",
+									 
+									 "CHINK",
+									 
+									 "CHINKE",
+									 
+									 "CHINKW",
+									 
+									 "CHX",
+									 
+									 "CHX/W",
+									 
+									 "CHX1",
+									 
+									 "CIMEX5",
+									 
+									 "CIX",
+									 
+									 "CIX1",
+									 
+									 "CIX3",
+									 
+									 "CJ1",
+									 
+									 "CJH",
+									 
+									 "CJT",
+									 
+									 "CKA",
+									 
+									 "CKJ",
+									 
+									 "CMA1",
+									 
+									 "CMK",
+									 
+									 "CNJ",
+									 
+									 "CPX/W",
+									 
+									 "CREN",
+									 
+									 "CRES",
+									 
+									 "CRIOCA",
+									 
+									 "CRNN",
+									 
+									 "CRNS",
+									 
+									 "CRSN",
+									 
+									 "CRSS",
+									 
+									 "CS3",
+									 
+									 "CS5",
+									 
+									 "CSC",
+									 
+									 "CSTC",
+									 
+									 "CSW",
+									 
+									 "CTP",
+									 
+									 "CTX",
+									 
+									 "CTXN",
+									 
+									 "CTXS",
+									 
+									 "DAHLIA",
+									 
+									 "DLC",
+									 
+									 "DPHIN",
+									 
+									 "DRAGON",
+									 
+									 "DTS",
+									 
+									 "EA01",
+									 
+									 "EC1E",
+									 
+									 "EC1W",
+									 
+									 "EC2E",
+									 
+									 "EC2W",
+									 
+									 "EC3W",
+									 
+									 "EIX6",
+									 
+									 "ERX",
+									 
+									 "EUM",
+									 
+									 "EX1/E",
+									 
+									 "EX1/W",
+									 
+									 "FA1",
+									 
+									 "FAL",
+									 
+									 "FAL3",
+									 
+									 "FALCON",
+									 
+									 "FE2",
+									 
+									 "FE2W",
+									 
+									 "FE3",
+									 
+									 "FE4",
+									 
+									 "FE4W",
+									 
+									 "FFF",
+									 
+									 "FI3",
+									 
+									 "FIL",
+									 
+									 "FIM",
+									 
+									 "FIX",
+									 
+									 "FL2",
+									 
+									 "FLX",
+									 
+									 "FMX",
+									 
+									 "FP1",
+									 
+									 "FP2",
+									 
+									 "FTS",
+									 
+									 "GHRN",
+									 
+									 "GHRS",
+									 
+									 "GLX",
+									 
+									 "GSX",
+									 
+									 "HAD",
+									 
+									 "HAS",
+									 
+									 "HBS",
+									 
+									 "HDS",
+									 
+									 "HES",
+									 
+									 "HJNCF",
+									 
+									 "HJNCO",
+									 
+									 "HNS",
+									 
+									 "HNS/E",
+									 
+									 "HNS/W",
+									 
+									 "HP3",
+									 
+									 "IA5",
+									 
+									 "ICN",
+									 
+									 "ICX",
+									 
+									 "ITX",
+									 
+									 "JCS",
+									 
+									 "JF1",
+									 
+									 "JHK2",
+									 
+									 "JHK3",
+									 
+									 "JK1",
+									 
+									 "JKS2",
+									 
+									 "JP1",
+									 
+									 "JPF1",
+									 
+									 "JPHN",
+									 
+									 "JPHS",
+									 
+									 "JPK1",
+									 
+									 "JPK2",
+									 
+									 "JPN1",
+									 
+									 "JPN2",
+									 
+									 "JPN2A",
+									 
+									 "JPN2B",
+									 
+									 "JPN3",
+									 
+									 "JPX",
+									 
+									 "JRX",
+									 
+									 "JSK5",
+									 
+									 "JSN",
+									 
+									 "JSN1",
+									 
+									 "JSS",
+									 
+									 "JST1",
+									 
+									 "JSW",
+									 
+									 "JSW1",
+									 
+									 "JT1",
+									 
+									 "JTD",
+									 
+									 "JTH4",
+									 
+									 "JTV2",
+									 
+									 "JVH",
+									 
+									 "JWC",
+									 
+									 "JWC8",
+									 
+									 "JWH",
+									 
+									 "JWN1",
+									 
+									 "JWS1",
+									 
+									 "KAGUYA",
+									 
+									 "KAGUYR",
+									 
+									 "KCB",
+									 
+									 "KCM",
+									 
+									 "KCS",
+									 
+									 "KCX",
+									 
+									 "KDS",
+									 
+									 "KF01",
+									 
+									 "KF02",
+									 
+									 "KI1",
+									 
+									 "KI2",
+									 
+									 "KI2N",
+									 
+									 "KI2S",
+									 
+									 "KIS1",
+									 
+									 "KJ1",
+									 
+									 "KJ2",
+									 
+									 "KJCG",
+									 
+									 "KJCT",
+									 
+									 "KJH",
+									 
+									 "KJHM",
+									 
+									 "KJHMA",
+									 
+									 "KJK",
+									 
+									 "KJM",
+									 
+									 "KJS4",
+									 
+									 "KJS5",
+									 
+									 "KJW",
+									 
+									 "KJW1",
+									 
+									 "KJW2",
+									 
+									 "KJWS",
+									 
+									 "KJWT",
+									 
+									 "KKS",
+									 
+									 "KMCTN",
+									 
+									 "KMCTS",
+									 
+									 "KME",
+									 
+									 "KMH",
+									 
+									 "KMS",
+									 
+									 "KPI/E",
+									 
+									 "KPI/W",
+									 
+									 "KR2",
+									 
+									 "KR3",
+									 
+									 "KRS",
+									 
+									 "KRX",
+									 
+									 "KSD",
+									 
+									 "KVXN",
+									 
+									 "KVXS",
+									 
+									 "LP2",
+									 
+									 "LP5",
+									 
+									 "LP8",
+									 
+									 "LW1-E",
+									 
+									 "LW1-W",
+									 
+									 "MAE",
+									 
+									 "MD1W",
+									 
+									 "MD2W",
+									 
+									 "MD3W",
+									 
+									 "MED",
+									 
+									 "MEX",
+									 
+									 "MEX1",
+									 
+									 "MIW",
+									 
+									 "MOON",
+									 
+									 "MS2",
+									 
+									 "MS2E",
+									 
+									 "MSX",
+									 
+									 "MSX1",
+									 
+									 "MSX2",
+									 
+									 "MUSTAE",
+									 
+									 "MUSTAW",
+									 
+									 "MUSTNG",
+									 
+									 "MXICAS",
+									 
+									 "NCE",
+									 
+									 "NE1",
+									 
+									 "NE6",
+									 
+									 "NEAX",
+									 
+									 "NEU1",
+									 
+									 "NEU3",
+									 
+									 "NFAL",
+									 
+									 "NHS",
+									 
+									 "NHX",
+									 
+									 "NIS",
+									 
+									 "NKJ",
+									 
+									 "NKJ1",
+									 
+									 "NP1",
+									 
+									 "NP3",
+									 
+									 "NPS",
+									 
+									 "NPX",
+									 
+									 "NS02",
+									 
+									 "NS03",
+									 
+									 "NS04",
+									 
+									 "NS1",
+									 
+									 "NSE",
+									 
+									 "NTH",
+									 
+									 "NTS",
+									 
+									 "NWX/E",
+									 
+									 "NWX/W",
+									 
+									 "NYE/W",
+									 
+									 "NYEE",
+									 
+									 "NYEW",
+									 
+									 "NYX",
+									 
+									 "NYX/E",
+									 
+									 "NYXE",
+									 
+									 "NYXW",
+									 
+									 "ODCY",
+									 
+									 "ORIENT",
+									 
+									 "ORIGMA",
+									 
+									 "ORIGMR",
+									 
+									 "ORINTE",
+									 
+									 "ORINTW",
+									 
+									 "OTH",
+									 
+									 "PA1",
+									 
+									 "PA2",
+									 
+									 "PANDA",
+									 
+									 "PAX",
+									 
+									 "PC01",
+									 
+									 "PCE/A",
+									 
+									 "PCE/B",
+									 
+									 "PCE/E",
+									 
+									 "PCE/W",
+									 
+									 "PCEE",
+									 
+									 "PCES",
+									 
+									 "PCEW",
+									 
+									 "PCEWE",
+									 
+									 "PCR ",
+									 
+									 "PCX/W",
+									 
+									 "PCXE",
+									 
+									 "PCXW",
+									 
+									 "PERSHK",
+									 
+									 "PERTWI",
+									 
+									 "PH4S",
+									 
+									 "PH5S",
+									 
+									 "PHS",
+									 
+									 "PM1W",
+									 
+									 "PMX",
+									 
+									 "PN2",
+									 
+									 "PN2E",
+									 
+									 "PN2W",
+									 
+									 "PN3",
+									 
+									 "PN3W",
+									 
+									 "PN4E",
+									 
+									 "PN4W",
+									 
+									 "PNCF",
+									 
+									 "PNCO",
+									 
+									 "PNH-W",
+									 
+									 "PNHW",
+									 
+									 "PNITF",
+									 
+									 "PNITO",
+									 
+									 "PNW4",
+									 
+									 "PNW40",
+									 
+									 "PNWE",
+									 
+									 "PNWW",
+									 
+									 "PNX",
+									 
+									 "PS1/E",
+									 
+									 "PS1E",
+									 
+									 "PS1W",
+									 
+									 "PS2E",
+									 
+									 "PS2W",
+									 
+									 "PS3W",
+									 
+									 "PS5",
+									 
+									 "PS5/E",
+									 
+									 "PS5/W",
+									 
+									 "PS5W",
+									 
+									 "PS6E",
+									 
+									 "PS6W",
+									 
+									 "PS7E",
+									 
+									 "PS8E",
+									 
+									 "PS8W",
+									 
+									 "PSG",
+									 
+									 "PSI",
+									 
+									 "PSWE",
+									 
+									 "PSWW",
+									 
+									 "PSX",
+									 
+									 "PSX/W",
+									 
+									 "PSXE",
+									 
+									 "RBS",
+									 
+									 "RUFEX",
+									 
+									 "RUFEX2",
+									 
+									 "RUFEX5",
+									 
+									 "SANTA",
+									 
+									 "SAX",
+									 
+									 "SCE2",
+									 
+									 "SENTSA",
+									 
+									 "SETO",
+									 
+									 "SETO2",
+									 
+									 "SETO3",
+									 
+									 "SETO4",
+									 
+									 "SKX",
+									 
+									 "SLK",
+									 
+									 "SPT",
+									 
+									 "SPT1",
+									 
+									 "SPT2",
+									 
+									 "SPX",
+									 
+									 "SRISEA",
+									 
+									 "SRISER",
+									 
+									 "SSA",
+									 
+									 "STP",
+									 
+									 "STSKE",
+									 
+									 "STSKW",
+									 
+									 "SWASTE",
+									 
+									 "SWASTW",
+									 
+									 "SWS",
+									 
+									 "SX1",
+									 
+									 "TEF",
+									 
+									 "TEST",
+									 
+									 "TESTT",
+									 
+									 "THS",
+									 
+									 "TP5",
+									 
+									 "TP7",
+									 
+									 "TTP",
+									 
+									 "USEC2",
+									 
+									 "USEC3E",
+									 
+									 "USEC3W",
+									 
+									 "USEC4E",
+									 
+									 "USEC4W",
+									 
+									 "USEC5",
+									 
+									 "USEC7W",
+									 
+									 "USWC2S",
+									 
+									 "USWC3",
+									 
+									 "USWC4E",
+									 
+									 "USWC4S",
+									 
+									 "VLS",
+									 
+									 "WAX",
+									 
+									 "WLX",
+									 
+									 "WSA3",
+									 
+									 "XXX",
+									 
+									 "YPN",
+									 
+									 "ZCP",
+									 
+									 "ZCS",
+									 
+									 "ZEPHYR",
+									 
+									 "ZPMC",
+									 
+									 "ZZZ",
+									 ];
+								$("#route").autocomplete({
+								source:availableTags,
+								minLength:1
+								});
+							});
+							</script>							
+							<div class="ui-widget">
+								<input id="route" name="route" value="" class="inputTxt_60 capitalChar" maxlength="5" tabindex="3">
+							</div>
+						</dd>
+            <dd><img alt="btn_minisearch" 
+                        src="../common/image/btn_minisearch2.jpg" 
+                        data-code-width="300"
+                        data-code-height="400"
+                        data-action-url="../general/routeList.jsp"
+                        class="cmCursorPointer codeListView"></dd>
+					</dl>
+				</li>
+				<li class="btnArea">
+					<img id="submitbtn" src="../common/image/btn_search.jpg"
+						data-formname="submitForm"
+						data-action-url="/vessel/vslScheduleList.jsp" 
+						class="searchBtn cmCursorPointer" tabindex="5">
+				</li>
+			</ul>
+			
+			</form>
+
+		</div>
+
+		<div class="conList cmPaddB20">
+			
+			
+		
+			<div class="conListBar">
+				<dl>
+					<dd class="conListCount"></dd>
+					<dd class="conListTbtn">
+						<img src="../common/image/btn_excel.jpg" 
+								data-formname="submitForm"
+								data-action-url="/vessel/vslScheduleList_excel.jsp" 
+								class="cmCursorPointer excelDataBtn"> 
+						<img src="../common/image/btn_print.jpg" 
+								class="cmCursorPointer printDataBtn" 
+								data-formname="submitForm"
+								popup-element="printDiv"
+								data-target="printFrame"
+								data-action-url="/vessel/vslScheduleList_print.jsp"> 
+					</dd>
+				</dl>
+			</div>
+		
+			<div class="tblType_08">
+				<table>
+				<caption>선석 배정현황(목록)</caption>
+				<colgroup>
+					<col style="width:5%;">
+					<col style="width:5%;">
+					<col style="width:8%;">
+					<col style="width:9%;">
+					
+					<col style="width:9%;">
+					
+					<col style="width:9%;">
+					<col style="width:5%;">
+					<col style="width:9%;">
+					<col style="width:9%;">
+					<col style="width:9%;">
+					<col style="width:4%;">
+					<col style="width:4%;">
+					<col style="width:4%;">
+					<col style="width:4%;">
+					<col style="width:7%;">
+				</colgroup>
+				<tbody>
+				<tr>
+					<th>선석</th>
+					<th>선사</th>
+					<th>모선항차</th>
+					<th>선사항차</th>
+					
+					<th>Head(Bridge)Stern</th>
+					
+					<th>선명</th>
+					<th>ROUTE</th>
+					<th>반입마감시한</th>
+					<th>접안(예정)일시</th>
+					<th>출항(예정)일시</th>
+					<th>양하</th>
+					<th>적하</th>
+					<th>Shift</th>
+					<th>AMP</th>
+					<th class="noLine">상태</th>
+				</tr>
+				
+				
+				
+				<tr class="color_departed" >
+					<td>T1(P)</td>
+					<td>HLC</td>
+					<td>VLOX003</td>
+					<td>2504W/2504W</td>
+					
+					<td>01 (14) 19</td>
+					
+					<td>VALOR</td>
+					<td>AN3W</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-04-30 18:00</td>
+					
+					<td>2025-05-01 04:00</td>
+					<td>2025-05-03 05:00</td>
+					<td>1486</td>
+					<td>1264</td>
+					<td>1092</td>
+					<td>N</td>
+					<td class="noLine">DEPARTED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_departed" >
+					<td>T3(P)</td>
+					<td>MSC</td>
+					<td>MPSC001</td>
+					<td>XA517A/KQ518A</td>
+					
+					<td>41 (56) 61</td>
+					
+					<td>PUSAN C</td>
+					<td>PANDA</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-04-30 22:00</td>
+					
+					<td>2025-05-01 08:00</td>
+					<td>2025-05-03 09:00</td>
+					<td>3461</td>
+					<td>761</td>
+					<td>136</td>
+					<td>N</td>
+					<td class="noLine">DEPARTED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_departed" >
+					<td>T2(P)</td>
+					<td>MSC</td>
+					<td>MCKR002</td>
+					<td>GO515N/GO515N</td>
+					
+					<td>20 (27) 40</td>
+					
+					<td>CAPE KORTIA</td>
+					<td>ORINTE</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-01 16:00</td>
+					
+					<td>2025-05-02 01:00</td>
+					<td>2025-05-03 10:00</td>
+					<td>0</td>
+					<td>2125</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">DEPARTED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_departed" >
+					<td>T1(P)</td>
+					<td>MSC</td>
+					<td>MTRN001</td>
+					<td>HV515R/HV515R</td>
+					
+					<td>02 (12) 16</td>
+					
+					<td>MSC TURIN III</td>
+					<td>DPHIN</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-02 20:00</td>
+					
+					<td>2025-05-03 07:00</td>
+					<td>2025-05-04 11:00</td>
+					<td>951</td>
+					<td>1074</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">DEPARTED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_arrived" >
+					<td>T3(P)</td>
+					<td>MSC</td>
+					<td>MVLT003</td>
+					<td>FA515A/FA515A</td>
+					
+					<td>41 (48) 63</td>
+					
+					<td>MSC VALENTINA</td>
+					<td>ASPA2E</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-02 22:00</td>
+					
+					<td>2025-05-03 11:00</td>
+					<td>2025-05-06 00:00</td>
+					<td>2427</td>
+					<td>3006</td>
+					<td>386</td>
+					<td>N</td>
+					<td class="noLine">ARRIVED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_arrived" >
+					<td>T2(P)</td>
+					<td>MSC</td>
+					<td>MBDA001</td>
+					<td>UK515A/UK515A</td>
+					
+					<td>20 (29) 42</td>
+					
+					<td>MSC BENEDETTA XIII</td>
+					<td>CHINKE</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-02 23:00</td>
+					
+					<td>2025-05-03 12:00</td>
+					<td>2025-05-05 15:00</td>
+					<td>2410</td>
+					<td>2736</td>
+					<td>72</td>
+					<td>N</td>
+					<td class="noLine">ARRIVED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_arrived" >
+					<td>T1(P)</td>
+					<td>MSC</td>
+					<td>MCTI013</td>
+					<td>HG517A/HG517R</td>
+					
+					<td>02 (13) 17</td>
+					
+					<td>CAPTAIN THANASIS I</td>
+					<td>KAGUYA</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-04 03:00</td>
+					
+					<td>2025-05-04 13:00</td>
+					<td>2025-05-05 18:00</td>
+					<td>641</td>
+					<td>640</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">ARRIVED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T2(P)</td>
+					<td>HLC</td>
+					<td>RIXX002</td>
+					<td>2517E/2517E</td>
+					
+					<td>21 (29) 42</td>
+					
+					<td>RIO DE JANEIRO EXPRESS</td>
+					<td>AN1</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-05 07:00</td>
+					
+					<td>2025-05-05 17:00</td>
+					<td>2025-05-07 18:00</td>
+					<td>1740</td>
+					<td>3184</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T1(P)</td>
+					<td>MSC</td>
+					<td>MFRT010</td>
+					<td>HX518R/XA518A</td>
+					
+					<td>02 (11) 13</td>
+					
+					<td>MSC FORTUNE F</td>
+					<td>GHRN</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-05 10:00</td>
+					
+					<td>2025-05-05 20:00</td>
+					<td>2025-05-06 12:00</td>
+					<td>123</td>
+					<td>219</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T3(P)</td>
+					<td>MSC</td>
+					<td>MSYE002</td>
+					<td>KQ514R/XA518A</td>
+					
+					<td>44 (55) 61</td>
+					
+					<td>MSC SYDNEY VI</td>
+					<td>PANDA</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-05 16:00</td>
+					
+					<td>2025-05-06 02:00</td>
+					<td>2025-05-07 08:00</td>
+					<td>2488</td>
+					<td>202</td>
+					<td>70</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T1(P)</td>
+					<td>MSC</td>
+					<td>MSPZ001</td>
+					<td>UX516A/UX516A</td>
+					
+					<td>01 (14) 19</td>
+					
+					<td>MSC SOFIA PAZ</td>
+					<td>SANTA</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-06 04:00</td>
+					
+					<td>2025-05-06 14:00</td>
+					<td>2025-05-08 07:00</td>
+					<td>1255</td>
+					<td>1956</td>
+					<td>46</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T3(P)</td>
+					<td>MSC</td>
+					<td>MVVI003</td>
+					<td>FA510R/FA510R</td>
+					
+					<td>41 (48) 63</td>
+					
+					<td>MSC VIVIENNE</td>
+					<td>ASPA2W</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-07 00:00</td>
+					
+					<td>2025-05-07 10:00</td>
+					<td>2025-05-09 22:00</td>
+					<td>3451</td>
+					<td>2174</td>
+					<td>472</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T2(P)</td>
+					<td>MSC</td>
+					<td>MCOO004</td>
+					<td>HV516R/HV516R</td>
+					
+					<td>26 (38) 40</td>
+					
+					<td>MSC COLETTE III</td>
+					<td>DPHIN</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-07 10:00</td>
+					
+					<td>2025-05-07 20:00</td>
+					<td>2025-05-09 02:00</td>
+					<td>1192</td>
+					<td>1157</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T1(P)</td>
+					<td>MSC</td>
+					<td>MLGX002</td>
+					<td>QI518A/QI518A</td>
+					
+					<td>01 (08) 20</td>
+					
+					<td>MSC LAGOS X</td>
+					<td>CRIOCA</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-07 23:00</td>
+					
+					<td>2025-05-08 09:00</td>
+					<td>2025-05-09 21:00</td>
+					<td>1598</td>
+					<td>811</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T2(P)</td>
+					<td>HLC</td>
+					<td>VTGX003</td>
+					<td>2505W/2505W</td>
+					
+					<td>22 (35) 40</td>
+					
+					<td>VANTAGE</td>
+					<td>AN3W</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-08 18:00</td>
+					
+					<td>2025-05-09 04:00</td>
+					<td>2025-05-10 06:00</td>
+					<td>1200</td>
+					<td>1000</td>
+					<td>400</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				
+				<tr class="color_planned" >
+					<td>T1(P)</td>
+					<td>MSC</td>
+					<td>MIVO001</td>
+					<td>UX517A/UX517A</td>
+					
+					<td>01 (07) 18</td>
+					
+					<td>MSC IVORY COAST</td>
+					<td>SANTA</td>
+					
+					<!-- PNIT 안진성차장 요청. 20200630-->
+					<td>2025-05-09 14:00</td>
+					
+					<td>2025-05-09 23:00</td>
+					<td>2025-05-10 23:00</td>
+					<td>500</td>
+					<td>800</td>
+					<td>0</td>
+					<td>N</td>
+					<td class="noLine">PLANNED</td>
+				</tr>
+				
+				
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="tblType_10">
+				<table>
+				<caption>선석 배정현황(목록)</caption>
+				<colgroup>
+					<col style="width:33%;">
+					<col style="width:34%;">
+					<col style="width:33%;">
+				</colgroup>
+				<tbody>
+				<tr>
+					<th>1 Berth</th>
+					<th>2 Berth</th>
+					<th class="noLine">3 Berth</th>
+				</tr>
+				<tr>
+					<td>
+						
+						
+						
+							<a>VLOX003</a> (HLC) : VALOR<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MTRN001</a> (MSC) : MSC TURIN III<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MCTI013</a> (MSC) : CAPTAIN THANASIS I<br />
+						
+						
+						
+						
+						
+						
+						
+							<a>MFRT010</a> (MSC) : MSC FORTUNE F<br />
+						
+						
+						
+						
+						
+						
+						
+							<a>MSPZ001</a> (MSC) : MSC SOFIA PAZ<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MLGX002</a> (MSC) : MSC LAGOS X<br />
+						
+						
+						
+						
+						
+						
+						
+							<a>MIVO001</a> (MSC) : MSC IVORY COAST<br />
+						
+						
+					</td>
+					<td>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MCKR002</a> (MSC) : CAPE KORTIA<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MBDA001</a> (MSC) : MSC BENEDETTA XIII<br />
+						
+						
+						
+						
+						
+						
+						
+							<a>RIXX002</a> (HLC) : RIO DE JANEIRO EXPRESS<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MCOO004</a> (MSC) : MSC COLETTE III<br />
+						
+						
+						
+						
+						
+						
+						
+							<a>VTGX003</a> (HLC) : VANTAGE<br />
+						
+						
+						
+						
+						
+					</td>
+					<td class="noLine">
+						
+						
+						
+						
+						
+						
+							<a>MPSC001</a> (MSC) : PUSAN C<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MVLT003</a> (MSC) : MSC VALENTINA<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							<a>MSYE002</a> (MSC) : MSC SYDNEY VI<br />
+						
+						
+						
+						
+						
+						
+						
+							<a>MVVI003</a> (MSC) : MSC VIVIENNE<br />
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					</td>
+				</tr>
+				</tbody>
+				</table>
+			</div>
+			
+			
+		
+		</div>
+
+		<form name="submitFormPop" method="post">
+			<input name="isSearch" type="hidden" value="Y">
+			<div id="draggable">
+				<div id="subDiv" style="width:500px;">
+				
+					<ul>
+						<li class="popTitle_l">
+							<dl>
+								<dd class="pT_icon"><img alt="arrow_popup" src="../common/image/arrow_popup.png"></dd>
+								<dd class="pT_txt">Voyage 관리</dd>
+							</dl>
+						</li>
+						<li class="popTitle_r">
+							<a data-popup-div="subDiv" class="cmCursorPointer funcCodeListClose">
+								<img alt="btn_popclose" src="../common/image/btn_popclose.jpg">
+							</a>
+						</li>
+					</ul>
+					<dl style="height:500px;">
+						<dd>
+							<iframe id="subList" name="subList" width="100%" height="100%" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+						</dd>
+					</dl>
+					
+				</div>
+			</div>
+		</form>
+		
+		<form name="printForm" method="post">
+			<div id="draggable_print">
+				<div id="printDiv" style="width:1020px;">
+				
+					<ul>
+						<li class="popTitle_l">
+							<dl>
+								<dd class="pT_icon"><img alt="arrow_popup" src="../common/image/arrow_popup.png"></dd>
+								<dd class="pT_txt">선석 배정현황(목록) 출력</dd>
+							</dl>
+						</li>
+						<li class="popTitle_r">
+							<a class="printFrameCloseBtn cmCursorPointer" 
+								data-target="printFrame"
+								popup-element="printDiv">
+								<img alt="btn_popclose" src="../common/image/btn_popclose.jpg">
+							</a>
+						</li>
+					</ul>
+					<dl style="height:600px;">
+						<dd>
+							<iframe id="printFrame" name="printFrame" width="100%" height="100%" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0"></iframe>
+						</dd>
+					</dl>
+					
+				</div>
+			</div>
+		</form>
+		
+	</div>
+	<!-- conRight -->
+
+</div>
+<!-- conRightArea -->
+
+<div id="codeListDiv">
+	<ul>
+		<li class="popTitle_l">
+			<dl>
+				<dd class="pT_icon"><img alt="arrow_popup" src="../common/image/arrow_popup.png"></dd>
+				<dd class="pT_txt">코드목록</dd>
+			</dl>
+		</li>
+		<li class="popTitle_r">
+			<a class="cmCursorPointer funcCodeListClose">
+				<img alt="btn_popclose" src="../common/image/btn_popclose.jpg">
+			</a>
+		</li>
+	</ul>
+	<dl style="height:366px;">
+		<dd>
+			<iframe id="codeList" name="codeList" width="100%" height="100%" frameborder="0" scrolling="yes" marginwidth="0" marginheight="0"></iframe>
+		</dd>
+	</dl>
+</div>
+
+
+			</div>
+			<!-- contents -->
+			
+		</div>
+		<!-- container -->
+	
+	</div>
+	<!-- wrapArea -->
+	
+	<!-- footer -->
+	<div id="footer">
+	</div>
+	<!-- footer -->
+
+</div>
+<!-- wrap -->
+
+<!-- chatbot -->
+<div id="chatbotDiv" style="display:none; z-index:999;">
+	<div class="chatbotBtn">	
+		도움이 필요하신가요?
+	</div>
+	<div class="chatbotArea">
+		<div class="chatbotHeader">
+			도움이 필요하신가요?
+			<div id="chatbotCloseBtn">X</div>
+		</div>
+		<div class="chatbotBody"></div>
+		<div class="chatbotFooter">
+			<div class="chatbotInputArea">
+				<input type="text" class="chatbotInput" />
+			</div>
+			<div id="chatbotSubmitBtn">전송</div>
+		</div>
+	</div>
+</div>
+
+<div id="loadingDiv">
+	<div class="loadingBox">
+		<img alt="" src="../common/image/progress.gif" width="100"><br />
+		페이지 로딩중입니다. 잠시만 기다려 주세요.<br />
+		로딩중에 다른 페이지로 이동할 경우 검색속도가<br />
+		저하되오니 이점 참고하여 주시기 바랍니다.
+		
+	</div>
+</div>
+
+<div id="hiddenDiv">
+	<iframe name="hiddenFrame" width="100" height="100" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+</div>
+
+<form name="memberForm" method="post">
+	<div id="draggable">
+		<div id="memberModifyDiv" style="width:700px;">
+		
+			<ul>
+				<li class="popTitle_l">
+					<dl>
+						<dd class="pT_icon"><img alt="arrow_popup" src="../common/image/arrow_popup.png"></dd>
+						<dd class="pT_txt">사용자 정보</dd>
+					</dl>
+				</li>
+				<li class="popTitle_r">
+					<img alt="btn_popclose" src="../common/image/btn_popclose.jpg"
+						class="locFuncBtn cmCursorPointer"
+						data-func-name="memberPopClose">
+				</li>
+			</ul>
+			<dl style="height:500px;">
+				<dd>
+					<iframe id="memberModifyList" name="memberModifyList" width="100%" height="100%" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+				</dd>
+			</dl>
+			
+		</div>
+	</div>
+</form>
+
+</body>
+</html>

@@ -29,4 +29,9 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}
+
+const isValidVesselName = (name: string): boolean => {
+  // 알파벳, 공백, 하이픈, 점만 허용
+  return /^[A-Za-z\s\-\.]+$/.test(name);
+}; 

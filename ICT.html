@@ -1,0 +1,2833 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function onClickAppNotice() {
+	_subDiv = eval("appNoticeDetaile.style");
+	_subDiv.visibility = "visible";
+}
+
+function subListClose() {
+	_subDiv = eval("appNoticeDetaile.style");
+	_subDiv.visibility = "hidden";
+}
+
+function subSealUpload() {
+	_subDiv = eval("sealUpload.style");
+	_subDiv.visibility = "visible";
+}
+function subSealClose() {
+	_subDiv = eval("sealUpload.style");
+	_subDiv.visibility = "hidden";
+}
+function subSealUploading() {
+	_subDiv = eval("uploadingDiv.style");
+	_subDiv.visibility = "visible";
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<title>인천컨테이너터미널 터미널정보서비스</title>
+<script type="text/javascript" src="/common/js/common.js"></script>
+<script type="text/javascript" src="/common/js/import/cal.js"></script>
+<script type="text/javascript" src="/common/js/import/tooltip_no_arrow.js"></script>
+<link rel="stylesheet" type="text/css" href="/common/css/style.css" >
+<link rel="stylesheet" type="text/css" href="/common/css/import/cal.css" >
+<link rel="stylesheet" type="text/css" href="/common/css/import/tooltip.css" >
+
+<script language="JavaScript" type="Text/JavaScript">
+	
+	var URI = "/webpage/vessel/vslScheduleText.jsp";
+
+	function chkData() {
+		var f=document.submitForm;
+		var returnValue = true;
+		
+		return returnValue;
+	}
+
+	function submitData() {
+		var f=document.submitForm;
+		
+		if(chkData()) {
+			f.isSearch.value = "Y";
+			f.target="_self";
+			f.action=URI;
+			f.submit();
+		}
+	}
+
+</script>
+</head>
+
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0">
+<tr>
+<!-- ----------------------------------------------------------- -->
+<!-- ----------------- TOP --------------------- -->
+<!-- ----------------------------------------------------------- -->
+<td height="73"  colspan="3">
+
+	
+	
+
+
+
+
+	<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" onmouseover="javascript:setLeftMenuOver('00');">
+		<tr>
+			<td height="3" bgcolor="#E66120" colspan="2"></td>
+		</tr>
+		<tr>
+			<td width="10" bgcolor="#DCDCDC"></td>
+			<td>
+				<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" class="defualt">
+					<tr height="25">
+						<td width="100"><a href="/webpage/main/mainPage.jsp"><img src="/images/_top_logo.gif"></a></td>
+						<td><img src="/images/_top_logo_comment.gif"></td>
+						<td width="80"><img src="/images/_top_sitemap.gif"></td>
+						<td width="5"></td>
+						<td width="80"><a href="/webpage/admin/adminUserAdm.jsp"><img src="/images/_top_admin.gif"></a></td>
+						<td width="10"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr height="30">
+			<td width="10" bgcolor="#DCDCDC"></td>
+			<td bgcolor="#DCDCDC" align="left" class="defualt">
+				<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" class="defualt">
+					<tr height="25">
+						
+						
+						<td width="5"></td>
+						<td width="105"><img src="/images/common_dot03.gif"> <b>야드 차량 현황</b> : </td>
+						<td width="145"><a class="font_red">반입[0대] / <a class="font_blue">반출[0대] </a></a></td>
+						<td width="135"><img src="/images/common_dot03.gif"> <b>Turn Around Time</b> : </td>
+						<td width="140"><a class="font_red">반입[0분] / <a class="font_blue">반출[0분] </a></a></td>
+						<td width="5"></td>
+						
+
+						
+						<td bgcolor="#DCDCDC" align="right" class="defualt">
+							
+							
+								<a href="/webpage/main/mainPage.jsp"><b>Home</b></a> > 
+								본선현황 > 선석 스케쥴(텍스트)
+							
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+
+	
+</td>
+</tr>
+<tr>
+<!-- ----------------------------------------------------------- -->
+<!-- ----------------- LEFT --------------------- -->
+<!-- ----------------------------------------------------------- -->
+<td width="190" valign="top" rowspan="2">
+
+	
+	
+
+
+<script type="Text/javascript" src="/common/js/jquery-3.7.1.min.js"></script>
+
+<script language="JavaScript" type="Text/JavaScript">
+	
+
+	function onClickMenu(menuSrc, menuId, menuNm) {
+		//time, userID
+		/****************************************/
+		/************ AJAX 부분          **************/
+		/****************************************/
+		var userID = 'Guest';
+		var toUrl = "/webpage/common/ajax/menuClickCheck.jsp";
+		var queryStr = "menuId=" +menuId ;
+			queryStr+= "&menuNm="+menuNm ;
+			queryStr+= "&userID= "+userID ;
+			
+/*  		$.ajax({
+			url: toUrl,
+			data: queryStr,
+			dataType: "html",
+			cache: false,
+			success: function(data) {
+				location.href = menuSrc+menuId; 
+			},
+			error: function(data) {
+				alert('Error');
+			}
+		}); 	 */	
+ 		
+ 		location.href = menuSrc+menuId; 
+		
+	}
+
+
+</script>
+
+	<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0">
+		<tr height="35">
+			<td width="10" bgcolor="#DCDCDC" rowspan="100" onmouseover="javascript:setLeftMenuOver('00')"><img src="/images/_left_space.gif"></td>
+			<td style="cursor:hand"><img src="/images/_left_menu01.jpg" onmouseover="javascript:setLeftMenuOver('01')"></td>
+			<td width="1" bgcolor="#DCDCDC" rowspan="100"><img src="/images/_left_space.gif" width="1"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu02.jpg" onmouseover="javascript:setLeftMenuOver('02')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu03.jpg" onmouseover="javascript:setLeftMenuOver('03')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu04.jpg" onmouseover="javascript:setLeftMenuOver('04')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu05.jpg" onmouseover="javascript:setLeftMenuOver('05')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu06.jpg" onmouseover="javascript:setLeftMenuOver('06')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu07.jpg" onmouseover="javascript:setLeftMenuOver('07')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu08.jpg" onmouseover="javascript:setLeftMenuOver('08')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu09.jpg" onclick="location.href='https://service.psa-ict.co.kr/vbs/'"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr height="35" style="cursor:hand">
+			<td><img src="/images/_left_menu10.jpg" onmouseover="javascript:setLeftMenuOver('10')"></td>
+		</tr>
+		<tr height="1"><td bgcolor="#DCDCDC"></td></tr>
+		<tr onmouseover="javascript:setLeftMenuOver('00')">
+			<td valign="top">
+				<table border="0" width="100%" cellspacing="0" class="defualt">
+					
+					<form name="loginOutForm" method="post" action="/webpage/main/mainPage_logInOK.jsp" onsubmit="return chkLogin();"><input type="hidden" name="csSignature" value="zc5h58/aYLi0Ny1pmpBfCw==" />
+
+					<tr height="32">
+						<td width="60" bgcolor="#F5F5F5" align="right">아이디</td>
+						<td bgcolor="#F5F5F5"><input type="text" name="userID" class="input1" style="width: 60px ;" maxlength="20" value=""></td>
+					</tr>
+					<tr height="1"><td bgcolor="#DCDCDC" colspan="2"></td></tr>
+					<tr height="32">
+						<td width="60" bgcolor="#F5F5F5" align="right">비밀번호</td>
+						<td bgcolor="#F5F5F5">
+							<input type="password" name="passwd" class="input1" style="width: 60px ;" maxlength="20">
+							<input type="submit" value="확인" class="input2_bg01" style="width: 40px ;">
+						</td>
+					</tr>
+					<tr height="1"><td bgcolor="#DCDCDC" colspan="2"></td></tr>
+					<tr height="35">
+						<td colspan="2" align="center" valign="bottom">
+							<input type="button" value="서비스 가입신청" class="input_butten1" style="width: 160px ;margin-top:5px;" onclick="location='/webpage/main/memberJoin.jsp'">
+							<input type="button" value="비밀번호 찾기" class="input_butten1" style="width: 160px;margin-top:5px;" onclick="location='/webpage/main/passwordFind.jsp'">
+						</td>
+					</tr>
+					</form>
+					
+
+					
+<!-- 					<tr height="35">
+						<td colspan="2" align="center" valign="bottom" style="border-top: 1px solid #DCDCDC">
+							<input type="button" value="가상계좌 발급" class="input_butten1" style="width: 160px ;" onclick="window.open('http://inbound.klnet.co.kr/shipper','_blank');">
+						</td>
+					</tr> -->
+					<tr height="35">
+						<td colspan="2" align="center">
+							<table border="0" width="160" class="defualt">
+								<tr bgcolor="#CCCCCC" height="25">
+									<td colspan="2" align="center">담당 및 연락처</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64" rowspan="2">▷Center</td>
+									<td align="center">032) 890-8803</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td align="center">032) 890-8804</td>
+								</tr>
+								
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64" rowspan="2">▷On-dock</td>
+									<td align="center">032) 890-8807</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td align="center">032) 890-8808</td>
+								</tr>
+
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64" rowspan="2">▷Planner</td>
+									<td align="center">032) 890-8813</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td align="center">032) 890-8815</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64">▷Gate(정문)</td>
+									<td align="center">032) 890-8881</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64">▷Gate(엠티)</td>
+									<td align="center">032) 890-8863</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64" rowspan="2">▷재무/정산</td>
+									<td align="center">032) 890-8913</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td align="center">032) 890-8916</td>
+								</tr>
+								
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64" rowspan="2">▷세관/검사</td>
+									<td align="center">032) 890-8821</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td align="center">032) 890-8824</td>
+								</tr>
+								<tr bgcolor="#F3F3F3" height="20">
+									<td width="64">▷안전</td>
+									<td align="center">032) 890-8937</td>
+								</tr>
+								
+							</table>
+						</td>
+					</tr>
+					<!--
+					<tr height="35">
+						<td colspan="2" align="center" valign="bottom">
+							<input type="button" value="개인정보취급방침" class="input_butten1" style="width: 160px ;" onclick="location.href='http://inbound.klnet.co.kr/shipper';">
+						</td>
+					</tr>
+					-->
+				</table>
+			</td>
+			
+		</tr>
+		<tr>
+			<td>
+				<div id="leftMenu01" style="width:160px;position:absolute; left:70px; top:82px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/vessel/vslScheduleText.jsp','선석 스케쥴(텍스트)')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>선석 스케쥴(텍스트)</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/vessel/vslScheduleChart.jsp','선석 스케쥴(그래프)')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>선석 스케쥴(그래프)</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/vessel/vslWorkStatus.jsp','본선 작업 현황')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>본선 작업 현황</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/vessel/vslStevedorageList.jsp','양적하 물량 현황')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>양적하 물량 현황</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu02" style="width:160px;position:absolute; left:70px; top:118px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/yard/yardStackStatus.jsp','야드 장치 현황')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>야드 장치 현황</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/yard/yardWorkStatus.jsp','야드 작업 현황')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>야드 작업 현황</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/yard/yardContList.jsp','야드 컨테이너 목록')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>야드 컨테이너 목록</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/yard/yardReeferContList.jsp','냉동 컨테이너 목록')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>냉동 컨테이너 목록</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/yard/yardDamageContList.jsp','DAMAGE 컨테이너 목록')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>DAMAGE 컨테이너 목록</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/yard/yardGateInOutList.jsp','반출입 물량 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>반출입 물량 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu03" style="width:160px;position:absolute; left:70px; top:154px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/edi/copinoSendIn.jsp','반입 사전정보 입력')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>반입 사전정보 입력</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/edi/copinoSendOut.jsp','반출 사전정보 입력')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>반출 사전정보 입력</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/edi/truckReservation.jsp','반출/입 사전예약')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>반출/입 사전예약</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/edi/preHazardousInfo.jsp','위험물 반입정보 입력')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>위험물 반입정보 입력</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/edi/copinoSendList.jsp','사전정보 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>사전정보 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/edi/coldltList.jsp','CLL 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>CLL 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu04" style="width:160px;position:absolute; left:70px; top:190px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/bkOrderSend.jsp','Booking Order 입력')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Booking Order 입력</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/bkOrderList.jsp','Booking Order 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Booking Order 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/deliveryOrderList.jsp','Delivery Order 관리')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Delivery Order 관리</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/contStockReport.jsp','컨테이너 Stock Report')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>컨테이너 Stock Report</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/holdContList.jsp','Hold 컨테이너 목록')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Hold 컨테이너 목록</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/overStorageList.jsp','경과보관 컨테이너 목록')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>경과보관 컨테이너 목록</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/rehandleContList.jsp','리핸들링 컨테이너 목록')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>리핸들링 컨테이너 목록</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/OutContAdm.jsp','반출 컨테이너 관리')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>반출 컨테이너 관리</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/InContAdm.jsp','반입 컨테이너 관리')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>반입 컨테이너 관리</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/ptiOrderReq.jsp','PTI Order 신청')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>PTI Order 신청</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/ondock/ptiOrderAdm.jsp','PTI Order 관리')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>PTI Order 관리</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu05" style="width:160px;position:absolute; left:70px; top:226px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/custom/inspecReqList.jsp','세관검사 신청 및 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>세관검사 신청 및 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/custom/inspecReqAdm.jsp','세관검사 관리')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>세관검사 관리</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/custom/customInList.jsp','세관통관 내역 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>세관통관 내역 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/custom/xrayProgressStatus.jsp','X-RAY 진행상태 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>X-RAY 진행상태 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu06" style="width:160px;position:absolute; left:70px; top:262px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/general/contInfo.jsp','컨테이너 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>컨테이너 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu07" style="width:160px;position:absolute; left:70px; top:298px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/codeInfo/vesselCdInfo.jsp','모선 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>모선 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu08" style="width:160px;position:absolute; left:70px; top:334px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/general/contAmountTable.jsp','거래명세표 조회')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>거래명세표 조회</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/cost/costPlism.jsp','가상계좌 발급')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>가상계좌 발급</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/cost/costManual.jsp','가상계좌 발급 메뉴얼')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>가상계좌 발급 메뉴얼</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/general/taxStatus.jsp','세금계산서 발행 내역')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>세금계산서 발행 내역</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/cost/costTaxReceiptEdit.jsp','세금계산서 정정요청서')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>세금계산서 정정요청서</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+				<div id="leftMenu10" style="width:160px;position:absolute; left:70px; top:406px; z-index:1; visibility:hidden;">
+					<table border="0" width="100%" cellpadding="0" cellspacing="2" bgcolor="#ED7E00" class="defualt">
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/inspection/inspectionReport.jsp','Inquiry Seal List')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Inquiry Seal List</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/inspection/vesselWorkingReport.jsp','Vessel Working Report')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Vessel Working Report</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/inspection/loadingReport.jsp','Loading Report')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Loading Report</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/inspection/shiftingReport.jsp','Shifting Report')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>Shifting Report</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						<tr height="25" style="cursor:hand">
+							<td bgcolor="#FFEAE0" onClick="javascript:onClickMenu('/webpage','/inspection/gcWorkingReport.jsp','GC Working Handling')">
+								<img src="/images/_left_menu_arrow.gif">
+								
+								<a>GC Working Handling</a>
+							</td>
+						</tr>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<tr height="15" onclick="javascript:setLeftMenuOver('00');" style="cursor:hand">
+							<td bgcolor="#ED7E00" align="center"><font color="#FFFFFF">Close</font></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		
+		
+		
+	</table>
+
+</td>
+<td width="10" valign="top" rowspan="2">
+</td>
+<!-- ----------------------------------------------------------- -->
+<!-- ----------------- CONTENTS --------------------- -->
+<!-- ----------------------------------------------------------- -->
+<td valign="top" onmouseover="javascript:setLeftMenuOver('00');">
+	<table border="0" width="100%" cellpadding="0" cellspacing="0">
+		<tr height="40">
+			<td class="font_type1">
+				<img src="/images/common_ico02.gif">
+				
+				
+					<b>선석 스케쥴(텍스트)</b>
+				
+			</td>
+			<td rowspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="900">
+				<table width="100%" cellspacing="1" cellpadding="1" class="defualt">
+					<form name="submitForm" method="post"><input type="hidden" name="csSignature" value="zc5h58/aYLi0Ny1pmpBfCw==" />
+
+					<input name="isSearch" type="hidden" value="Y">
+					<input name="page" type="hidden" value="1">
+					<tr align="center" bgcolor="#DDDDDD" height="1"><td colspan="100"></td></tr>
+					<tr height="30" bgcolor="#EEEEEE">
+						<td width="5" bgcolor="#E5E5E5"><img src="/images/common_ico01.gif"></td>
+						<td width="80" bgcolor="#E5E5E5"><b>기준시작일</b></td>
+						<td width="120">
+							<input name="strdStDate" class="input1" OnClick="Calendar(this,'');" type="text" value="2025-05-03" readonly="readonly" style="width:120px;">
+						</td>
+						<td width="5" bgcolor="#E5E5E5"><img src="/images/common_ico01.gif"></td>
+						<td width="80" bgcolor="#E5E5E5"><b>기준종료일</b></td>
+						<td width="120">
+							<input name="strdEdDate" class="input1" OnClick="Calendar(this,'');" type="text" value="2025-05-11" readonly="readonly" style="width:120px;">
+						</td>
+						<td width="60">
+							<input type="button" class="input2_bg01" value="검색" style="width:60px;" onclick="javascript:submitData();">
+						</td>
+						<td align="right">
+							<font size="2"><b>검색 기간 (2025-05-03 ~ 2025-05-11)</b>&nbsp;&nbsp;</font>
+						</td>
+					</tr>
+					<tr align="center" bgcolor="#DDDDDD" height="1"><td colspan="100"></td></tr>
+					<tr align="center" height="3"><td colspan="100"></td></tr>
+					</form>
+				</table>
+				
+				<table width="100%" cellspacing="1" cellpadding="0" class="defualt">
+					<tr align="center" bgcolor="#D9EDFA" height="40">
+						<td width="40" bgcolor="#ECE8DA"><b>선석</b></td>
+						<td width="40" bgcolor="#ECE8DA"><b>선사</b></td>
+						<td width="40" bgcolor="#ECE8DA"><b>항로</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>모선항차(선사항차)<br>Bridge Position</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>선명</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>반입마감시한</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>접안(예정)일시</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>출항(예정)일시</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>작업량<br>양하/적하/Shift</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>QC D/N</b></td>
+						<td nowrap="nowrap" bgcolor="#ECE8DA"><b>상태</b></td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#F5F5F5" >1B(S)</td>
+						<td bgcolor="#F5F5F5">SNK</td>
+						
+							<td bgcolor="#F5F5F5">HPS2</td>
+						
+						<td bgcolor="#F5F5F5">
+							PCBJ-0015
+							(2508N/2509S)<br>
+							07 (108m)
+						</td>
+						<td bgcolor="#F5F5F5">PACIFIC BEIJING</td>
+						<td bgcolor="#F5F5F5">2025/05/02 19:00</td>
+						<td bgcolor="#F5F5F5">2025/05/04 07:00</td>
+						<td bgcolor="#F5F5F5">2025/05/04 18:00</td>
+						<td bgcolor="#F5F5F5">280 / 202 / 0</td>
+						<td bgcolor="#F5F5F5">2/</td>
+						<td bgcolor="#F5F5F5">DEPARTED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#F5F5F5" >2B(S)</td>
+						<td bgcolor="#F5F5F5">EGH</td>
+						
+							<td bgcolor="#F5F5F5">NCS</td>
+						
+						<td bgcolor="#F5F5F5">
+							OPTM-0013
+							(034N/&nbsp;)<br>
+							22 (372m)
+						</td>
+						<td bgcolor="#F5F5F5">EVER OPTIMA</td>
+						<td bgcolor="#F5F5F5">2025/05/03 18:00</td>
+						<td bgcolor="#F5F5F5">2025/05/04 09:00</td>
+						<td bgcolor="#F5F5F5">2025/05/04 21:30</td>
+						<td bgcolor="#F5F5F5">601 / 0 / 0</td>
+						<td bgcolor="#F5F5F5">3/3</td>
+						<td bgcolor="#F5F5F5">DEPARTED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#FEDFDF" >1B(S)</td>
+						<td bgcolor="#FEDFDF">KMD</td>
+						
+							<td bgcolor="#FEDFDF">KTH</td>
+						
+						<td bgcolor="#FEDFDF">
+							KKAK-0038
+							(2507N/2508S)<br>
+							07 (108m)
+						</td>
+						<td bgcolor="#FEDFDF">KMTC OSAKA</td>
+						<td bgcolor="#FEDFDF">2025/05/02 18:00</td>
+						<td bgcolor="#FEDFDF">2025/05/04 19:00</td>
+						<td bgcolor="#FEDFDF">2025/05/05 10:00</td>
+						<td bgcolor="#FEDFDF">330 / 403 / 0</td>
+						<td bgcolor="#FEDFDF">2/3</td>
+						<td bgcolor="#FEDFDF">ARRIVED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#FEDFDF" >2B(S)</td>
+						<td bgcolor="#FEDFDF">KMD</td>
+						
+							<td bgcolor="#FEDFDF">KCM</td>
+						
+						<td bgcolor="#FEDFDF">
+							KKTJ-0034
+							(2503N/2504S)<br>
+							22 (372m)
+						</td>
+						<td bgcolor="#FEDFDF">KMTC TIANJIN</td>
+						<td bgcolor="#FEDFDF">2025/05/02 18:00</td>
+						<td bgcolor="#FEDFDF">2025/05/04 23:30</td>
+						<td bgcolor="#FEDFDF">2025/05/05 23:00</td>
+						<td bgcolor="#FEDFDF">947 / 383 / 0</td>
+						<td bgcolor="#FEDFDF">3/2</td>
+						<td bgcolor="#FEDFDF">ARRIVED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >1B(S)</td>
+						<td bgcolor="#EFFBF3">EGH</td>
+						
+							<td bgcolor="#EFFBF3">NCS</td>
+						
+						<td bgcolor="#EFFBF3">
+							ORDR-0002
+							(084N/085S)<br>
+							07 (108m)
+						</td>
+						<td bgcolor="#EFFBF3">EVER ORDER</td>
+						<td bgcolor="#EFFBF3">2025/05/04 18:00</td>
+						<td bgcolor="#EFFBF3">2025/05/05 08:00</td>
+						<td bgcolor="#EFFBF3">2025/05/06 02:00</td>
+						<td bgcolor="#EFFBF3">179 / 382 / 0</td>
+						<td bgcolor="#EFFBF3">2/2</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >2B(S)</td>
+						<td bgcolor="#EFFBF3">EGH</td>
+						
+							<td bgcolor="#EFFBF3">KTHE</td>
+						
+						<td bgcolor="#EFFBF3">
+							CHAS-0027
+							(072N/073S)<br>
+							22 (372m)
+						</td>
+						<td bgcolor="#EFFBF3">EVER CHASTE</td>
+						<td bgcolor="#EFFBF3">2025/05/02 14:00</td>
+						<td bgcolor="#EFFBF3">2025/05/05 22:00</td>
+						<td bgcolor="#EFFBF3">2025/05/06 12:00</td>
+						<td bgcolor="#EFFBF3">320 / 157 / 0</td>
+						<td bgcolor="#EFFBF3">2/2</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >1B(S)</td>
+						<td bgcolor="#EFFBF3">TSL</td>
+						
+							<td bgcolor="#EFFBF3">KTH</td>
+						
+						<td bgcolor="#EFFBF3">
+							KHHB-0003
+							(25008N/25009S)<br>
+							07 (108m)
+						</td>
+						<td bgcolor="#EFFBF3">TS KAOHSIUNG</td>
+						<td bgcolor="#EFFBF3">2025/05/04 18:00</td>
+						<td bgcolor="#EFFBF3">2025/05/06 08:00</td>
+						<td bgcolor="#EFFBF3">2025/05/06 22:00</td>
+						<td bgcolor="#EFFBF3">0 / 428 / 0</td>
+						<td bgcolor="#EFFBF3">3/3</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >1B(S)</td>
+						<td bgcolor="#EFFBF3">TSL</td>
+						
+							<td bgcolor="#EFFBF3">CHT</td>
+						
+						<td bgcolor="#EFFBF3">
+							TSNA-0017
+							(25004N/25005S)<br>
+							07 (108m)
+						</td>
+						<td bgcolor="#EFFBF3">TS TIANJIN</td>
+						<td bgcolor="#EFFBF3">2025/05/09 18:00</td>
+						<td bgcolor="#EFFBF3">2025/05/09 21:00</td>
+						<td bgcolor="#EFFBF3">2025/05/10 12:00</td>
+						<td bgcolor="#EFFBF3">0 / 0 / 0</td>
+						<td bgcolor="#EFFBF3">3/3</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >1B(S)</td>
+						<td bgcolor="#EFFBF3">YML</td>
+						
+							<td bgcolor="#EFFBF3">CHL</td>
+						
+						<td bgcolor="#EFFBF3">
+							YCNT-0002
+							(068N/068N)<br>
+							07 (108m)
+						</td>
+						<td bgcolor="#EFFBF3">YM CONTINENT</td>
+						<td bgcolor="#EFFBF3">2025/05/09 18:00</td>
+						<td bgcolor="#EFFBF3">2025/05/10 12:00</td>
+						<td bgcolor="#EFFBF3">2025/05/11 03:00</td>
+						<td bgcolor="#EFFBF3">0 / 0 / 0</td>
+						<td bgcolor="#EFFBF3">3/3</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >2B(S)</td>
+						<td bgcolor="#EFFBF3">KMD</td>
+						
+							<td bgcolor="#EFFBF3">KMV</td>
+						
+						<td bgcolor="#EFFBF3">
+							KKLC-0037
+							(2507N/2508S)<br>
+							22 (372m)
+						</td>
+						<td bgcolor="#EFFBF3">KMTC LAEM CHABANG</td>
+						<td bgcolor="#EFFBF3">2025/05/09 17:00</td>
+						<td bgcolor="#EFFBF3">2025/05/10 11:00</td>
+						<td bgcolor="#EFFBF3">2025/05/11 05:00</td>
+						<td bgcolor="#EFFBF3">0 / 0 / 0</td>
+						<td bgcolor="#EFFBF3">/3</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >1B(S)</td>
+						<td bgcolor="#EFFBF3">EMA</td>
+						
+							<td bgcolor="#EFFBF3">KTHE</td>
+						
+						<td bgcolor="#EFFBF3">
+							CLVR-0024
+							(071N/072S)<br>
+							07 (108m)
+						</td>
+						<td bgcolor="#EFFBF3">EVER CLEVER</td>
+						<td bgcolor="#EFFBF3">2025/05/09 18:00</td>
+						<td bgcolor="#EFFBF3">2025/05/10 14:00</td>
+						<td bgcolor="#EFFBF3">2025/05/11 07:00</td>
+						<td bgcolor="#EFFBF3">0 / 0 / 0</td>
+						<td bgcolor="#EFFBF3">3/3</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+					
+					<tr align="center" bgcolor="#D9EDFA" height="35" bordercolor="#DDD9C9">
+						
+						<td bgcolor="#EFFBF3" >2B(S)</td>
+						<td bgcolor="#EFFBF3">SNK</td>
+						
+							<td bgcolor="#EFFBF3">HPS2</td>
+						
+						<td bgcolor="#EFFBF3">
+							NITR-0005
+							(2513N/2514S)<br>
+							22 (372m)
+						</td>
+						<td bgcolor="#EFFBF3">NIIGATA TRADER</td>
+						<td bgcolor="#EFFBF3">2025/05/10 18:00</td>
+						<td bgcolor="#EFFBF3">2025/05/11 10:30</td>
+						<td bgcolor="#EFFBF3">2025/05/11 21:00</td>
+						<td bgcolor="#EFFBF3">0 / 0 / 0</td>
+						<td bgcolor="#EFFBF3">2/2</td>
+						<td bgcolor="#EFFBF3">PLANNED</td>
+					</tr>
+					
+				</table>
+				<table width="100%" cellspacing="1" cellpadding="10" class="defualt">
+					<tr align="center" bgcolor="#EFEFEF" height="30" bordercolor="#DDD9C9">
+						<td width="42" bgcolor="#E6E6E6" rowspan="2"><b>비고</b></td>
+						<td width="450" bgcolor="#E6E6E6"><b>1 Berth</b></td>
+						<td width="450" bgcolor="#E6E6E6"><b>2 Berth</b></td>
+					</tr>
+					<tr align="left" bgcolor="#EFEFEF" height="50" bordercolor="#DDD9C9">
+						<td bgcolor="#EFEFEF" valign="top">
+							
+								
+								
+									
+										<b>PCBJ</b> (SNK / HPS2) : PACIFIC BEIJING (147.87/16)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>KKAK</b> (KMD / KTH) : KMTC OSAKA (172/28)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>ORDR</b> (EGH / NCS) : EVER ORDER (195/42)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>KHHB</b> (TSL / KTH) : TS KAOHSIUNG (172/28)<br>
+									
+								
+							
+								
+								
+									
+										<b>TSNA</b> (TSL / CHT) : TS TIANJIN (172/28)<br>
+									
+								
+							
+								
+								
+									
+										<b>YCNT</b> (YML / CHL) : YM CONTINENT (210/50)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>CLVR</b> (EMA / KTHE) : EVER CLEVER (172/28)<br>
+									
+								
+							
+								
+								
+							
+						</td>
+						<td bgcolor="#EFEFEF" valign="top">
+							
+								
+								
+							
+								
+								
+									
+										<b>OPTM</b> (EGH / NCS) : EVER OPTIMA (195/32)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>KKTJ</b> (KMD / KCM) : KMTC TIANJIN (222.1/34)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>CHAS</b> (EGH / KTHE) : EVER CHASTE (171.95/26)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>KKLC</b> (KMD / KMV) : KMTC LAEM CHABANG (172.2/38)<br>
+									
+								
+							
+								
+								
+							
+								
+								
+									
+										<b>NITR</b> (SNK / HPS2) : NIIGATA TRADER (146/10)<br>
+									
+								
+							
+						</td>
+					</tr>
+				</table>
+				
+			</td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<!-- ----------------------------------------------------------- -->
+<!-- ----------------- BOTTOM --------------------- -->
+<!-- ----------------------------------------------------------- -->
+<td height="50" valign="bottom">
+	
+	
+<div id="hiddenDiv" style="position:absolute;visibility:hidden; top: 0px; left: 0px;">
+	<iframe name="hiddenFrame" style="width: 0px; height: 0px"></iframe>
+</div>
+<div id="codeListDiv" style="position:absolute; z-index:1; visibility:hidden; top: 0px; left: 0px;">
+	<table width="100%" height="100%" cellpadding="0" cellspacing="1" border="0" bgcolor="#CCCCCC" class="defualt">
+		<tr align="center">
+			<td bgcolor="#FFFFFF" colspan="3" height="170">
+				<iframe name="codeList" width="100%" height="100%" frameborder="0" scrolling="yes" marginwidth="0" marginheight="0"></iframe>
+			</td>
+		</tr>
+		<tr align="center" height="20" onclick="codeListClose();"  style="cursor:hand">
+			<td class="font_white" align="center" colspan="3">
+				<b>[닫기]</b>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="loadingDiv" style="position:absolute; z-index:1; visibility:hidden; width:400px; height: 200px; top: 350px; left: 460px;">
+	<table width="100%" height="100%" bgcolor="#CCCCCC" cellspacing="5">
+		<tr align="center" bgcolor="#FFFFFF">
+			<td class="defualt" align="center" valign="middle">
+				<img src="/images/loading.gif"><br><br>
+				페이지 로딩중입니다. 잠시만 기다려 주세요.<br>
+				로딩 중에 다른 페이지로 이동할 경우 검색속도가<br> 
+				저하되오니 이점 참고하여 주시길 바랍니다.
+			</td>
+		</tr>
+	</table>	
+</div>
+
+<div id="uploadingDiv" style="position:absolute; z-index:1; visibility:hidden; width:400px; height: 200px; top: 350px; left: 460px;">
+	<table width="100%" height="100%" bgcolor="#CCCCCC" cellspacing="5">
+		<tr align="center" bgcolor="#FFFFFF">
+			<td class="defualt" align="center" valign="middle">
+				<img src="/images/loading.gif"><br><br>
+				작업을 처리중입니다. 잠시만 기다려 주세요.<br>
+				로딩 중에 다른 페이지로 이동할 경우 정상적으로 처리가 되지 않습니다.
+			</td>
+		</tr>
+	</table>	
+</div>
+
+<div id="appNoticeDetaile" style="width:500px;height:200; position:absolute; left:580px; top:77px; z-index:1; visibility:hidden; border:1; z-index:3;">
+	<table width="100%" height="100%" cellpadding="0" cellspacing="3" border="0" bgcolor="#CCCCCC" class="defualt">
+		<tr align="center" height="20">
+			<td class="font_white" align="left"><b>&nbsp;&nbsp;&nbsp;알림</b></td>
+			<td class="font_white" align="right"><b><a href="javascript:subListClose();">X</a></b>&nbsp;</td>
+		</tr>
+		<tr align="center">
+			<td bgcolor="#FFFFFF" colspan="2" valign="top">
+				<table width="100%" cellspacing="1" cellpadding="0" class="defualt">
+					<tr height="25" bgcolor="#F1F1F1">
+						<td align="center" bgcolor="#F3F1E4"><b>No</b></td>
+						<td align="center" bgcolor="#F3F1E4"><b>상세내용</b></td>
+					</tr>
+					
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

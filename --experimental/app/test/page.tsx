@@ -8,15 +8,23 @@ import { useState, useEffect } from 'react';
 interface VesselData {
   terminal: string;
   vesselName: string;
-  routeCode: string;
+  routeCode?: string;
   carrier: string;
   portInfo: string;
   arrivalTime: string;
   departureTime: string;
 }
 
+const isValidVesselName = (name: string): boolean => {
+  // 알파벳, 공백, 하이픈, 점만 허용
+  return /^[A-Za-z\s\-\.]+$/.test(name);
+};
+
 export default function TestPage() {
-  const [vessels, setVessels] = useState<VesselData[]>([]);
+  const [pncVessels, setPncVessels] = useState<VesselData[]>([]);
+  const [gwctVessels, setGwctVessels] = useState<VesselData[]>([]);
+  const [ictVessels, setIctVessels] = useState<VesselData[]>([]);
+  const [pnitVessels, setPnitVessels] = useState<VesselData[]>([]);
   const [startDate, setStartDate] = useState('20250504');
   const [endDate, setEndDate] = useState('20250511');
   const [isLoading, setIsLoading] = useState(true);
@@ -35,25 +43,85 @@ export default function TestPage() {
       formData.append('STARTDATE', start);
       formData.append('ENDDATE', end);
 
-      const response = await axios.post('/api/pnc', formData);
-      const $ = cheerio.load(response.data);
-      const newVessels: VesselData[] = [];
+      // PNC 데이터 가져오기
+      const pncResponse = await axios.post('/api/pnc', formData);
+      const $pnc = cheerio.load(pncResponse.data);
+      const newPncVessels: VesselData[] = [];
 
-      $('tbody tr').each((index, element) => {
-        const $row = $(element);
-        const vessel: VesselData = {
-          terminal: 'PNC',
-          vesselName: $row.find('td').eq(1).text().trim(),
-          routeCode: $row.find('td').eq(3).text().trim(),
-          carrier: $row.find('td').eq(4).text().trim(),
-          portInfo: $row.find('td').eq(5).find('a').text().trim(),
-          arrivalTime: $row.find('td').eq(7).text().trim(),
-          departureTime: $row.find('td').eq(8).text().trim()
-        };
-        newVessels.push(vessel);
+      $pnc('tbody tr').each((index, element) => {
+        const $row = $pnc(element);
+        const vesselName = $row.find('td').eq(1).text().trim();
+        
+        if (isValidVesselName(vesselName)) {
+          const vessel: VesselData = {
+            terminal: 'PNC',
+            vesselName,
+            routeCode: $row.find('td').eq(3).text().trim(),
+            carrier: $row.find('td').eq(4).text().trim(),
+            portInfo: $row.find('td').eq(5).find('a').text().trim(),
+            arrivalTime: $row.find('td').eq(7).text().trim(),
+            departureTime: $row.find('td').eq(8).text().trim()
+          };
+          newPncVessels.push(vessel);
+        }
       });
 
-      setVessels(newVessels);
+      // GWCT 데이터 가져오기
+      const gwctResponse = await axios.post('/api/gwct', formData);
+      const newGwctVessels: VesselData[] = gwctResponse.data.filter((vessel: VesselData) => 
+        isValidVesselName(vessel.vesselName)
+      );
+
+      // ICT 데이터 가져오기
+      const ictResponse = await axios.post('/api/ict', formData);
+      const $ict = cheerio.load(ictResponse.data);
+      const newIctVessels: VesselData[] = [];
+
+      $ict('tr[align="center"]').each((index, element) => {
+        const $row = $ict(element);
+        const vesselName = $row.find('td').eq(4).text().trim();
+        
+        if (isValidVesselName(vesselName)) {
+          const vessel: VesselData = {
+            terminal: 'ICT',
+            vesselName,
+            routeCode: $row.find('td').eq(3).text().trim().match(/\((.*?)\)/)?.[1] || '',
+            carrier: $row.find('td').eq(1).text().trim(),
+            portInfo: $row.find('td').eq(1).text().trim(),
+            arrivalTime: $row.find('td').eq(5).text().trim(),
+            departureTime: $row.find('td').eq(6).text().trim()
+          };
+          newIctVessels.push(vessel);
+        }
+      });
+
+      // PNIT 데이터 가져오기
+      const pnitResponse = await axios.post('/api/pnit', formData);
+      const $pnit = cheerio.load(pnitResponse.data);
+      const newPnitVessels: VesselData[] = [];
+
+      $pnit('tr[class^="color_"]').each((index, element) => {
+        const $row = $pnit(element);
+        const vesselName = $row.find('td').eq(5).text().trim();
+        
+        if (isValidVesselName(vesselName)) {
+          const vessel: VesselData = {
+            terminal: 'PNIT',
+            vesselName,
+            routeCode: $row.find('td').eq(3).text().trim(),
+            carrier: $row.find('td').eq(1).text().trim(),
+            portInfo: $row.find('td').eq(6).text().trim(),
+            arrivalTime: $row.find('td').eq(8).text().trim(),
+            departureTime: $row.find('td').eq(9).text().trim()
+          };
+          newPnitVessels.push(vessel);
+        }
+      });
+
+      setPncVessels(newPncVessels);
+      setGwctVessels(newGwctVessels);
+      setIctVessels(newIctVessels);
+      setPnitVessels(newPnitVessels);
     } catch (error) {
       console.error('데이터 추출 중 오류 발생:', error);
       setError('데이터를 가져오는 데 실패했습니다. 다시 시도해주세요.');
@@ -67,10 +135,38 @@ export default function TestPage() {
     await fetchData(startDate, endDate);
   };
 
+  const isMSC = (carrier: string) => {
+    return carrier.includes('MSC');
+  };
+
+  const getAllVessels = () => {
+    const allVessels = [...pncVessels, ...gwctVessels, ...ictVessels, ...pnitVessels];
+    return allVessels.sort((a, b) => {
+      const dateA = new Date(a.arrivalTime);
+      const dateB = new Date(b.arrivalTime);
+      return dateA.getTime() - dateB.getTime();
+    });
+  };
+
+  const getTerminalColor = (terminal: string) => {
+    switch (terminal) {
+      case 'PNC':
+        return 'bg-blue-100 text-blue-800';
+      case 'GWCT':
+        return 'bg-purple-100 text-purple-800';
+      case 'ICT':
+        return 'bg-pink-100 text-pink-800';
+      case 'PNIT':
+        return 'bg-emerald-100 text-emerald-800';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className="container mx-auto p-4">
       <Link href="/" className="text-blue-500 hover:underline">Home</Link>
-      <h1 className="text-2xl font-bold mb-4">PNC 터미널 선박 입출항 정보</h1>
+      <h1 className="text-2xl font-bold mb-4">터미널 선박 입출항 정보</h1>
       
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="flex items-center gap-4">
@@ -117,26 +213,33 @@ export default function TestPage() {
 
       {isLoading ? (
         <div className="text-center py-4">데이터를 불러오는 중...</div>
-      ) : vessels.length > 0 ? (
+      ) : (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-300">
             <thead>
               <tr className="bg-gray-100">
                 <th className="px-4 py-2 border">터미널</th>
                 <th className="px-4 py-2 border">선박명</th>
-                <th className="px-4 py-2 border">항로코드</th>
-                <th className="px-4 py-2 border">선사명</th>
-                <th className="px-4 py-2 border">항구정보</th>
-                <th className="px-4 py-2 border">도착시간</th>
-                <th className="px-4 py-2 border">출발시간</th>
+                <th className="px-4 py-2 border">항차</th>
+                <th className="px-4 py-2 border">선사</th>
+                <th className="px-4 py-2 border">서비스</th>
+                <th className="px-4 py-2 border">ATB(ETB)</th>
+                <th className="px-4 py-2 border">ATD(ETD)</th>
               </tr>
             </thead>
             <tbody>
-              {vessels.map((vessel, index) => (
-                <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                  <td className="px-4 py-2 border">{vessel.terminal}</td>
+              {getAllVessels().map((vessel, index) => (
+                <tr 
+                  key={index} 
+                  className={`${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} ${
+                    isMSC(vessel.carrier) ? 'bg-yellow-100' : ''
+                  }`}
+                >
+                  <td className={`px-4 py-2 border ${getTerminalColor(vessel.terminal)}`}>
+                    {vessel.terminal}
+                  </td>
                   <td className="px-4 py-2 border">{vessel.vesselName}</td>
-                  <td className="px-4 py-2 border">{vessel.routeCode}</td>
+                  <td className="px-4 py-2 border">{vessel.routeCode || '-'}</td>
                   <td className="px-4 py-2 border">{vessel.carrier}</td>
                   <td className="px-4 py-2 border">{vessel.portInfo}</td>
                   <td className="px-4 py-2 border">{vessel.arrivalTime}</td>
@@ -146,8 +249,6 @@ export default function TestPage() {
             </tbody>
           </table>
         </div>
-      ) : (
-        <div className="text-center py-4">데이터가 없습니다.</div>
       )}
     </div>
   );
