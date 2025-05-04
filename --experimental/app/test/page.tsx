@@ -15,9 +15,39 @@ interface VesselData {
   departureTime: string;
 }
 
+interface TerminalFilter {
+  PNC: boolean;
+  GWCT: boolean;
+  ICT: boolean;
+  PNIT: boolean;
+}
+
+const REFRESH_INTERVALS = [
+  { value: 30, label: '30초' },
+  { value: 60, label: '1분' },
+  { value: 600, label: '10분' },
+  { value: 1800, label: '30분' },
+  { value: 3600, label: '1시간' }
+];
+
 const isValidVesselName = (name: string): boolean => {
   // 알파벳, 공백, 하이픈, 점만 허용
   return /^[A-Za-z\s\-\.]+$/.test(name);
+};
+
+const getDayOfWeek = (dateString: string): string => {
+  const days = ['일', '월', '화', '수', '목', '금', '토'];
+  const date = new Date(dateString);
+  return days[date.getDay()];
+};
+
+const formatTime = (date: Date): string => {
+  return date.toLocaleTimeString('ko-KR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
 };
 
 export default function TestPage() {
@@ -29,10 +59,37 @@ export default function TestPage() {
   const [endDate, setEndDate] = useState('20250511');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [terminalFilter, setTerminalFilter] = useState<TerminalFilter>({
+    PNC: true,
+    GWCT: true,
+    ICT: true,
+    PNIT: true
+  });
+  const [showDayOfWeek, setShowDayOfWeek] = useState(false);
+  const [refreshInterval, setRefreshInterval] = useState(60); // 기본 1분
+  const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null);
+  const [nextRefreshTime, setNextRefreshTime] = useState<Date | null>(null);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (refreshInterval > 0) {
+      const interval = setInterval(() => {
+        fetchData();
+      }, refreshInterval * 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [refreshInterval]);
+
+  useEffect(() => {
+    if (lastRefreshTime) {
+      const nextTime = new Date(lastRefreshTime.getTime() + refreshInterval * 1000);
+      setNextRefreshTime(nextTime);
+    }
+  }, [lastRefreshTime, refreshInterval]);
 
   const fetchData = async (start = startDate, end = endDate) => {
     try {
@@ -122,6 +179,7 @@ export default function TestPage() {
       setGwctVessels(newGwctVessels);
       setIctVessels(newIctVessels);
       setPnitVessels(newPnitVessels);
+      setLastRefreshTime(new Date());
     } catch (error) {
       console.error('데이터 추출 중 오류 발생:', error);
       setError('데이터를 가져오는 데 실패했습니다. 다시 시도해주세요.');
@@ -139,8 +197,33 @@ export default function TestPage() {
     return carrier.includes('MSC');
   };
 
+  const isToday = (dateString: string) => {
+    const today = new Date();
+    const date = new Date(dateString);
+    return date.toDateString() === today.toDateString();
+  };
+
+  const getCellStyle = (vessel: VesselData, field: keyof VesselData) => {
+    if (isMSC(vessel.carrier) && ['vesselName', 'routeCode', 'carrier', 'portInfo'].includes(field)) {
+      return 'bg-yellow-200';
+    }
+    if (['arrivalTime', 'departureTime'].includes(field) && vessel[field] && isToday(vessel[field])) {
+      if (isMSC(vessel.carrier)) {
+        return 'bg-yellow-200 text-purple-600';
+      }
+      return 'bg-purple-600 text-yellow-300';
+    }
+    return '';
+  };
+
   const getAllVessels = () => {
-    const allVessels = [...pncVessels, ...gwctVessels, ...ictVessels, ...pnitVessels];
+    let allVessels: VesselData[] = [];
+    
+    if (terminalFilter.PNC) allVessels = [...allVessels, ...pncVessels];
+    if (terminalFilter.GWCT) allVessels = [...allVessels, ...gwctVessels];
+    if (terminalFilter.ICT) allVessels = [...allVessels, ...ictVessels];
+    if (terminalFilter.PNIT) allVessels = [...allVessels, ...pnitVessels];
+    
     return allVessels.sort((a, b) => {
       const dateA = new Date(a.arrivalTime);
       const dateB = new Date(b.arrivalTime);
@@ -163,10 +246,111 @@ export default function TestPage() {
     }
   };
 
+  const handleTerminalFilterChange = (terminal: keyof TerminalFilter) => {
+    setTerminalFilter(prev => ({
+      ...prev,
+      [terminal]: !prev[terminal]
+    }));
+  };
+
+  const formatDateTime = (dateString: string) => {
+    if (!showDayOfWeek) return dateString;
+    return `${dateString} (${getDayOfWeek(dateString)})`;
+  };
+
   return (
     <div className="container mx-auto p-4">
       <Link href="/" className="text-blue-500 hover:underline">Home</Link>
       <h1 className="text-2xl font-bold mb-4">터미널 선박 입출항 정보</h1>
+      
+      <div className="mb-4 p-4 bg-gray-50 rounded-lg">
+        <h2 className="text-lg font-semibold mb-2">터미널 선택</h2>
+        <div className="flex flex-wrap gap-4">
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={terminalFilter.PNC}
+              onChange={() => handleTerminalFilterChange('PNC')}
+              className="form-checkbox h-5 w-5 text-blue-600"
+            />
+            <span className="ml-2">
+              <span className={`px-2 py-1 rounded ${getTerminalColor('PNC')}`}>PNC</span>
+            </span>
+          </label>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={terminalFilter.GWCT}
+              onChange={() => handleTerminalFilterChange('GWCT')}
+              className="form-checkbox h-5 w-5 text-purple-600"
+            />
+            <span className="ml-2">
+              <span className={`px-2 py-1 rounded ${getTerminalColor('GWCT')}`}>GWCT</span>
+            </span>
+          </label>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={terminalFilter.ICT}
+              onChange={() => handleTerminalFilterChange('ICT')}
+              className="form-checkbox h-5 w-5 text-pink-600"
+            />
+            <span className="ml-2">
+              <span className={`px-2 py-1 rounded ${getTerminalColor('ICT')}`}>ICT</span>
+            </span>
+          </label>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={terminalFilter.PNIT}
+              onChange={() => handleTerminalFilterChange('PNIT')}
+              className="form-checkbox h-5 w-5 text-emerald-600"
+            />
+            <span className="ml-2">
+              <span className={`px-2 py-1 rounded ${getTerminalColor('PNIT')}`}>PNIT</span>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div className="mb-4 p-4 bg-gray-50 rounded-lg">
+        <h2 className="text-lg font-semibold mb-2">기능 설정</h2>
+        <div className="flex flex-wrap gap-4">
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={showDayOfWeek}
+              onChange={() => setShowDayOfWeek(!showDayOfWeek)}
+              className="form-checkbox h-5 w-5 text-gray-600"
+            />
+            <span className="ml-2">요일 표시 기능</span>
+          </label>
+          <div className="w-full mt-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">자동 갱신 주기</label>
+            <div className="flex flex-wrap gap-4">
+              {REFRESH_INTERVALS.map((interval) => (
+                <label key={interval.value} className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="refreshInterval"
+                    value={interval.value}
+                    checked={refreshInterval === interval.value}
+                    onChange={(e) => setRefreshInterval(Number(e.target.value))}
+                    className="form-radio h-5 w-5 text-blue-600"
+                  />
+                  <span className="ml-2">{interval.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          {lastRefreshTime && nextRefreshTime && (
+            <div className="w-full mt-4 text-sm text-gray-600">
+              <p>마지막 갱신: {formatTime(lastRefreshTime)}</p>
+              <p>다음 갱신: {formatTime(nextRefreshTime)}</p>
+            </div>
+          )}
+        </div>
+      </div>
       
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="flex items-center gap-4">
@@ -231,19 +415,29 @@ export default function TestPage() {
               {getAllVessels().map((vessel, index) => (
                 <tr 
                   key={index} 
-                  className={`${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} ${
-                    isMSC(vessel.carrier) ? 'bg-yellow-100' : ''
-                  }`}
+                  className={`${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}
                 >
                   <td className={`px-4 py-2 border ${getTerminalColor(vessel.terminal)}`}>
                     {vessel.terminal}
                   </td>
-                  <td className="px-4 py-2 border">{vessel.vesselName}</td>
-                  <td className="px-4 py-2 border">{vessel.routeCode || '-'}</td>
-                  <td className="px-4 py-2 border">{vessel.carrier}</td>
-                  <td className="px-4 py-2 border">{vessel.portInfo}</td>
-                  <td className="px-4 py-2 border">{vessel.arrivalTime}</td>
-                  <td className="px-4 py-2 border">{vessel.departureTime}</td>
+                  <td className={`px-4 py-2 border ${getCellStyle(vessel, 'vesselName')}`}>
+                    {vessel.vesselName}
+                  </td>
+                  <td className={`px-4 py-2 border ${getCellStyle(vessel, 'routeCode')}`}>
+                    {vessel.routeCode || '-'}
+                  </td>
+                  <td className={`px-4 py-2 border ${getCellStyle(vessel, 'carrier')}`}>
+                    {vessel.carrier}
+                  </td>
+                  <td className={`px-4 py-2 border ${getCellStyle(vessel, 'portInfo')}`}>
+                    {vessel.portInfo}
+                  </td>
+                  <td className={`px-4 py-2 border ${getCellStyle(vessel, 'arrivalTime')}`}>
+                    {formatDateTime(vessel.arrivalTime)}
+                  </td>
+                  <td className={`px-4 py-2 border ${getCellStyle(vessel, 'departureTime')}`}>
+                    {formatDateTime(vessel.departureTime)}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -253,4 +447,3 @@ export default function TestPage() {
     </div>
   );
 }
-
