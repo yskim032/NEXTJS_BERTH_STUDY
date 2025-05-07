@@ -4,22 +4,32 @@ import { JSDOM } from 'jsdom';
 
 export async function GET() {
   try {
-    // npmjs.com에서 HTML 데이터를 가져옵니다
-    // const response = await fetch("https://info.bct2-4.com/infoservice/index.html");
-    const response = await fetch("https://www.npmjs.com/package/puppeteer");
+
+
+    const response = await fetch("https://www.npmjs.com/package/puppeteer", {
+      headers: {
+        'Accept': 'text/html',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+      }
+    });
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const html = await response.text();
-    
-    // HTML을 콘솔에 출력
-    console.log("Fetched HTML:", html);
-    
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
+    // npmjs.com 웹사이트에서 특정 클래스명(._9ba9a726)을 가진 요소를 찾아서
+    // 그 요소의 텍스트 내용(다운로드 수 정보)을 추출합니다.
+    // ?. 연산자는 해당 요소가 없을 경우 undefined를 반환합니다.
+    const download = document.querySelector('._9ba9a726')?.textContent;
+
+    console.log("download", download);
+
     return NextResponse.json({
       success: true,
-      data: html
+      data: download || 'No download information found'
     });
 
   } catch (error) {

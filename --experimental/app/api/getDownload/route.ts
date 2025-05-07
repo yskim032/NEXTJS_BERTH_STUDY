@@ -1,18 +1,21 @@
 import { NextResponse } from 'next/server';
 // @ts-ignore
 import { JSDOM } from 'jsdom';
+import { NextRequest } from 'next/server';
 
-export async function GET() {
+export async function POST(request: NextRequest) {
   try {
-    // npmjs.com에서 HTML 데이터를 가져옵니다
-    // const response = await fetch("https://info.bct2-4.com/infoservice/index.html", {
-    //   headers: {
-    //     'Accept': 'text/html',
-    //     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    //   }
-    // });
+    const { packageName } = await request.json();
+    console.log("packageName", packageName);
 
-    const response = await fetch("https://www.npmjs.com/package/puppeteer", {
+    if (!packageName) {
+      return NextResponse.json(
+        { error: 'Package name is required' },
+        { status: 400 }
+      );
+    }
+
+    const response = await fetch(`https://www.npmjs.com/package/${packageName}`, {
       headers: {
         'Accept': 'text/html',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
@@ -20,7 +23,10 @@ export async function GET() {
     });
     
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return NextResponse.json(
+        { error: `Package not found: ${packageName}` },
+        { status: 404 }
+      );
     }
 
     const html = await response.text();

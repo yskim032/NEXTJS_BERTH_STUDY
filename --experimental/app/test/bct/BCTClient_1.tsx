@@ -1,6 +1,9 @@
 'use client';
+import { useState } from 'react';
 
 export default function BCTClient() {
+  const [downloadCount, setDownloadCount] = useState<number | null>(null);
+
   const getDownload = async () => {
     try {
       const response = await fetch('/api/getDownload');
@@ -12,11 +15,14 @@ export default function BCTClient() {
       
       if (result.success) {
         console.log('Download info:', result.data);
+        setDownloadCount(result.data);
       } else {
         console.error('Error:', result.error);
+        setDownloadCount(null);
       }
     } catch (error) {
       console.error('Error:', error);
+      setDownloadCount(null);
     }
   };
 
@@ -35,6 +41,13 @@ export default function BCTClient() {
         >
           Go
         </button>
+
+        <p className="text-sm text-black">
+          {downloadCount !== null 
+            ? `This package has ${downloadCount} downloads`
+            : 'No download data available'}
+        </p>
+
       </div>
     </div>
   );
