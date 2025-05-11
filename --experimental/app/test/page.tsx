@@ -21,6 +21,7 @@ interface TerminalFilter {
   ICT: boolean;
   PNIT: boolean;
   BCT: boolean;
+  HJNC: boolean;
 }
 
 const REFRESH_INTERVALS = [
@@ -57,6 +58,7 @@ export default function TestPage() {
   const [ictVessels, setIctVessels] = useState<VesselData[]>([]);
   const [pnitVessels, setPnitVessels] = useState<VesselData[]>([]);
   const [bctVessels, setBctVessels] = useState<VesselData[]>([]);
+  const [hjncVessels, setHjncVessels] = useState<VesselData[]>([]);
   const [startDate, setStartDate] = useState('20250504');
   const [endDate, setEndDate] = useState('20250511');
   const [isLoading, setIsLoading] = useState(true);
@@ -66,10 +68,11 @@ export default function TestPage() {
     GWCT: true,
     ICT: true,
     PNIT: true,
-    BCT: true
+    BCT: true,
+    HJNC: true
   });
   const [showDayOfWeek, setShowDayOfWeek] = useState(false);
-  const [refreshInterval, setRefreshInterval] = useState(60); // 기본 1분
+  const [refreshInterval, setRefreshInterval] = useState(600); // 기본 10분
   const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null);
   const [nextRefreshTime, setNextRefreshTime] = useState<Date | null>(null);
 
@@ -198,12 +201,62 @@ export default function TestPage() {
           departureTime: vessel.departureTime
         }));
 
-      setPncVessels(newPncVessels);
-      setGwctVessels(newGwctVessels);
-      setIctVessels(newIctVessels);
-      setPnitVessels(newPnitVessels);
-      setBctVessels(newBctVessels);
-      setLastRefreshTime(new Date());
+      // HJNC 데이터 가져오기
+      console.log('Fetching HJNC data...');
+      try {
+        const hjncResponse = await axios.post('/api/hjnc', formData);
+        console.log('HJNC raw response:', hjncResponse.data);
+
+        const newHjncVessels: VesselData[] = hjncResponse.data
+          .filter((vessel: any) => {
+            const isValid = vessel.vesselName && vessel.vesselName.trim() !== '';
+            if (!isValid) {
+              console.log('Filtered out vessel:', vessel);
+            }
+            return isValid;
+          })
+          .map((vessel: any) => {
+            const mappedVessel = {
+              terminal: 'HJNC',
+              vesselName: vessel.vesselName,
+              routeCode: vessel.routeCode,
+              carrier: vessel.carrier,
+              portInfo: vessel.portInfo,
+              arrivalTime: vessel.arrivalTime,
+              departureTime: vessel.departureTime
+            };
+            console.log('Mapped vessel:', mappedVessel);
+            return mappedVessel;
+          })
+          .filter((vessel: VesselData) => {
+            const isValid = vessel.vesselName && 
+                           vessel.routeCode && 
+                           vessel.carrier && 
+                           vessel.portInfo && 
+                           vessel.arrivalTime && 
+                           vessel.departureTime;
+            if (!isValid) {
+              console.log('Filtered out mapped vessel:', vessel);
+            }
+            return isValid;
+          });
+
+        console.log('HJNC vessels processed:', newHjncVessels.length);
+        if (newHjncVessels.length > 0) {
+          console.log('Sample HJNC vessel:', newHjncVessels[0]);
+        }
+
+        setPncVessels(newPncVessels);
+        setGwctVessels(newGwctVessels);
+        setIctVessels(newIctVessels);
+        setPnitVessels(newPnitVessels);
+        setBctVessels(newBctVessels);
+        setHjncVessels(newHjncVessels);
+        setLastRefreshTime(new Date());
+      } catch (error) {
+        console.error('Error fetching HJNC data:', error);
+        setError('HJNC 데이터를 가져오는 데 실패했습니다.');
+      }
     } catch (error) {
       console.error('데이터 추출 중 오류 발생:', error);
       setError('데이터를 가져오는 데 실패했습니다. 다시 시도해주세요.');
@@ -248,6 +301,7 @@ export default function TestPage() {
     if (terminalFilter.ICT) allVessels = [...allVessels, ...ictVessels];
     if (terminalFilter.PNIT) allVessels = [...allVessels, ...pnitVessels];
     if (terminalFilter.BCT) allVessels = [...allVessels, ...bctVessels];
+    if (terminalFilter.HJNC) allVessels = [...allVessels, ...hjncVessels];
     
     return allVessels.sort((a, b) => {
       const dateA = new Date(a.arrivalTime);
@@ -268,6 +322,8 @@ export default function TestPage() {
         return 'bg-emerald-100 text-emerald-800';
       case 'BCT':
         return 'bg-orange-100 text-orange-800';
+      case 'HJNC':
+        return 'bg-gray-100 text-gray-800';
       default:
         return '';
     }
@@ -346,6 +402,17 @@ export default function TestPage() {
             />
             <span className="ml-2">
               <span className={`px-2 py-1 rounded ${getTerminalColor('BCT')}`}>BCT</span>
+            </span>
+          </label>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={terminalFilter.HJNC}
+              onChange={() => handleTerminalFilterChange('HJNC')}
+              className="form-checkbox h-5 w-5 text-red-600"
+            />
+            <span className="ml-2">
+              <span className={`px-2 py-1 rounded ${getTerminalColor('HJNC')}`}>HJNC</span>
             </span>
           </label>
         </div>

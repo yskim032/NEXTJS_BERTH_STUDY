@@ -1,0 +1,1311 @@
+<html lang="ko_KR"><head>
+	<!-- Meta Tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,
+                height=device-height,
+                initial-scale=1,
+                minimum-scale=1,
+                shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+	
+	
+
+
+<link rel="stylesheet" href="/resources/css/common/reset.css">
+<link rel="stylesheet" href="/resources/css/common/ngel-layout.css">
+<link rel="stylesheet" href="/resources/css/common/ngel-button.css">
+<link rel="stylesheet" href="/resources/css/common/ngel-modal.css">
+<link rel="stylesheet" href="/resources/css/esvc/common.css">
+	<link rel="stylesheet" href="/resources/css/datatables/datatables.min.css">
+	<link rel="stylesheet" href="/resources/css/esvc/esvc.css">
+	<link rel="stylesheet" href="/resources/css/jquery/jquery-ui.css" type="text/css">
+
+	
+
+
+ 
+<link rel="shortcut icon" href="/resources/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/resources/favicon/favicon.ico" type="image/x-icon">
+<link rel="manifest" href="/resources/favicon/site.webmanifest">
+
+
+
+	<title>
+		선석배정현황(T)
+		&lt; 본선작업
+		&lt; HJNC
+	</title>
+
+	
+
+<script type="text/javascript" src="/resources/js/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/resources/js/jquery/jquery.twbsPagination.js"></script>
+<script type="text/javascript" src="/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/resources/js/common/TweenMax.min.js"></script>
+<script type="text/javascript" src="/resources/js/common/common.js"></script>
+<script type="text/javascript" src="/resources/js/common/ngel-modal.js"></script>
+
+
+<script type="text/javascript" src="/resources/js/print/printThis.js"></script>
+<script type="text/javascript" src="/resources/js/excel/jszip.js"></script>
+<script type="text/javascript" src="/resources/js/excel/xlsx.js"></script>
+
+<script type="text/javascript">
+    function getContextPath () {
+        return '';
+    }
+</script>
+	<script src="/resources/js/datatables/datatables.js"></script>
+</head>
+
+<body style="">
+<header>
+	
+
+
+
+<div class="top-wrap">
+	<div class="top-nav">
+		<div class="home" onclick="location.href='/'">HOME</div>
+		<div class="join">
+            			
+            
+                
+                
+                	<div>
+                    	<a href="/esvc/membership/memberInfo">회원가입</a>
+                    	
+                    </div>
+                    <div>
+	                    <a href="/esvc/membership/login">
+	                        로그인
+	                    </a>
+	                    
+                    </div>              
+                
+            
+            <div class="lang">
+				<a href="javascript: void(0);" id="lang" class="no" onclick="changeLanguage($(this).text().trim())">
+                    ENG
+                </a>
+                
+            </div>			
+        </div>
+	</div>
+</div>
+
+<div class="container">
+    <h1>
+        <a href="/esvc">
+        	<img alt="HJNC-ESERVICE" src="/resources/images/esvc/esvc_logo.jpg">
+        </a>
+    </h1>
+
+    <nav class="lnb">
+        <ul>
+            
+            
+            <li class="t-menu cntr">
+                <a href="/esvc/cntr/" class="top-menu">
+                	컨테이너 정보
+                </a>
+            </li>
+            <li class="t-menu vessel active">
+                <a href="/esvc/vessel/" class="top-menu">
+                	본선작업
+                </a>
+            </li>
+            <li class="t-menu yard">
+                <a href="/esvc/yard/" class="top-menu">
+                	야드현황
+                </a>
+            </li>
+            <li class="t-menu edocu">
+                <a href="/esvc/edocu/" class="top-menu">
+                	전자문서
+                </a>
+            </li>
+            <li class="t-menu quarantine">
+                <a href="/esvc/quarantine/" class="top-menu">
+                	검역
+                </a>
+            </li>                        
+            <li class="t-menu onDock">
+                <a href="/esvc/onDock/" class="top-menu">
+                	On-Dock
+                </a>
+            </li>
+            <li class="t-menu codeChk">
+                <a href="/esvc/codeChk/" class="top-menu">
+                	코드조회
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+<script type="text/javascript">
+
+    var SUB_LIST_ITEM_HEIGHT = 2.125;
+
+    function getRem (number) {
+        var baseFontSize = $('body').css('font-size');
+        return baseFontSize * number;
+    }
+
+    var arrayMenuHeights = [];
+    function initializeMenus () {
+        var maxMenuHeight = 0;
+
+        $('header .lnb > ul > li > a + ul').each(function (index) {
+            // Get count of list items.
+            var countItems = $(this).find('li').length;
+            // console.log('[initializeMenus] Count of list(' + index + '): ' + countItems);
+
+            // Set maximum value of counts.
+            if (countItems > maxMenuHeight) maxMenuHeight = countItems;
+
+            // Set count of items to each lists.
+            arrayMenuHeights[arrayMenuHeights.length] = countItems;
+        });
+
+        // Set height of list with window width.
+        if ($(window).width() > 991) {
+            // Reset selection of list.
+            $('header .lnb > ul > li > a')
+                .removeClass('active');
+
+            $('header .lnb > ul > li > a + ul')
+                .css('height', (maxMenuHeight * SUB_LIST_ITEM_HEIGHT) + 2.5 + 'rem')
+                .removeClass('active');
+        } else {
+            $('header .lnb > ul > li > a + ul').css('height', 0);
+        }
+    }
+
+    function changeLanguage (languageSelect) {
+        console.log('[changeLanguage] languageSelect: ' + languageSelect);
+        var newUrl = '';
+        var nowUrl = location.href;
+
+        var lang = languageSelect === 'KOR' ? 'ko' : 'en';
+        console.log('[changeLanguage] lang: ' + lang);
+
+        if (nowUrl.indexOf('?') === -1) {
+            // If parameter does not exist
+            newUrl = nowUrl + '?lang=' + lang;
+        } else {
+            // If parameters exists
+
+            if (nowUrl.indexOf('lang=') === -1) {
+                // If user never changed language.
+                newUrl = nowUrl + '&lang=' + lang;
+            } else {
+                // If user changed language.
+
+                // Replace language
+                var params_full = nowUrl.split('?');
+                var params = params_full[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    if (params[i].indexOf('lang=') !== -1) {
+                        var language = params[i].split('=');
+                        language[1] = lang;
+                        params[i] = language[0] + '=' + language[1];
+                    }
+                }
+
+                newUrl = params_full[0] + '?';
+                for (var j = 0; j < params.length; j++) {
+                    newUrl = newUrl + params[j] + '&';
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+            }
+        }
+
+        
+        location.href = newUrl;
+    }
+
+    function toggleAllMenu () {
+        console.log('[toggleAllMenu] width of window: ' + $(window).width());
+        if ($(window).width() < 992) {
+            if (!$('header .lnb').hasClass('active')) {
+                $('header .lnb').addClass('active');
+                $('#button-open-all-menu').addClass('active');
+                $('.popup-backdrop').addClass('active');
+            } else {
+                closeAllMenu();
+            }
+        }
+    }
+
+    function closeAllMenu () {
+        $('header .lnb').removeClass('active');
+        $('#button-open-all-menu').removeClass('active');
+        $('.popup-backdrop').removeClass('active');
+    }
+
+    function openSubMenu ($element) {
+        // Get index of list.
+        var $parent = $element.parent();
+        var index = $('header .lnb > ul > li').index($parent);
+        console.log('[openSubMenu] Index: ' + index);
+
+        // Initialize height of list.
+        $('header .lnb > ul > li > a + ul')
+            .removeClass('active')
+            .css('height', 0);
+
+        // Set height of list.
+        $element.siblings('ul')
+            .addClass('active')
+            .css('height', ((arrayMenuHeights[index] * SUB_LIST_ITEM_HEIGHT) + 0.75) + 'rem');
+
+        // Initialize color of $element.
+        $('header .lnb > ul > li > a')
+            .removeClass('active');
+
+        // Set color of $element.
+        $element
+            .addClass('active');
+    }
+
+    function lnbAction ($element, url) {
+        if ($(window).width() > 991) {
+            location.href = url;            	
+        } else {
+            openSubMenu($element);
+        }
+    }
+
+    $(document).ready(function () {
+
+        $('#changeMode').on('click', function () {
+            changeMode();
+        });
+
+        initializeMenus();
+
+        // modal-layer - sitemap
+        $('#btn-sitemap').click(function() {
+        	$('#sitemap').css('display','none');
+        });
+        $('.btn-close').click(function() {
+        	$('#sitemap').css('display','none');
+        });
+        
+        
+     	// header menu 및 sub menu
+        $('.t-menu').on('click', function() {
+        	$('.t-menu').removeClass('active');
+        	$(this).addClass('active');
+        	
+        	// 인덱스 값에 맞는 콘텐츠 노출
+        	var idx = $('.t-menu').index(this);
+        	
+        	console.log("idx",idx);
+        	
+        	$('.s-menu').hide();
+        	$('.s-menu').eq(idx).show();
+        });
+     	
+     	// sub menu
+        $('.s-menu ul li').on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$(this).addClass('active');
+        	
+        	var idx = $('.s-menu ul li').index(this);
+        	console.log("idx",idx);
+        });
+     	
+     	// header menu별 해당 sub menu 첫번째로 이동시     	
+        $('.t-menu').eq(0).on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$('.s-menu ul li').eq(0).addClass('active');
+        });
+        
+        $('.t-menu').eq(1).on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$('.s-menu ul li').eq(4).addClass('active');
+        });
+        
+        $('.t-menu').eq(2).on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$('.s-menu ul li').eq(11).addClass('active');
+        });
+        
+        $('.t-menu').eq(3).on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$('.s-menu ul li').eq(15).addClass('active');
+        });
+        
+        $('.t-menu').eq(4).on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$('.s-menu ul li').eq(17).addClass('active');
+        });
+        
+        $('.t-menu').eq(5).on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$('.s-menu ul li').eq(19).addClass('active');
+        });
+        
+        $('.t-menu').eq(6).on('click', function() {
+        	$('.s-menu ul li').removeClass('active');
+        	$('.s-menu ul li').eq(20).addClass('active');
+        });
+    })
+
+
+    function changeMode() {
+        location.href = "/esvc?mode=mobile";
+    }
+
+</script>
+</header>
+
+<aside class="vessel">
+	
+
+
+
+
+<nav class="snb">
+  <ul class="container">
+    <li class="s-menu cntr">
+      <ul>
+        <li class="info"><a href="/esvc/cntr/info" tabindex="-1">컨테이너 정보조회</a></li>
+        
+        <li class="location"><a href="/esvc/cntr/location" tabindex="-1">컨테이너 위치조회</a></li>
+        <li class="search"><a href="/esvc/cntr/search" tabindex="-1">컨테이너 찾기</a></li>
+        <li class=""><a href="http://aris3.hjnc.co.kr:7110/hjnc_con" target="_blank" tabindex="-1">컨테이너 이력조회<span>(21.02.17 이전 데이터)</span></a></li>
+        
+        <li class="emptyHsService"><a href="/esvc/cntr/emptyHsService" tabindex="-1">현수 정산 서비스</a></li>
+        <li class="invoiceReprint"><a href="/esvc/cntr/invoiceReprint" tabindex="-1">거래명세표 재출력 <br>및 취소</a></li>
+      </ul>
+    </li>
+    <li class="s-menu vessel active">
+      <ul>
+        <li class="vesselStatus"><a href="/esvc/vessel/vesselStatus" tabindex="-1">본선작업 현황</a></li>
+        <li class="berthScheduleT active"><a href="/esvc/vessel/berthScheduleT" tabindex="-1">선석배정현황(T)</a></li>
+        <li class="berthScheduleG"><a href="/esvc/vessel/berthScheduleG" tabindex="-1">선석배정현황(G)</a></li>
+        <li class="notInList"><a href="/esvc/vessel/notInList" tabindex="-1">미반입 목록</a></li>
+        <li class="overInList"><a href="/esvc/vessel/overInList" tabindex="-1">과반입 목록</a></li>
+        <li class="loadingList"><a href="/esvc/vessel/loadingList" tabindex="-1">선적목록 조회</a></li>
+        <li class="dischargingList"><a href="/esvc/vessel/dischargingList" tabindex="-1">양하목록 조회</a></li>
+        <li class="recontrolList"><a href="/esvc/vessel/recontrolList" tabindex="-1">재조작 목록</a></li>
+        <li class="voyageList"><a href="/esvc/vessel/voyageList" tabindex="-1">선박 항차 조회</a></li>
+        <li class="gumsuList"><a href="/esvc/vessel/gumsuList" tabindex="-1">검수 목록</a></li>
+        <li class="gumsuSummary"><a href="/esvc/vessel/gumsuSummary" tabindex="-1">검수 본선현황 Summary</a></li>        
+      </ul>
+    </li>
+    <li class="s-menu yard">
+      <ul>
+        <li class="yardMap"><a href="/esvc/yard/yardMap" tabindex="-1">야드 맵</a></li>
+        <li class="gateInOutList"><a href="/esvc/yard/gateInOutList" tabindex="-1">반출입 목록</a></li>
+        <li class="yardStatus"><a href="/esvc/yard/yardStatus" tabindex="-1">야드작업 현황</a></li>
+        <li class="cargo"><a href="/esvc/yard/cargo" tabindex="-1">장치기간 경과화물</a></li>
+        
+        <li class="earlyGateIn"><a href="/esvc/yard/earlyGateIn" tabindex="-1">선반입권 구매</a></li>
+        <li class="earlyGateInHistory"><a href="/esvc/yard/earlyGateInHistory" tabindex="-1">선반입 내역조회</a></li>
+        
+        <li class="excludeList"><a href="/esvc/yard/excludeList" tabindex="-1">화주 선반입</a></li>
+        <li class="excludeHistory"><a href="/esvc/yard/excludeHistory" tabindex="-1">화주 선반입<br>내역조회</a></li>
+
+      </ul>
+    </li>
+    <li class="s-menu edocu">
+      <ul>
+        
+        <li class="copino"><a href="/esvc/edocu/copino" tabindex="-1">COPINO 정보조회</a></li>
+        <!-- <li><a href="javascript:void(0)">CLL 접수현황</a></li> -->
+        <li class="cllReception"><a href="/esvc/edocu/cllReception" tabindex="-1">CLL 수신현황</a></li>
+        <li class="cllContrast"><a href="/esvc/edocu/cllContrast" tabindex="-1">CLL 대조</a></li>
+        <li class=""><a href="#" onclick="openEservice1()" tabindex="-1">위험물 승인목록</a></li>
+      </ul>
+    </li>
+    <li class="s-menu quarantine">
+      <ul>
+        <li class="lookup"><a href="/esvc/quarantine/lookup" tabindex="-1">검역 조회</a></li>
+        <li class="register"><a href="/esvc/quarantine/register" tabindex="-1">검역 등록</a></li>
+      </ul>
+    </li>
+    <li class="s-menu onDock">
+      <ul>
+        <li class="booking"><a href="/esvc/onDock/booking" tabindex="-1">Booking 정보 조회</a></li>
+        
+        <li class="emptyStatus"><a href="/esvc/onDock/emptyStatus" tabindex="-1">Empty 현황</a></li>
+        <li class="ptiApply"><a href="/esvc/onDock/ptiApply" tabindex="-1">PTI 신청</a></li>
+        <li class="freePool"><a href="/esvc/onDock/freePool" tabindex="-1">Free Pool Summary</a></li>
+
+
+
+      </ul>
+    </li>
+    <li class="s-menu codeChk">
+      <ul>
+        <li class="vesselCode"><a href="/esvc/codeChk/vesselCode" tabindex="-1">모선코드</a></li>
+        <li class="sLane"><a href="/esvc/codeChk/sLane" tabindex="-1">서비스 Lane</a></li>
+        <li class="portCode"><a href="/esvc/codeChk/portCode" tabindex="-1">Port 코드</a></li>
+        <li class="sizeType"><a href="/esvc/codeChk/sizeType" tabindex="-1">컨테이너 사이즈타입</a></li>
+        <li class="compCode"><a href="/esvc/codeChk/compCode" tabindex="-1">선사 코드</a></li>
+        <li class="compVoyage"><a href="/esvc/codeChk/compVoyage" tabindex="-1">선사항차입력 <br>및 조회</a></li>
+        <li class="dangerCode"><a href="/esvc/codeChk/dangerCode" tabindex="-1">위험물 코드</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <form name="linkForm" style="display: none">
+    <input type="hidden" name="screenPath">
+    <input type="hidden" name="callType">
+  </form>
+</nav>
+
+<script type="text/javascript">
+  var snbCategoryHeight = '';
+  function initializeSnbCategory () {
+    snbCategoryHeight = ((($('#select-category').find('li').length + 1) * 2)) + 'rem';
+  }
+
+  var arraySnbPagesHeights = [];
+  function initializeSnbPages () {
+    $('#select-pages > ul').each(function (index) {
+      var countItems = $(this).find('li').length;
+      // console.log('[initializeSnbPages] Count of list(' + index + '): ' + countItems);
+
+      arraySnbPagesHeights[arraySnbPagesHeights.length] = ((countItems + 1) * 2) + 'rem';
+    });
+
+    // console.log('[initializeSnbPages] arraySnbPagesHeight: ');
+    // console.log(arraySnbPagesHeights);
+  }
+
+  var snbCategoryOpened = false;
+  function openSnbCategory () {
+    closeSnbPages();
+
+    if (snbCategoryOpened) {
+      closeSnbCategory();
+    } else {
+      $('#select-category > ul > li > a')
+              .removeAttr('tabindex');
+
+      $('#select-category')
+              .addClass('active')
+              .children('ul')
+              .css('height', snbCategoryHeight);
+
+      snbCategoryOpened = true;
+    }
+  }
+
+  function closeSnbCategory () {
+    $('#select-category > ul > li > a')
+            .attr('tabindex', -1);
+
+    $('#select-category')
+            .removeClass('active')
+            .children('ul')
+            .css('height', 0);
+
+    snbCategoryOpened = false;
+  }
+
+  var snbPagesOpened = false;
+  function openSnbPages () {
+    closeSnbCategory();
+
+    if (snbPagesOpened) {
+      closeSnbPages();
+    } else {
+      $('#select-pages > ul.selected > li > a')
+              .removeAttr('tabindex');
+
+      var targetIndex = $('#select-pages > ul').index($('ul.selected'));
+      // console.log('[openSnbPages] Target list:');
+      // console.log($('#select-pages > ul.selected'));
+
+      // console.log('[openSnbPages] targetIndex = ' + targetIndex);
+
+      $('#select-pages > ul.selected')
+              .css('height', arraySnbPagesHeights[targetIndex])
+              .parent('li')
+              .addClass('active');
+      snbPagesOpened = true;
+    }
+  }
+
+  function closeSnbPages () {
+    $('#select-pages > ul.selected > li > a')
+            .attr('tabindex', -1);
+
+    $('#select-pages > ul')
+            .css('height', 0)
+            .parent('li')
+            .removeClass('active');
+
+    snbPagesOpened = false;
+  }
+
+  function selectSnbCategory (category) {
+    $('#select-pages > ul').removeClass('selected');
+    $('#select-page-' + category).addClass('selected');
+    // console.log('[selectSnbCategory] Selected list:');
+    // console.log($('#select-pages > ul.selected'));
+
+    $('#select-category > a').text($('#snb-category-' + category + ' > a').text());
+    $('#select-pages > a').text('선택');
+
+    closeSnbCategory();
+    openSnbPages();
+  }
+
+  function selectSnbPage (text, url) {
+    $('#select-pages > a').text(text);
+
+    location.href = '/' + url;
+  }
+
+  var BREADCRUMBS_CATEGORY_CODE = 'vessel';
+  var BREADCRUMBS_PAGE_TITLE = '선석배정현황(T)';
+  var pageCode = 'vessel.berthScheduleT';
+  $(function () {
+    if (pageCode !== '' && pageCode.indexOf('.') > 0) {
+      $('.t-menu.' + pageCode.split('.')[0]).addClass('active');
+      $('.s-menu.' + pageCode.split('.')[0]).addClass('active');
+      $('.' + pageCode.split('.')[1], '.s-menu.' + pageCode.split('.')[0]).addClass('active');
+    }
+    // Initialize snb tabindex.
+    $('.snb > ul > li > ul > li > a').attr('tabindex', -1);
+
+    // Initialize snb heights.
+    initializeSnbCategory();
+    initializeSnbPages();
+
+    // Initialize snb.
+    selectSnbCategory(BREADCRUMBS_CATEGORY_CODE);
+    closeSnbPages();
+    $('#select-pages > a').text(BREADCRUMBS_PAGE_TITLE);
+
+    // Close snb when all menu opened.
+    $('#button-open-all-menu').on('click', function () {
+      closeSnbCategory();
+      closeSnbPages();
+    });
+  })
+</script>
+<script>
+
+  /* $(function(){
+    var snbMenus = [
+      {snbMenu: 'vessel',
+       url: 'vessel',
+       subMenuList : [
+                '선석배정 목록',
+                '선석배정 차트',
+                '선박 항차 조회'
+              ]
+            },
+      {snbMenu: 'yard',
+       url: 'yard',
+       subMenuList : [
+                '야드1',
+                '야드2',
+                '야드3'
+              ]
+            }
+
+      ];
+
+  for(var i = 0; i < snbMenus.length; i++) {
+    console.log(location.pathname);
+  console.log('snbMenus[' + i + ']', snbMenus[i]);
+      var url = location.pathname.split('/')[1];
+      console.log('url: ', url);
+    if(snbMenus[i].url == url ) {
+      alert('이 메뉴! : ' + url);
+      alert('메뉴 생성 : ' + snbMenus[i].subMenuList );
+    }
+
+  }
+  }); */
+
+  function openEservice1() {
+    var userType = '';
+
+    if(true/*(userType == 'SHP') || (userType == 'ADM')*/) {
+      var form = document.linkForm;
+
+      var screenPath = 'dgapprovallist';
+
+      form.setAttribute("charset", "UTF-8");
+      form.setAttribute("method", "Post"); // Get 또는 Post 입력
+      form.setAttribute("action", "https://e-service.hjnc.co.kr/webip/rest/policy/ssologin");
+
+      form.screenPath.value = screenPath;
+
+      if(screenPath != ""){
+
+        form.callType.value = 'biz';
+        form.target = "gwctApp";
+      } else{
+
+        form.callType.value = 'main';
+        form.target = "gwctNewWin";
+      }
+
+      form.target = "_blank";
+
+      //alert(form.screenPath.value);
+
+      form.submit();
+    } else {
+
+      alert('해당 기능은 선사만 사용 가능합니다.');
+      window.history.go(0);
+    }
+
+  }
+
+</script>
+</aside>
+
+<!-- sitemap modal -->
+<div id="sitemap">
+	<div class="content">
+		<h1>한진부산컨테이너터미널 전체메뉴</h1>
+		<div class="btn-close">x</div>
+		<div class="menu-list">
+			<div class="menu">
+				<h2>회사소개</h2>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/overview');">CEO 인사말</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/ideology');">회사비전(경영이념)</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/history');">연혁</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/organization');">조직도</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/location');">찾아오시는 길</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/ci');">CI &amp; SLOGAN</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/customer');">주요고객선사</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/intro/recruit');">채용정보</a></li>
+				</ul>
+			</div>
+			<div class="menu">
+				<h2>터미널 특징</h2>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/terminal/feature');">터미널 특징</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/terminal/special');">특화시스템</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/terminal/facility');">시설현황</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/terminal/equipment');">장비현황</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/terminal/portLocation');">항만위치도</a></li>
+				</ul>
+			</div>
+			<div class="menu">
+				<h2>홍보센터</h2>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/promote/prVideo');">홍보센터</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/promote/gallery');">포토갤러리</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/promote/brochure');">ONLINE BROCHURE</a></li>
+				</ul>
+			</div>
+			<div class="menu">
+				<h2>고객마당</h2>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/board/notice');">공지사항</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/board/voice');">고객의 소리</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/board/data');">자료실</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/board/relation');">관련 사이트</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/board/contact');">담당자 연락처</a></li>
+					<li><a href="javascript:void(0)" onclick="lnbAction($(this), '/board/welfare');">복리후생</a></li>
+				</ul>
+			</div>
+			<div class="menu">
+				<h2><a href="javascript:void(0)">정보조회서비스</a></h2>
+			</div>
+		</div>
+	</div>
+	<div class="modal_layer"></div>
+</div>
+
+<div id="body" class="vessel-vesselAssign">
+	
+
+
+
+<div id="page-title" class="container">
+    <nav id="breadcrumbs">
+        <ul>
+            <li class="breadcrumbs-home">
+                <a href="/">
+                    <img alt="HOME" src="/resources/images/ic_home.png">
+                </a>
+            </li>
+            <li>
+                <a href="/vessel">
+                    본선작업
+                </a>
+            </li>
+            <li>
+                <span>
+                    선석배정현황(T)
+                </span>
+            </li>
+        </ul>
+    </nav>
+
+    <h1 class="page-title">
+        선석배정현황(T)
+    </h1>
+
+    
+    
+        <p class="page-context">
+            한진부산컨테이너터미널의 선석배정현황입니다.<br>한진부산컨테이너터미널은 통합물류 시스템을 구축하여 신속하고 정확한 정보 전달과 하역 서비스 제공에 주력하고 있습니다.
+        </p>
+    
+</div>
+	
+
+
+
+<section class="vesselAssign">
+    <article class="container">
+        <div class="search-area">
+            <div class="area">
+                <div>
+                    <div class="label">조회기간</div>
+                    
+                    <input type="radio" name="chkPeriod" value="d7" checked=""> 일주일
+                    <input type="radio" name="chkPeriod" value="m1"> 한달
+                    <input type="radio" name="chkPeriod" value="mm"> 직접입력
+                    <select id="selStartYear" class="type4 ml selDate" disabled="disabled"><option value="2024">2024년</option><option value="2025">2025년</option><option value="2026">2026년</option></select>
+                    <select id="selStartMonth" class="type4 selDate" disabled="disabled"><option value="01">1월</option><option value="02">2월</option><option value="03">3월</option><option value="04">4월</option><option value="05">5월</option><option value="06">6월</option><option value="07">7월</option><option value="08">8월</option><option value="09">9월</option><option value="10">10월</option><option value="11">11월</option><option value="12">12월</option></select>
+                    <select id="selStartDate" class="type4 selDate" disabled="disabled"><option value="01">1일</option><option value="02">2일</option><option value="03">3일</option><option value="04">4일</option><option value="05">5일</option><option value="06">6일</option><option value="07">7일</option><option value="08">8일</option><option value="09">9일</option><option value="10">10일</option><option value="11">11일</option><option value="12">12일</option><option value="13">13일</option><option value="14">14일</option><option value="15">15일</option><option value="16">16일</option><option value="17">17일</option><option value="18">18일</option><option value="19">19일</option><option value="20">20일</option><option value="21">21일</option><option value="22">22일</option><option value="23">23일</option><option value="24">24일</option><option value="25">25일</option><option value="26">26일</option><option value="27">27일</option><option value="28">28일</option><option value="29">29일</option><option value="30">30일</option><option value="31">31일</option></select>
+                    ~
+                    <select id="selEndYear" class="type4 selDate" disabled="disabled"><option value="2024">2024년</option><option value="2025">2025년</option><option value="2026">2026년</option></select>
+                    <select id="selEndMonth" class="type4 selDate" disabled="disabled"><option value="01">1월</option><option value="02">2월</option><option value="03">3월</option><option value="04">4월</option><option value="05">5월</option><option value="06">6월</option><option value="07">7월</option><option value="08">8월</option><option value="09">9월</option><option value="10">10월</option><option value="11">11월</option><option value="12">12월</option></select>
+                    <select id="selEndDate" class="type4 selDate" disabled="disabled"><option value="01">1일</option><option value="02">2일</option><option value="03">3일</option><option value="04">4일</option><option value="05">5일</option><option value="06">6일</option><option value="07">7일</option><option value="08">8일</option><option value="09">9일</option><option value="10">10일</option><option value="11">11일</option><option value="12">12일</option><option value="13">13일</option><option value="14">14일</option><option value="15">15일</option><option value="16">16일</option><option value="17">17일</option><option value="18">18일</option><option value="19">19일</option><option value="20">20일</option><option value="21">21일</option><option value="22">22일</option><option value="23">23일</option><option value="24">24일</option><option value="25">25일</option><option value="26">26일</option><option value="27">27일</option><option value="28">28일</option><option value="29">29일</option><option value="30">30일</option><option value="31">31일</option></select>
+                </div>
+            </div>
+            <div class="area">
+                <div>
+                    <div class="label">정렬기준</div>
+                    <input type="radio" name="sort" value="ETB" checked=""> 입항예정일시
+                    <input type="radio" name="sort" value="BERTH_NO"> 선석
+                </div>
+                <div class="ml4">
+                    <div class="label">항로</div>
+                    <input id="searchRoute" type="text" class="type4 uppercase" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9\s]/g,'');">
+                </div>
+                <div class="ml5">
+                    <div class="label">선사</div>
+                    <input id="searchOper" type="text" class="type1 uppercase" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9\s]/g,'');">
+                </div>
+                <div class="btn-list">
+                    <button id="btnSearch" class="btn search">조회</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="boardTop-wrap">
+            <div class="total">Page [<span class="page">1</span>/<span class="totalPages">1</span>] Total : <span class="totalElements">25</span></div>
+            <div class="btn-set">
+                
+                <div class="btn excel">엑셀</div>
+            </div>
+            <div id="searchAmountBox">
+                <select id="searchAmount">
+                    <option value="50" selected=""> 50건</option>
+                    <option value="100"> 100건</option>
+                    <option value="500"> 500건</option>
+                    <option value="1000">1000건</option>
+                </select>
+            </div>
+        </div>
+        <div class="table-wrap">
+            <div class="state-wrap">
+                <div class="date">조회기간: <span id="spStartDate">2025-05-10</span> ~ <span id="spEndDate">2025-05-16</span></div>
+                <div class="state-list">
+                    <div class="box bg-blue7"></div>
+                    <div>예정</div>
+                    <div class="box bg-orange"></div>
+                    <div>작업중</div>
+                    <div class="box bg-green"></div>
+                    <div>완료</div>
+                </div>
+            </div>
+            <div id="pdfWrap">
+                <div id="tblMaster_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1540px; padding-right: 0px;"><table class="common-table dataTable no-footer" role="grid" style="margin-left: 0px; width: 1540px;"><caption class="blind">선석배정 목록</caption><thead>
+                    <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 26px;">번호</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 26px;">선석</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 46px;">항로</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 123px;">모선항차</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 150px;">선박명</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 117px;">선사항차</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 26px;">접안</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 38px;">선사</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">입항일시</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">출항일시</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">작업 시작일시</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">작업 완료일시</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 81px;">반입 마감일시</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 37px;">양하</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 37px;">선적</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 29px;">S/H</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 27px;">전배</th></tr></thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="tblMaster" class="common-table dataTable no-footer" role="grid" style="width: 1525px; position: static; zoom: 1;"><thead>
+                    <tr role="row" style="height: 0px;"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 26px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">번호</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 26px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">선석</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 46px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">항로</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 123px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">모선항차</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">선박명</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 117px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">선사항차</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 26px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">접안</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 38px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">선사</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">입항일시</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">출항일시</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">작업 시작일시</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 122px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">작업 완료일시</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 81px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">반입 마감일시</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 37px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">양하</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 37px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">선적</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 29px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">S/H</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 27px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">전배</div></th></tr></thead>
+                    
+                    
+                    <tbody>
+                    <tr class="done odd" role="row"><td>1</td><td>3B</td><td><a href="javascript:lanePort('FE2/JYHX-2025-0002');">FE2</a></td><td>JYHX-2025-0002</td><td>AL JMELIYAH</td><td>030E-030E</td><td>S</td><td>HLC</td><td>2025-05-09 15:25</td><td>2025-05-10 16:00</td><td>2025-05-09 15:25</td><td>2025-05-10 14:49</td><td></td><td>2975</td><td>23</td><td>116</td><td></td></tr><tr class="done even" role="row"><td>2</td><td>2B</td><td><a href="javascript:lanePort('PN3E/YMMU-2025-0002');">PN3E</a></td><td>YMMU-2025-0002</td><td>YM MUTUALITY</td><td>106E-106E</td><td>S</td><td>YML</td><td>2025-05-10 00:00</td><td>2025-05-10 21:00</td><td>2025-05-10 00:00</td><td>2025-05-10 19:49</td><td></td><td>102</td><td>1161</td><td>0</td><td></td></tr><tr class="done odd" role="row"><td>3</td><td>1B</td><td><a href="javascript:lanePort('SIS2/BJBG-2025-0002');">SIS2</a></td><td>BJBG-2025-0002</td><td>BEIJING BRIDGE</td><td>2502W-2502W</td><td>S</td><td>HAS</td><td>2025-05-10 01:00</td><td>2025-05-10 21:00</td><td>2025-05-10 02:00</td><td>2025-05-10 20:55</td><td></td><td>861</td><td>500</td><td>8</td><td></td></tr><tr class="work even" role="row"><td>4</td><td>4B</td><td><a href="javascript:lanePort('PS6W/HOOP-2025-0003');">PS6W</a></td><td>HOOP-2025-0003</td><td>HMM OPAL</td><td>004W-004W</td><td>S</td><td>HMM</td><td>2025-05-10 22:25</td><td>2025-05-12 01:00</td><td>2025-05-10 22:25</td><td></td><td></td><td>820</td><td>938</td><td>454</td><td></td></tr><tr class="work odd" role="row"><td>5</td><td>2B</td><td><a href="javascript:lanePort('BH3/BIGE-2025-0018');">BH3</a></td><td>BIGE-2025-0018</td><td>BIG GEORGE</td><td>25020W-25020W</td><td>S</td><td>BEN</td><td>2025-05-10 22:45</td><td>2025-05-11 17:00</td><td>2025-05-10 23:38</td><td></td><td></td><td>613</td><td>740</td><td>0</td><td></td></tr><tr class="work even" role="row"><td>6</td><td>1B</td><td><a href="javascript:lanePort('AIS/KKNH-2025-0003');">AIS</a></td><td>KKNH-2025-0003</td><td>KMTC NHAVA SHEVA</td><td>2503W-2503W</td><td>P</td><td>KMD</td><td>2025-05-11 01:37</td><td>2025-05-11 13:00</td><td>2025-05-11 01:37</td><td></td><td></td><td>410</td><td>607</td><td>0</td><td></td></tr><tr class="plan odd" role="row"><td>7</td><td>1B</td><td><a href="javascript:lanePort('PNSW/SMPL-2025-0006');">PNSW</a></td><td>SMPL-2025-0006</td><td>SM PORTLAND</td><td>2502W-2502W</td><td>P</td><td>SML</td><td>2025-05-11 15:00</td><td>2025-05-11 22:00</td><td></td><td></td><td></td><td>368</td><td>49</td><td>138</td><td></td></tr><tr class="plan even" role="row"><td>8</td><td>2B</td><td><a href="javascript:lanePort('JVH/OSWR-2025-0005');">JVH</a></td><td>OSWR-2025-0005</td><td>SWAN RIVER BRIDGE</td><td>110S-110S</td><td>S</td><td>ONE</td><td>2025-05-11 19:00</td><td>2025-05-12 04:00</td><td></td><td></td><td></td><td>160</td><td>343</td><td>0</td><td></td></tr><tr class="plan odd" role="row"><td>9</td><td>1B</td><td><a href="javascript:lanePort('MS2W/YMEG-2025-0002');">MS2W</a></td><td>YMEG-2025-0002</td><td>YM WELLBEING</td><td>032W-032W</td><td>P</td><td>YML</td><td>2025-05-12 00:00</td><td>2025-05-12 23:00</td><td></td><td></td><td></td><td>0</td><td>3095</td><td>0</td><td></td></tr><tr class="plan even" role="row"><td>10</td><td>3B</td><td><a href="javascript:lanePort('MD1/YWLS-2025-0001');">MD1</a></td><td>YWLS-2025-0001</td><td>YM WHOLESOME</td><td>045W-045W</td><td>S</td><td>YML</td><td>2025-05-12 03:00</td><td>2025-05-13 17:00</td><td></td><td></td><td></td><td>4410</td><td>1041</td><td>12</td><td></td></tr><tr class="plan odd" role="row"><td>11</td><td>2B</td><td><a href="javascript:lanePort('BTX/YONS-2025-0011');">BTX</a></td><td>YONS-2025-0011</td><td>YONG SHUN</td><td>25017E-25017E</td><td>S</td><td>BEN</td><td>2025-05-12 22:00</td><td>2025-05-13 12:00</td><td></td><td></td><td></td><td>300</td><td>645</td><td>8</td><td></td></tr><tr class="plan even" role="row"><td>12</td><td>1B</td><td><a href="javascript:lanePort('MD1/YWID-2025-0002');">MD1</a></td><td>YWID-2025-0002</td><td>YM WIND</td><td>030E-031W</td><td>S</td><td>YML</td><td>2025-05-13 01:00</td><td>2025-05-14 12:00</td><td></td><td></td><td></td><td>2864</td><td>1285</td><td>88</td><td></td></tr><tr class="plan odd" role="row"><td>13</td><td>2B</td><td><a href="javascript:lanePort('JVH/OQPR-2025-0006');">JVH</a></td><td>OQPR-2025-0006</td><td>PEARL RIVER BRIDGE</td><td>213S-213S</td><td>S</td><td>ONE</td><td>2025-05-13 17:00</td><td>2025-05-14 06:00</td><td></td><td></td><td></td><td>163</td><td>426</td><td>0</td><td></td></tr><tr class="plan even" role="row"><td>14</td><td>4B</td><td><a href="javascript:lanePort('PNSE/SMQT-2025-0006');">PNSE</a></td><td>SMQT-2025-0006</td><td>SM QINGDAO</td><td>2503E-2503E</td><td>S</td><td>SML</td><td>2025-05-13 19:00</td><td>2025-05-14 10:00</td><td></td><td></td><td></td><td>246</td><td>598</td><td>0</td><td></td></tr><tr class="plan odd" role="row"><td>15</td><td>3B</td><td><a href="javascript:lanePort('MSX/GCMT-2025-0010');">MSX</a></td><td>GCMT-2025-0010</td><td>GRACE MERCHANT</td><td>2515W-2516E</td><td>S</td><td>HAS</td><td>2025-05-13 23:00</td><td>2025-05-14 06:00</td><td></td><td></td><td></td><td>10</td><td>100</td><td>0</td><td></td></tr><tr class="plan even" role="row"><td>16</td><td>2B</td><td><a href="javascript:lanePort('JK2/OICL-2025-0014');">JK2</a></td><td>OICL-2025-0014</td><td>CONSILIA</td><td>158W-160E</td><td>S</td><td>ONE</td><td>2025-05-14 08:00</td><td>2025-05-14 20:00</td><td></td><td></td><td></td><td>368</td><td>500</td><td>0</td><td></td></tr><tr class="plan odd" role="row"><td>17</td><td>4B</td><td><a href="javascript:lanePort('CPXW/SMKY-2025-0007');">CPXW</a></td><td>SMKY-2025-0007</td><td>SM KWANGYANG</td><td>2503W-2503W</td><td>S</td><td>SML</td><td>2025-05-14 12:00</td><td>2025-05-15 04:00</td><td></td><td></td><td></td><td>628</td><td>400</td><td>84</td><td></td></tr><tr class="plan even" role="row"><td>18</td><td>1B</td><td><a href="javascript:lanePort('PNIT/OSEY-2025-0001');">PNIT</a></td><td>OSEY-2025-0001</td><td>SEASPAN BEAUTY</td><td>2504W-2504W</td><td>S</td><td>ONE</td><td>2025-05-14 14:00</td><td>2025-05-15 14:00</td><td></td><td></td><td></td><td>1607</td><td>700</td><td>378</td><td></td></tr><tr class="plan odd" role="row"><td>19</td><td>2B</td><td><a href="javascript:lanePort('CPXE/SMYT-2025-0006');">CPXE</a></td><td>SMYT-2025-0006</td><td>SM YANTIAN</td><td>2503E-2503E</td><td>S</td><td>SML</td><td>2025-05-14 22:00</td><td>2025-05-15 17:00</td><td></td><td></td><td></td><td>77</td><td>1400</td><td>0</td><td></td></tr><tr class="plan even" role="row"><td>20</td><td>4B</td><td><a href="javascript:lanePort('BCT/TIXH-2025-0001');">BCT</a></td><td>TIXH-2025-0001</td><td>TIAN XIANG HE</td><td>150S-150S</td><td>S</td><td>COS</td><td>2025-05-15 06:00</td><td>2025-05-16 02:00</td><td></td><td></td><td></td><td>700</td><td>700</td><td>0</td><td></td></tr><tr class="plan odd" role="row"><td>21</td><td>1B</td><td><a href="javascript:lanePort('AHX/OKLZ-2025-0004');">AHX</a></td><td>OKLZ-2025-0004</td><td>KALAMAZOO</td><td>050W-050W</td><td>S</td><td>ONE</td><td>2025-05-15 12:00</td><td>2025-05-15 23:00</td><td></td><td></td><td></td><td>391</td><td>350</td><td>4</td><td></td></tr><tr class="plan even" role="row"><td>22</td><td>2B</td><td><a href="javascript:lanePort('PNSW/SCLK-2025-0007');">PNSW</a></td><td>SCLK-2025-0007</td><td>KOTA LUKIS</td><td>2503W-2503W</td><td>S</td><td>SML</td><td>2025-05-15 20:00</td><td>2025-05-16 06:00</td><td></td><td></td><td></td><td>357</td><td>17</td><td>30</td><td></td></tr><tr class="plan odd" role="row"><td>23</td><td>1B</td><td><a href="javascript:lanePort('EC4E/OCNT-2025-0002');">EC4E</a></td><td>OCNT-2025-0002</td><td>CONTI CONTESSA</td><td>019W-019W</td><td>S</td><td>ONE</td><td>2025-05-16 01:00</td><td>2025-05-17 01:00</td><td></td><td></td><td></td><td>2097</td><td>1200</td><td>204</td><td></td></tr><tr class="plan even" role="row"><td>24</td><td>3B</td><td><a href="javascript:lanePort('BNX/SCSH-2025-0017');">BNX</a></td><td>SCSH-2025-0017</td><td>SCO SHANGHAI</td><td>25019E-25019E</td><td>S</td><td>BEN</td><td>2025-05-16 04:00</td><td>2025-05-16 16:00</td><td></td><td></td><td></td><td>200</td><td>200</td><td>0</td><td></td></tr><tr class="plan odd" role="row"><td>25</td><td>3B</td><td><a href="javascript:lanePort('FE3/HODU-2025-0001');">FE3</a></td><td>HODU-2025-0001</td><td>HMM DUBLIN</td><td>016W-016W</td><td>S</td><td>HMM</td><td>2025-05-16 19:00</td><td>2025-05-18 07:00</td><td></td><td></td><td></td><td>1500</td><td>3100</td><td>0</td><td></td></tr></tbody>
+                </table></div><div class="dataTables_scrollFoot" style="overflow: hidden; border: 0px; width: 100%;"><div class="dataTables_scrollFootInner"><table class="common-table dataTable no-footer" role="grid" style="margin-left: 0px;"><tfoot></tfoot></table></div></div></div></div>
+            </div>
+        </div>
+    </article>
+
+    <div class="button-wrap text-center">
+        <nav aria-label="Page navigation example">
+            <ul id="pagination" class="pagination justify-content-center"><li class="page-item first disabled"><a href="#" class="page-link">&lt;&lt;</a></li><li class="page-item prev disabled"><a href="#" class="page-link">&lt;</a></li><li class="page-item active"><a href="#" class="page-link">1</a></li><li class="page-item next disabled"><a href="#" class="page-link">&gt;</a></li><li class="page-item last disabled"><a href="#" class="page-link">&gt;&gt;</a></li></ul>
+        </nav>
+    </div>
+</section>
+
+<div class="port-modal" id="portPopup">
+    <div class="content-wrap">
+        <div class="content" style="line-height: 160%">
+            <div class="title">항로: <span id="txtPortRotationTitle" class="txt-blue"></span></div>
+            <div class="table-wrap">
+                <div id="tblMaster2_wrapper" class="dataTables_wrapper no-footer"><table id="tblMaster2" class="common-table dataTable no-footer" role="grid">
+                    <colgroup>
+                        <col width="50%">
+                        <col width="50%">
+                    </colgroup>
+                    <thead>
+                    <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 0px;">Port Code</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 0px;">Port Name</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr class="odd"><td valign="top" colspan="2" class="dataTables_empty">검색된 결과가 없습니다.</td></tr></tbody>
+                </table></div>
+            </div>
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn confirm" onclick="closePopup()">닫기</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal_layer"></div>
+</div>
+
+<script type="text/javascript">
+    var $table;
+    var $table2;
+
+    $(function () {
+        initParam();
+
+        $table = $('#tblMaster').DataTable({
+            paging: false,
+            searching: false,
+            ordering: false,
+            info: false,
+            scrollX: true,
+            scrollCollapse: true,
+            columns: [
+                {title: '번호', data: 'RNUM'},
+                {title: '선석', data: 'BERTH_NO'},
+                {
+                    title: '항로',
+                    data: 'OUT_LANE',
+                    render: function (data, type, row, meta) {
+                        let returnData = '<a href="javascript:lanePort(\'' + row.OUT_LANE + '/' + row.VOY_NO + '\');">' + data + '</a>';
+                        return returnData;
+                    }
+                },
+                {title: '모선항차', data: 'VOY_NO'},
+                {title: '선박명', data: 'VSL_NM'},
+                {title: '선사항차', data: 'OPR_VOY'},
+                {title: '접안', data: 'ALONGSIDE'},
+                {title: '선사', data: 'PTNR_CODE'},
+                {title: '입항일시', data: 'ATA'},
+                {title: '출항일시', data: 'ATD'},
+                {title: '작업 시작일시', data: 'ATW'},
+                {title: '작업 완료일시', data: 'ATC'},
+                {title: '반입 마감일시', data: 'YARD_CLOSE'},
+                {title: '양하', data: 'DIS_QTY'},
+                {title: '선적', data: 'LOAD_QTY'},
+                {title: 'S/H', data: 'SHIFT_QTY'},
+                {title: '전배', data: 'MOVE_TMNL'}
+            ],
+            language: {
+                emptyTable: "검색된 결과가 없습니다."
+            },
+            createdRow: function (row, data, dataIndex) {
+                $(row).addClass(data.STATUS);
+            }
+        });
+
+        $table2 = $('#tblMaster2').DataTable({
+            paging: false,
+            searching: false,
+            ordering: false,
+            info: false,
+            scrollX: false,
+            scrollCollapse: true,
+            columns: [
+                {title: 'Port Code', data: 'UN_LOCATION'},
+                {title: 'Port Name', data: 'PORT_NM'}
+            ],
+            language: {
+                emptyTable: "검색된 결과가 없습니다."
+            }
+        });
+
+        $('.search-area input:radio[name="chkPeriod"]').on('change', onChangeChkPeriod);
+
+        $('#selStartMonth').on('change', function () {
+            var curDate = $('#selStartDate').val();
+            setDateCombo($('#selStartDate'), $('#selStartYear').val(), $('#selStartMonth').val(), curDate);
+        });
+
+        $('#selEndMonth').on('change', function () {
+            var curDate = $('#selEndDate').val();
+            setDateCombo($('#selEndDate'), $('#selEndYear').val(), $('#selEndMonth').val(), curDate);
+        });
+
+        $('#btnSearch').on('click', function () {
+            search(1);
+        });
+
+        $('#searchAmount').on('change', function () {
+            search(1);
+        });
+
+        $('#pagination').twbsPagination({
+            totalPages: '1',
+            visiblePages: 10,
+            startPage: 1,
+            onPageClick: function (event, page) {
+                search(page);
+            }
+        });
+
+        $('.btn.excel').on('click', function (e) {
+            downloadBerthSchedule();
+        });
+
+        /*$('.btn.print').on('click', function(e) {
+            pdfBerthSchedule();
+        });*/
+
+        search(1);
+
+    });
+
+    function lanePort(row) {
+        //console.log(row);
+        var portLane = row.split('/')[0];
+        var vslCode = row.split('/')[1].split('-')[0];
+        var callYear = row.split('/')[1].split('-')[1];
+        var callSeq = row.split('/')[1].split('-')[2];
+        actionSubmit({
+            url: '/esvc/vessel/berthScheduleT/portrotationPopup',
+            method: 'GET',
+            data: {
+                portLane: portLane,
+                vslCode: vslCode,
+                callYear: callYear,
+                callSeq: callSeq,
+                startDate: $('#selStartYear').val() + '-' + $('#selStartMonth').val() + '-' + $('#selStartDate').val(),
+                endDate: $('#selEndYear').val() + '-' + $('#selEndMonth').val() + '-' + $('#selEndDate').val(),
+                dateType: $('input[name="chkPeriod"]:checked').val() == 'd7' ? 'week' : null
+            },
+            success: function (result) {
+                $('#txtPortRotationTitle').text(portLane);
+                if ($table2.data().count() > 0) {
+                    $table2.rows().remove().draw(false);
+                }
+                $table2.rows.add(JSON.parse(result.portrotation)).draw();
+
+                /*var podList = result.podInfo;
+                for(var i = 0; i < podList.length; i++) {
+                    $('#txtPOD').append('<span style="display: inline-block; width: 20%">' + ( i === podList.length - 1 ? podList[i].POD : podList[i].POD + ',') + '</span>');
+                }*/
+                $('#portPopup').css('display', 'block');
+            }
+        });
+        // $('#portPopup').css('display','block');
+    }
+
+    function search(page) {
+        var target = $('#tblMaster');
+        target.setLoading();
+        $('#spStartDate').text($('#selStartYear').val() + '-' + $('#selStartMonth').val() + '-' + $('#selStartDate').val());
+        $('#spEndDate').text($('#selEndYear').val() + '-' + $('#selEndMonth').val() + '-' + $('#selEndDate').val());
+
+        //console.log($('input[name="chkPeriod"]:checked').val());
+
+        actionSubmit({
+            url: '/esvc/vessel/berthScheduleT/data',
+            method: 'GET',
+            data: {
+                startDate: $('#selStartYear').val() + '-' + $('#selStartMonth').val() + '-' + $('#selStartDate').val(),
+                endDate: $('#selEndYear').val() + '-' + $('#selEndMonth').val() + '-' + $('#selEndDate').val(),
+                sort: $('.search-area input:radio[name="sort"]:checked').val(),
+                dateType: $('input[name="chkPeriod"]:checked').val() == 'd7' ? 'week' : null,
+                route: $('#searchRoute').val(),
+                oper: $('#searchOper').val(),
+                amount: $('#searchAmount').val(),
+                page: page || 1
+            },
+            success: function (result) {
+                amount = $('#searchAmount').val();
+
+                if ($table.data().count() > 0) {
+                    $table.rows().remove().draw(false);
+                }
+                $table.rows.add(JSON.parse(result.stringContent)).draw();
+
+                var totalPage = result.total > amount ? Math.ceil((result.total / amount) - 1) + 1 : 1;
+                $('span.page').text(result.pageable.page);
+                $('span.totalPages').text(totalPage);
+                $('span.totalElements').text(numberWithCommas(result.total));
+
+                $('#pagination').twbsPagination('changeTotalPages', totalPage, result.pageable.page);
+                target.setLoading(false);
+            },
+            error: function (error) {
+                console.log(error);
+                target.setLoading(false);
+            }
+        });
+    }
+
+    /*function pdfBerthSchedule() {
+        var data = $('#pdfWrap .dataTables_scrollHeadInner').html();
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200){
+
+                var filename = "";
+                var disposition = xhr.getResponseHeader('Content-Disposition');
+                if (disposition && disposition.indexOf('attachment') !== -1) {
+                    var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                    var matches = filenameRegex.exec(disposition);
+                    if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+                }
+
+                if(navigator.msSaveOrOpenBlob) {
+                    navigator.msSaveOrOpenBlob(this.response, filename)
+                } else {
+                    //this.response is what you're looking for
+                    //console.log(this.response, typeof this.response);
+                    var a = document.createElement("a");
+                    var url = URL.createObjectURL(this.response)
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                }
+            }
+        };
+
+        xhr.open('POST', '/esvc/vessel/berthScheduleT/pdf');
+		xhr.responseType = 'blob'; // !!필수!!
+		xhr.setRequestHeader("Content-Type", "text/html;charset=UTF-8");
+		xhr.send(JSON.stringify(data));
+	}*/
+
+    function downloadBerthSchedule() {
+        var param = {
+            startDate: $('#selStartYear').val() + '-' + $('#selStartMonth').val() + '-' + $('#selStartDate').val(),
+            endDate: $('#selEndYear').val() + '-' + $('#selEndMonth').val() + '-' + $('#selEndDate').val(),
+            sort: $('.search-area input:radio[name="sort"]:checked').val(),
+            dateType: $('input[name="chkPeriod"]:checked').val() == 'd7' ? 'week' : null
+        };
+
+        actionSubmit({
+            url: '/esvc/vessel/berthScheduleT/countExcelRows',
+            method: 'GET',
+            data: param,
+            async: false,
+            success: function (result) {
+                if (result) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+
+                            var filename = "";
+                            var disposition = xhr.getResponseHeader('Content-Disposition');
+                            if (disposition && disposition.indexOf('attachment') !== -1) {
+                                var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                var matches = filenameRegex.exec(disposition);
+                                if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+                            }
+
+                            if (navigator.msSaveOrOpenBlob) {
+                                navigator.msSaveOrOpenBlob(this.response, filename)
+                            } else {
+                                //this.response is what you're looking for
+                                //console.log(this.response, typeof this.response);
+                                var a = document.createElement("a");
+                                var url = URL.createObjectURL(this.response)
+                                a.href = url;
+                                a.download = filename;
+                                document.body.appendChild(a);
+                                a.click();
+                                window.URL.revokeObjectURL(url);
+                            }
+                        }
+                    };
+
+                    xhr.open('POST', '/esvc/vessel/berthScheduleT/download');
+                    xhr.responseType = 'blob'; // !!필수!!
+                    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xhr.send(JSON.stringify(param));
+                } else {
+                    alert('엑셀 다운로드는 5000건 이하의 데이터만 가능합니다.\n 검색조건을 수정하여 재시도 해주세요.');
+                }
+            }
+        });
+
+
+    }
+
+    function initParam() {
+        var now = new Date();
+        var d7Date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 5);
+        setYearCombo(now.getFullYear(), d7Date.getFullYear());
+        setMonthCombo(twoDigitNumber(now.getMonth() + 1), twoDigitNumber(d7Date.getMonth() + 1));
+        setDateCombo($('#selStartDate'), now.getFullYear(), twoDigitNumber(now.getMonth() + 1), twoDigitNumber(now.getDate() - 1));
+        setDateCombo($('#selEndDate'), d7Date.getFullYear(), twoDigitNumber(d7Date.getMonth() + 1), twoDigitNumber(d7Date.getDate()));
+        setSelectDateDisabled('d3');
+    }
+
+    function setSelectDateDisabled(period) {
+        if (period === 'mm')
+            $('.selDate').removeAttr('disabled');
+        else
+            $('.selDate').attr('disabled', 'disabled');
+    }
+
+    function setYearCombo(startYear, endYear) {
+        var year = (new Date()).getFullYear();
+        $('#selStartYear, #selEndYear').empty();
+
+        $('#selStartYear, #selEndYear').append('<option value="' + (year - 1) + '">' + (year - 1) + '년</option>');
+        $('#selStartYear, #selEndYear').append('<option value="' + (year) + '">' + (year) + '년</option>');
+        $('#selStartYear, #selEndYear').append('<option value="' + (year + 1) + '">' + (year + 1) + '년</option>');
+        $('#selStartYear').val(startYear);
+        $('#selEndYear').val(endYear);
+    }
+
+    function setMonthCombo(startMonth, endMonth) {
+        $('#selStartMonth, #selEndMonth').empty();
+
+        for (var i = 0; i < 12; i++) {
+            if (i < 9)
+                $('#selStartMonth, #selEndMonth').append('<option value="0' + (i + 1) + '">' + (i + 1) + '월</option>');
+            else
+                $('#selStartMonth, #selEndMonth').append('<option value="' + (i + 1) + '">' + (i + 1) + '월</option>');
+        }
+
+        $('#selStartMonth').val(startMonth);
+        $('#selEndMonth').val(endMonth);
+    }
+
+    function setDateCombo(obj, year, month, date) {
+        var d = new Date(parseInt(year), parseInt(month), 0);
+
+        $(obj).empty();
+        for (var i = 0; i < d.getDate(); i++) {
+            if (i < 9)
+                $(obj).append('<option value="0' + (i + 1) + '">' + (i + 1) + '일</option>');
+            else
+                $(obj).append('<option value="' + (i + 1) + '">' + (i + 1) + '일</option>');
+        }
+
+        if (parseInt(date) > d.getDate())
+            $(obj).val(d.getDate() + '');
+        else
+            $(obj).val(date);
+    }
+
+    function onChangeChkPeriod() {
+        var period = $(this).val();
+        if (period !== 'mm') {
+            var now = new Date();
+            var startDate;
+            var endDate;
+
+            /*if (period === 'd3') {
+                endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 3);
+            } else*/
+            if (period === 'd7') {
+                startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+                endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 5);
+                setYearCombo(now.getFullYear(), endDate.getFullYear());
+                setMonthCombo(twoDigitNumber(now.getMonth() + 1), twoDigitNumber(endDate.getMonth() + 1));
+                setDateCombo($('#selStartDate'), startDate.getFullYear(), twoDigitNumber(startDate.getMonth() + 1), twoDigitNumber(startDate.getDate()));
+                setDateCombo($('#selEndDate'), endDate.getFullYear(), twoDigitNumber(endDate.getMonth() + 1), twoDigitNumber(endDate.getDate()));
+            } else {
+                endDate = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate());
+                setYearCombo(now.getFullYear(), endDate.getFullYear());
+                setMonthCombo(twoDigitNumber(now.getMonth() + 1), twoDigitNumber(endDate.getMonth() + 1));
+                setDateCombo($('#selStartDate'), now.getFullYear(), twoDigitNumber(now.getMonth() + 1), twoDigitNumber(now.getDate()));
+                setDateCombo($('#selEndDate'), endDate.getFullYear(), twoDigitNumber(endDate.getMonth() + 1), twoDigitNumber(endDate.getDate()));
+            }
+
+
+        }
+
+        setSelectDateDisabled(period);
+    }
+
+    function closePopup() {
+        $('#portPopup').css('display', 'none');
+    }
+
+    <!-- pdf 테스트 -->
+
+
+</script>
+</div>
+
+<footer id="footer">
+	
+
+
+
+<div>
+	<div class="etc-wrap">
+		<div class="etc-list">
+			<ul>
+				<li><a href="/board/voice/privacy" target="_blank">개인정보취급방침</a></li>
+				<li><a href="/esvc/board/terms" target="_blank">이용약관</a></li>
+				<li>
+					<select id="select" onchange="window.open(value,'_blank');">
+						<option>FAMILY SITE</option>
+			        	<option value="https://www.busanpa.com/kor/Main.do">(주)한진</option>
+			        	<option value="https://www.singaporepsa.com/">한진칼</option>
+			        	<option value="https://www.apmterminals.com/">대한항공</option>
+			        	<option value="https://www.dpworld.com/">한진인천컨테이너터미널</option>			        	
+			        	<option value="https://www.kmi.re.kr/web/main/main.do?rbsIdx=1">부산항만공사</option>
+			        	<option value="http://www.koti.re.kr/">PSA</option>
+			        	<option value="http://www.gndi.re.kr/">APM</option>
+			        	<option value="http://www.bjfez.go.kr/main.web">DP World</option>
+			        	<option value="http://www.hanjin.co.kr/pr_html/index.jsp">한국해양수산개발원</option>
+			        	<option value="https://www.cyberlogitec.com/">한국교통연구원</option>
+			        	<option value="http://www.portbusan.go.kr/index.do">경남발전연구원</option>
+			        	<option value="https://www.theksa.or.kr/site/main/home">부산진해경제자유구역청</option>
+			        	<option value="http://www.krs.co.kr/main/main.aspx">부산지방해양항만청</option>
+			        	<option value="https://www.kerrylogistics.com/">한국해운조합</option>
+			        </select>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<h2>
+	        <a href="/">
+	            <img alt="HJNC" src="/resources/images/ic_f_logo.jpg">
+	        </a>
+	    </h2>
+	
+	    <address>
+	        <p>상호:한진부산컨테이너터미널(주) / 대표자:김 규경<br>사업자등록번호: 609-81-79619 / 통신판매업신고번호:  제 2023-창원진해-0344호<br>주소: 경상남도 창원시 진해구 신항로 433(안골동) / 우편번호: 51611<br>대표번호: 051-220-2425 / 팩스번호: 051-220-2139 / 이메일: inbound@hjnc.co.kr</p>
+	        
+	    </address>
+    </div>
+</div>
+</footer>
+
+</body></html>
