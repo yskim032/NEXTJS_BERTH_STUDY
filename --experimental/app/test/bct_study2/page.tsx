@@ -58,6 +58,23 @@ function MyPage() {
           selected: boolean;
         }>;
       }>;
+      targetTable?: {
+        headers: Array<{
+          text: string;
+          className?: string;
+        }>;
+      };
+      vesselInfo: Array<{
+        berth: string;
+        berthType: string;
+        carrier: string;
+        vesselName: string;
+        vesselFullName: string;
+        vesselType: string;
+        arrivalTime: string;
+        departureTime: string;
+        status: string;
+      }>;
     };
     clickSuccess?: boolean;
     clickError?: string;
@@ -197,6 +214,68 @@ function MyPage() {
       <div className="mt-8 p-4 bg-white rounded-lg shadow">
         <h2 className="text-xl font-bold mb-4">동적 콘텐츠</h2>
         
+        {/* 선박 정보 */}
+        {data.dynamicContent.vesselInfo && data.dynamicContent.vesselInfo.length > 0 && (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-2">선박 정보</h3>
+            <div className="overflow-x-auto">
+              <table className="min-w-full border">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="border p-2">터미널</th>
+                    <th className="border p-2">선박명</th>
+                    <th className="border p-2">항차</th>
+                    <th className="border p-2">선사</th>
+                    <th className="border p-2">서비스</th>
+                    <th className="border p-2">ATB(ETB)</th>
+                    <th className="border p-2">ATD(ETD)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.dynamicContent.vesselInfo
+                    .filter(vessel => vessel.vesselFullName && vessel.vesselName)
+                    .filter((vessel, index, self) => 
+                      index === self.findIndex(v => 
+                        v.vesselFullName === vessel.vesselFullName && 
+                        v.vesselName === vessel.vesselName
+                      )
+                    )
+                    .map((vessel, index) => (
+                    <tr key={index} className="hover:bg-gray-50">
+                      <td className="border p-2">BCT</td>
+                      <td className="border p-2">{vessel.vesselFullName}</td>
+                      <td className="border p-2">{vessel.vesselName}</td>
+                      <td className="border p-2">{vessel.carrier}</td>
+                      <td className="border p-2">{vessel.vesselType}</td>
+                      <td className="border p-2">{vessel.arrivalTime}</td>
+                      <td className="border p-2">{vessel.departureTime}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* 테이블 헤더 정보 */}
+        {data.dynamicContent.targetTable && (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-2">선석 배정현황 테이블 헤더</h3>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="grid grid-cols-6 gap-4">
+                {data.dynamicContent.targetTable.headers.map((header, index) => (
+                  <div key={index} className="p-2 bg-white border rounded shadow-sm">
+                    <div className="font-medium text-gray-700">{header.text}</div>
+                    {header.className && (
+                      <div className="text-xs text-gray-500">Class: {header.className}</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* 테이블 데이터 */}
         {data.dynamicContent.tables.length > 0 && (
           <div className="mb-6">

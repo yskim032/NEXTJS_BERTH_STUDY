@@ -20,6 +20,7 @@ interface TerminalFilter {
   GWCT: boolean;
   ICT: boolean;
   PNIT: boolean;
+  BCT: boolean;
 }
 
 const REFRESH_INTERVALS = [
@@ -55,6 +56,7 @@ export default function TestPage() {
   const [gwctVessels, setGwctVessels] = useState<VesselData[]>([]);
   const [ictVessels, setIctVessels] = useState<VesselData[]>([]);
   const [pnitVessels, setPnitVessels] = useState<VesselData[]>([]);
+  const [bctVessels, setBctVessels] = useState<VesselData[]>([]);
   const [startDate, setStartDate] = useState('20250504');
   const [endDate, setEndDate] = useState('20250511');
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +65,8 @@ export default function TestPage() {
     PNC: true,
     GWCT: true,
     ICT: true,
-    PNIT: true
+    PNIT: true,
+    BCT: true
   });
   const [showDayOfWeek, setShowDayOfWeek] = useState(false);
   const [refreshInterval, setRefreshInterval] = useState(60); // 기본 1분
@@ -175,10 +178,31 @@ export default function TestPage() {
         }
       });
 
+      // BCT 데이터 가져오기
+      const bctResponse = await axios.get('/api/fetch-bct-content');
+      const newBctVessels: VesselData[] = bctResponse.data.dynamicContent.vesselInfo
+        .filter((vessel: any) => vessel.vesselFullName && vessel.vesselName)
+        .filter((vessel: any, index: number, self: any[]) => 
+          index === self.findIndex(v => 
+            v.vesselFullName === vessel.vesselFullName && 
+            v.vesselName === vessel.vesselName
+          )
+        )
+        .map((vessel: any) => ({
+          terminal: 'BCT',
+          vesselName: vessel.vesselFullName,
+          routeCode: vessel.vesselName,
+          carrier: vessel.carrier,
+          portInfo: vessel.vesselType,
+          arrivalTime: vessel.arrivalTime,
+          departureTime: vessel.departureTime
+        }));
+
       setPncVessels(newPncVessels);
       setGwctVessels(newGwctVessels);
       setIctVessels(newIctVessels);
       setPnitVessels(newPnitVessels);
+      setBctVessels(newBctVessels);
       setLastRefreshTime(new Date());
     } catch (error) {
       console.error('데이터 추출 중 오류 발생:', error);
@@ -223,6 +247,7 @@ export default function TestPage() {
     if (terminalFilter.GWCT) allVessels = [...allVessels, ...gwctVessels];
     if (terminalFilter.ICT) allVessels = [...allVessels, ...ictVessels];
     if (terminalFilter.PNIT) allVessels = [...allVessels, ...pnitVessels];
+    if (terminalFilter.BCT) allVessels = [...allVessels, ...bctVessels];
     
     return allVessels.sort((a, b) => {
       const dateA = new Date(a.arrivalTime);
@@ -241,6 +266,8 @@ export default function TestPage() {
         return 'bg-pink-100 text-pink-800';
       case 'PNIT':
         return 'bg-emerald-100 text-emerald-800';
+      case 'BCT':
+        return 'bg-orange-100 text-orange-800';
       default:
         return '';
     }
@@ -308,6 +335,17 @@ export default function TestPage() {
             />
             <span className="ml-2">
               <span className={`px-2 py-1 rounded ${getTerminalColor('PNIT')}`}>PNIT</span>
+            </span>
+          </label>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={terminalFilter.BCT}
+              onChange={() => handleTerminalFilterChange('BCT')}
+              className="form-checkbox h-5 w-5 text-orange-600"
+            />
+            <span className="ml-2">
+              <span className={`px-2 py-1 rounded ${getTerminalColor('BCT')}`}>BCT</span>
             </span>
           </label>
         </div>

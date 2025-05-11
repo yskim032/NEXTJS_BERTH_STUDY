@@ -122,6 +122,49 @@ export async function GET() {
         // 동적 데이터 수집
         console.log('Collecting dynamic data after click...');
         const dynamicData = await page.evaluate(() => {
+          // 선박 정보 추출
+          const vesselInfo = Array.from(document.querySelectorAll('div[id^="mainframe_vframeset_hframeset_bodyframe_workframe_IST010_form_div_work_div_background_Grid00_body_gridrow_"]')).map(row => {
+            const cells = Array.from(row.querySelectorAll('div[id$="GridCellTextContainerElement"] div')).map(cell => cell.textContent?.trim());
+            
+            // 필요한 정보 추출
+            return {
+              berth: cells[0] || '', // 선석 번호
+              berthType: cells[1] || '', // 선석 타입 (예: 1(S))
+              carrier: cells[2] || '', // 선사 (예: MSC)
+              vesselCode: cells[3] || '', // 선박 코드 (예: MSCA001)
+              vesselName: cells[4] || '', // 선박명 (예: QM516A)
+              vesselName2: cells[5] || '', // 선박명2 (예: QM516A)
+              arrivalTime: cells[7] || '', // 입항 시간 (예: 2025-05-09 22:00)
+              departureTime: cells[8] || '', // 출항 시간 (예: 2025-05-11 17:00)
+              vesselFullName: cells[12] || '', // 선박 전체 이름 (예: MSC CAMEROON)
+              vesselType: cells[13] || '', // 선박 타입 (예: MEXICA)
+              status: cells[16] || '' // 상태 (예: Working)
+            };
+          });
+
+          // 테이블 헤더 정보 수집
+          const tableHeaders = Array.from(document.querySelectorAll('table')).map(table => {
+            const headers = Array.from(table.querySelectorAll('th')).map(th => ({
+              text: th.textContent?.trim(),
+              html: th.outerHTML,
+              style: th.getAttribute('style'),
+              className: th.className
+            }));
+            return {
+              tableId: table.id,
+              tableClassName: table.className,
+              headers
+            };
+          });
+
+          // 특정 헤더를 포함하는 테이블 찾기
+          const targetHeaders = ['모선명', '선사', '입항', '출항', '접안예정시간', '출항예정시간'];
+          const targetTable = tableHeaders.find(table => 
+            table.headers.some(header => 
+              targetHeaders.some(target => header.text?.includes(target))
+            )
+          );
+
           // 모든 테이블 데이터 수집
           const tables = Array.from(document.querySelectorAll('table')).map(table => {
             const rows = Array.from(table.querySelectorAll('tr')).map(tr => {
@@ -200,6 +243,9 @@ export async function GET() {
 
           return {
             tables,
+            tableHeaders,
+            targetTable,
+            vesselInfo,
             divs,
             specificElements,
             inputs,
@@ -226,6 +272,15 @@ export async function GET() {
         };
 
         console.log('API request completed successfully');
+        console.log('Dynamic data collected successfully');
+        console.log('Target table found:', dynamicData.targetTable ? 'Yes' : 'No');
+        if (dynamicData.targetTable) {
+          console.log('Headers found:', dynamicData.targetTable.headers.map(h => h.text));
+        }
+        console.log('Vessel info found:', dynamicData.vesselInfo.length);
+        if (dynamicData.vesselInfo.length > 0) {
+          console.log('First vessel info:', dynamicData.vesselInfo[0]);
+        }
         return NextResponse.json(result);
       } else {
         console.log('Button is not visible');
